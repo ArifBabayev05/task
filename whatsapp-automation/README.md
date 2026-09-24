@@ -78,3 +78,31 @@ Ona görə ən vacib şey — mesajın gözlənilən və faydalı olmasıdır:
 - Maraqlanmayanlar üçün çıxış yolu əlavə etmək məsləhətdir, məs: *"Maraqlı deyilsinizsə, bildirin — bir daha narahat etmərik."*
 - Eyni adama ikinci dəfə yazmayın (skript bunu `sent_log.csv` ilə izləyir).
 - Variant B-də: yeni açılmış nömrədən istifadə etməyin; 92 mesajı bir neçə saata / iki günə bölün; cavab verənlərə dərhal cavab yazın.
+
+---
+
+## Variant C — Tam avtomatik, öz nömrənizdən (`auto.js`)
+
+Mesajı olduğu kimi, gün ərzində fasilələrlə özü göndərir. **Öz kompüterinizdə** işlədin
+(Node.js 18+ lazımdır: <https://nodejs.org>).
+
+```bash
+cd whatsapp-automation
+npm install
+node auto.js --test 994774407050   # 1 test mesajı
+node auto.js                       # contacts.csv-dəki hamı
+```
+
+İlk dəfə terminalda QR çıxır: telefonda **WhatsApp → Əlaqəli cihazlar → Cihaz əlavə et** ilə skan edin.
+Sessiya yadda qalır, sonrakı dəfə QR lazım olmur.
+
+Rejim (`auto.js`-in əvvəlindəki `CFG`-də dəyişmək olar):
+- mesajlar arası təsadüfi 1–3 dəq, hər 15 mesajdan sonra 10–20 dəq fasilə;
+- yalnız 10:00–18:00 arası göndərir;
+- WhatsApp-ı olmayan nömrələri ötürür; ardıcıl 3 xəta olsa dayanır;
+- `Ctrl+C` ilə dayandırıb yenidən işə salsanız qaldığı yerdən davam edir.
+
+92 nəfər təxminən 4–5 saata gedir. Kompüter yuxu rejiminə keçməməlidir.
+
+⚠️ Bu, WhatsApp Web-in qeyri-rəsmi avtomatlaşdırılmasıdır — WhatsApp qaydalarına ziddir.
+Fasilələr riski azaldır, amma sıfıra endirmir. Mümkünsə şəxsi yox, ayrıca iş nömrəsindən istifadə edin.

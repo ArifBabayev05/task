@@ -1,3 +1,6 @@
 whatsapp-automation/sent_log.csv
 whatsapp-automation/links.html
 __pycache__/
+node_modules/
+whatsapp-automation/.wa-session/
+whatsapp-automation/.wwebjs_cache/
