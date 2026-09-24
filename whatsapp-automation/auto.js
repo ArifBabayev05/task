@@ -5,8 +5,8 @@
  * WhatsApp Web-ə sizin hesabınızla qoşulur (QR kodu bir dəfə skan edirsiniz),
  * contacts.csv-dəki nömrələrə message.txt-i olduğu kimi göndərir.
  * Gün ərzində fasilələrlə işləyir:
- *   - hər mesaj arası təsadüfi 1–3 dəqiqə
- *   - hər 15 mesajdan sonra 10–20 dəqiqə fasilə
+ *   - hər mesaj arası təsadüfi 1–1.5 dəqiqə
+ *   - hər 15 mesajdan sonra 10 dəqiqə fasilə
  *   - yalnız iş saatlarında (10:00–18:00), qalan vaxt gözləyir
  *
  * İstifadə:
@@ -31,10 +31,10 @@ const SENT_LOG = path.join(HERE, "sent_log.csv");
 // ---- Tənzimləmələr ---------------------------------------------------------
 const CFG = {
   delayMin: 60, // mesajlar arası, saniyə
-  delayMax: 180,
+  delayMax: 90,
   batchSize: 15, // bu qədər mesajdan sonra uzun fasilə
   breakMin: 10 * 60,
-  breakMax: 20 * 60,
+  breakMax: 10 * 60,
   startHour: 10, // yalnız bu saatlar arası göndərir
   endHour: 18,
   maxFailsInRow: 3, // ardıcıl bu qədər xəta olsa dayanır

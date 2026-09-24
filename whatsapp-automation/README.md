@@ -97,12 +97,12 @@ node auto.js                       # contacts.csv-dəki hamı
 Sessiya yadda qalır, sonrakı dəfə QR lazım olmur.
 
 Rejim (`auto.js`-in əvvəlindəki `CFG`-də dəyişmək olar):
-- mesajlar arası təsadüfi 1–3 dəq, hər 15 mesajdan sonra 10–20 dəq fasilə;
+- mesajlar arası təsadüfi 1–1.5 dəq, hər 15 mesajdan sonra 10 dəq fasilə;
 - yalnız 10:00–18:00 arası göndərir;
 - WhatsApp-ı olmayan nömrələri ötürür; ardıcıl 3 xəta olsa dayanır;
 - `Ctrl+C` ilə dayandırıb yenidən işə salsanız qaldığı yerdən davam edir.
 
-92 nəfər təxminən 4–5 saata gedir. Kompüter yuxu rejiminə keçməməlidir.
+92 nəfər təxminən 2.5 saata gedir. Kompüter yuxu rejiminə keçməməlidir.
 
 ⚠️ Bu, WhatsApp Web-in qeyri-rəsmi avtomatlaşdırılmasıdır — WhatsApp qaydalarına ziddir.
 Fasilələr riski azaldır, amma sıfıra endirmir. Mümkünsə şəxsi yox, ayrıca iş nömrəsindən istifadə edin.
