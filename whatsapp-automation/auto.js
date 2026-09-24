@@ -97,39 +97,102 @@ async function waitForWorkingHours() {
   }
 }
 
+// ---- WhatsApp bağlantısı ---------------------------------------------------
+// whatsapp-web.js-in məlum xətası: səhifə arxa planda yenilənəndə
+// "Attempted to use detached Frame" çıxır. Belə xətada brauzeri yenidən açıb
+// eyni nömrəni təkrar yoxlayırıq (mesaj getməyib, ona görə təkrar göndərmə olmur).
+const CONN_ERR = /detached Frame|Execution context was destroyed|Target closed|Session closed|Protocol error|Connection closed/i;
+
+function connect() {
+  return new Promise((resolve, reject) => {
+    const client = new Client({
+      authStrategy: new LocalAuth({ dataPath: path.join(HERE, ".wa-session") }),
+      puppeteer: { headless: false }, // brauzer pəncərəsi görünür — nə baş verdiyini izləyə bilərsiniz
+    });
+    client.on("qr", (qr) => {
+      log("Telefonda: WhatsApp → Parametrlər → Əlaqəli cihazlar → Cihaz əlavə et, bu QR-ı skan edin:");
+      qrcode.generate(qr, { small: true });
+    });
+    client.on("auth_failure", (m) => reject(new Error("Giriş alınmadı: " + m)));
+    client.on("disconnected", (r) => {
+      log("Əlaqə kəsildi:", r);
+      if (r === "LOGOUT") {
+        log("Telefondan çıxış edilib — proqram dayandırıldı. Yenidən işə salıb QR-ı skan edin.");
+        process.exit(1);
+      }
+    });
+    client.once("ready", async () => {
+      log("WhatsApp-a qoşuldu, söhbətlərin yüklənməsi gözlənilir...");
+      await sleep(20);
+      resolve(client);
+    });
+    client.initialize().catch(reject);
+  });
+}
+
+async function reconnect(old) {
+  try {
+    await old.destroy();
+  } catch (_) {}
+  await sleep(15);
+  return connect();
+}
+
+async function sendOne(client, phone, text) {
+  const wid = await client.getNumberId(phone);
+  if (!wid) return "not_on_whatsapp";
+  await client.sendMessage(wid._serialized, text);
+  return "sent";
+}
+
 // ---- Əsas ------------------------------------------------------------------
-async function run(client, text, phones) {
+async function run(text, phones) {
+  let client = await connect();
   let sent = 0;
   let failsInRow = 0;
 
   for (let i = 0; i < phones.length; i++) {
     const phone = phones[i];
+    const tag = `${i + 1}/${phones.length} +${phone}`;
     await waitForWorkingHours();
 
-    try {
-      const wid = await client.getNumberId(phone);
-      if (!wid) {
-        log(`[–] ${i + 1}/${phones.length} +${phone} WhatsApp-da yoxdur, ötürülür`);
-        record(phone, "not_on_whatsapp");
-        continue; // mesaj getmədi — fasiləyə ehtiyac yoxdur
+    let status, detail = "";
+    for (let attempt = 1; ; attempt++) {
+      try {
+        status = await sendOne(client, phone, text);
+        break;
+      } catch (e) {
+        if (CONN_ERR.test(e.message) && attempt <= 3) {
+          log(`  bağlantı problemi (${attempt}/3), brauzer yenidən açılır...`);
+          client = await reconnect(client);
+          continue;
+        }
+        status = "failed";
+        detail = e.message;
+        break;
       }
-      await client.sendMessage(wid._serialized, text);
-      record(phone, "sent");
-      sent++;
-      failsInRow = 0;
-      log(`[✓] ${i + 1}/${phones.length} +${phone}`);
-    } catch (e) {
+    }
+    record(phone, status, detail);
+
+    if (status === "not_on_whatsapp") {
+      log(`[–] ${tag} WhatsApp-da yoxdur, ötürülür`);
+      continue; // mesaj getmədi — fasiləyə ehtiyac yoxdur
+    }
+    if (status === "failed") {
       failsInRow++;
-      record(phone, "failed", e.message);
-      log(`[✗] ${i + 1}/${phones.length} +${phone} — ${e.message}`);
+      log(`[✗] ${tag} — ${detail}`);
       if (failsInRow >= CFG.maxFailsInRow) {
         log("Ardıcıl xətalar — təhlükəsizlik üçün dayandırıldı. Hesabı yoxlayın.");
-        return;
+        break;
       }
+    } else {
+      sent++;
+      failsInRow = 0;
+      log(`[✓] ${tag}`);
     }
 
     if (i === phones.length - 1) break;
-    if (sent > 0 && sent % CFG.batchSize === 0) {
+    if (status === "sent" && sent % CFG.batchSize === 0) {
       const b = rand(CFG.breakMin, CFG.breakMax);
       log(`${sent} mesaj göndərildi — ${Math.round(b / 60)} dəq fasilə`);
       await sleep(b);
@@ -140,9 +203,13 @@ async function run(client, text, phones) {
     }
   }
   log(`Bitdi: ${sent} mesaj göndərildi. Ətraflı: sent_log.csv`);
+  await sleep(5);
+  try {
+    await client.destroy();
+  } catch (_) {}
 }
 
-function main() {
+async function main() {
   const args = process.argv.slice(2);
   const testIdx = args.indexOf("--test");
   const text = fs.readFileSync(MESSAGE, "utf8").trim();
@@ -160,29 +227,11 @@ function main() {
   }
   if (!phones.length) return log("Göndəriləcək nömrə yoxdur.");
 
-  const client = new Client({
-    authStrategy: new LocalAuth({ dataPath: path.join(HERE, ".wa-session") }),
-    puppeteer: { headless: false }, // brauzer pəncərəsi görünür — nə baş verdiyini izləyə bilərsiniz
-  });
-
-  client.on("qr", (qr) => {
-    log("Telefonda: WhatsApp → Parametrlər → Əlaqəli cihazlar → Cihaz əlavə et, bu QR-ı skan edin:");
-    qrcode.generate(qr, { small: true });
-  });
-  client.on("disconnected", (r) => {
-    log("Əlaqə kəsildi:", r);
-    process.exit(1);
-  });
-  client.on("ready", async () => {
-    log("WhatsApp-a qoşuldu.");
-    await sleep(10); // söhbətlər yüklənsin
-    await run(client, text, phones);
-    await sleep(5);
-    await client.destroy();
-    process.exit(0);
-  });
-
-  client.initialize();
+  await run(text, phones);
+  process.exit(0);
 }
 
-main();
+main().catch((e) => {
+  log("Xəta:", e.message);
+  process.exit(1);
+});
