@@ -3,7 +3,6 @@ import { About } from "@/components/About";
 import { Domains } from "@/components/Domains";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { RevealObserver } from "@/components/interactive";
 import { Incentives } from "@/components/Incentives";
 import { Footer, Review } from "@/components/Review";
 import { Strategy } from "@/components/Strategy";
@@ -34,7 +33,6 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Review c={c} />
       </main>
       <Footer c={c} />
-      <RevealObserver />
     </>
   );
 }

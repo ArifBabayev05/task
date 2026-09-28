@@ -38,7 +38,7 @@ export function ReviewList({
         type="button"
         aria-pressed={active}
         onClick={() => setFilter(key)}
-        className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan ${
+        className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan ${
           active ? "border-navy-900 bg-navy-900 text-white" : "border-line bg-white text-ink/80 hover:text-navy-900"
         }`}
       >
@@ -57,8 +57,8 @@ export function ReviewList({
       </div>
       <ol className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
         {shown.map((item) => (
-          <li key={item.title} className="animate-[fadeIn_.3s_ease-out_both]">
-            <details className="group h-full rounded-xl border border-line bg-white transition open:shadow-md">
+          <li key={item.title} className="">
+            <details className="group h-full rounded-xl border border-line bg-white open:shadow-md">
               <summary className="flex cursor-pointer list-none items-start gap-3 p-4 [&::-webkit-details-marker]:hidden">
                 <span
                   className={`mt-0.5 shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${styles[item.severity]}`}

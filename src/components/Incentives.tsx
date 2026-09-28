@@ -46,28 +46,28 @@ export function Incentives({ c }: { c: Content }) {
   return (
     <section id="incentives" className="bg-sky-50 py-16 sm:py-24">
       <Container>
-        <div data-reveal>
+        <div>
           <SectionHeader kicker={incentives.kicker} title={incentives.title} lead={incentives.lead} />
         </div>
 
         {/* 4.1 Tax and regulatory framework */}
         <div className="mt-14">
-          <h3 data-reveal className="text-xl font-semibold text-navy-900">
+          <h3 className="text-xl font-semibold text-navy-900">
             {tax.title}
           </h3>
-          <div data-reveal className="dot-grid mt-5 rounded-2xl bg-navy-900 p-6 text-white sm:p-8">
+          <div className="dot-grid mt-5 rounded-2xl bg-navy-900 p-6 text-white sm:p-8">
             <SourceMark label={ui.deckOnly} tone="dark" />
             <p className="mt-2 text-balance text-xl font-semibold leading-snug sm:text-2xl">{tax.headline}</p>
             <More more={ui.readMore} less={ui.showLess} className="mt-3 [&_summary]:text-cyan [&_summary:hover]:text-white">
               <p className="max-w-4xl text-pretty text-sm leading-relaxed text-white/75 sm:text-base">{tax.subline}</p>
             </More>
           </div>
-          <div data-reveal className="mt-6 flex flex-wrap items-center justify-between gap-2">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-2">
             <p className="max-w-3xl text-[15px] text-ink/85">{tax.intro}</p>
             <span className="rounded-full bg-cyan px-3 py-1 text-xs font-semibold text-white">{tax.selectedExamples}</span>
           </div>
           <p className="mt-2 text-xs text-muted">{tax.hint}</p>
-          <div data-reveal className="mt-4">
+          <div className="mt-4">
             <Tabs
               variant="tiles"
               label={tax.title}
@@ -119,10 +119,10 @@ export function Incentives({ c }: { c: Content }) {
 
         {/* 4.2 Export support programs */}
         <div className="mt-16">
-          <h3 data-reveal className="text-xl font-semibold text-navy-900">
+          <h3 className="text-xl font-semibold text-navy-900">
             {exportSupport.title}
           </h3>
-          <p data-reveal className="mt-3 max-w-3xl text-[15px] text-ink/85">
+          <p className="mt-3 max-w-3xl text-[15px] text-ink/85">
             {exportSupport.intro}
           </p>
 
@@ -139,7 +139,7 @@ export function Incentives({ c }: { c: Content }) {
               />
             </ChartCard>
 
-            <div data-reveal className="rounded-xl border border-line bg-white p-5 sm:p-6">
+            <div className="rounded-xl border border-line bg-white p-5 sm:p-6">
               <Tabs
                 variant="underline"
                 label={exportSupport.title}

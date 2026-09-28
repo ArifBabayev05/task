@@ -31,7 +31,7 @@ export function SourceToggle({ onLabel, offLabel }: { onLabel: string; offLabel:
       type="button"
       onClick={toggle}
       aria-pressed={visible}
-      className="inline-flex items-center gap-1.5 rounded-md border border-white/20 px-2.5 py-1.5 text-xs font-medium text-white/85 transition hover:border-white/40 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
+      className="inline-flex items-center gap-1.5 rounded-md border border-white/20 px-2.5 py-1.5 text-xs font-medium text-white/85 hover:border-white/40 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
     >
       <Icon aria-hidden className="size-3.5" />
       <span className="hidden sm:inline">{visible ? onLabel : offLabel}</span>

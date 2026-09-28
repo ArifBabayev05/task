@@ -113,7 +113,7 @@ function DomainPanel({ c, index }: { c: Content; index: number }) {
       {companies && (
         <a
           href="#strategy"
-          className="group flex min-w-[220px] flex-col justify-between rounded-xl bg-navy-900 p-5 text-white transition hover:bg-navy-800"
+          className="group flex min-w-[220px] flex-col justify-between rounded-xl bg-navy-900 p-5 text-white hover:bg-navy-800"
         >
           <div>
             <p className="text-5xl font-semibold tracking-tight">{companies.length}</p>
@@ -128,7 +128,7 @@ function DomainPanel({ c, index }: { c: Content; index: number }) {
                   <Logo company={{ ...co, estonian: false }} area={500} maxWidth={24} maxHeight={24} />
                 </span>
               ))}
-            <ArrowDownRight aria-hidden className="ml-4 size-5 self-center text-cyan transition group-hover:translate-x-0.5" />
+            <ArrowDownRight aria-hidden className="ml-4 size-5 self-center text-cyan group-hover:translate-x-0.5" />
           </div>
         </a>
       )}
@@ -142,10 +142,10 @@ export function Domains({ c }: { c: Content }) {
     <section id="domains" className="bg-sky-50 py-16 sm:py-24">
       <Container>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_300px] lg:items-start">
-          <div data-reveal>
+          <div>
             <SectionHeader kicker={domains.kicker} title={domains.title} lead={domains.lead} />
           </div>
-          <div data-reveal className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl lg:block">
+          <div className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl lg:block">
             <Image src="/images/boardroom.jpg" alt="" fill sizes="300px" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/30 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-5 text-white">
@@ -157,7 +157,7 @@ export function Domains({ c }: { c: Content }) {
           </div>
         </div>
 
-        <div data-reveal className="mt-10 rounded-2xl border border-line bg-white p-5 sm:p-6">
+        <div className="mt-10 rounded-2xl border border-line bg-white p-5 sm:p-6">
           <Tabs
             label={domains.title}
             items={domains.items.map((d, i) => {

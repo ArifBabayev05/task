@@ -19,7 +19,7 @@ export function ChartCard({
   className?: string;
 }) {
   return (
-    <figure data-reveal className={`flex flex-col rounded-xl border border-line bg-white p-5 sm:p-6 ${className}`}>
+    <figure className={`flex flex-col rounded-xl border border-line bg-white p-5 sm:p-6 ${className}`}>
       <figcaption>
         <p className="font-semibold text-navy-900">{title}</p>
         {subtitle && <p className="mt-0.5 text-xs text-muted">{subtitle}</p>}
@@ -94,7 +94,7 @@ export function HBarChart({
   return (
     <div>
       <ul className="relative space-y-3">
-        {rows.map((r, idx) => {
+        {rows.map((r) => {
           const pct = r.value === null ? 0 : (r.value / max) * 100;
           return (
             <li key={r.key} className="grid grid-cols-[minmax(0,9.5rem)_1fr] items-center gap-3 sm:grid-cols-[minmax(0,12rem)_1fr]">
@@ -114,8 +114,8 @@ export function HBarChart({
                     <span
                       tabIndex={0}
                       aria-label={`${r.label}: ${r.display}`}
-                      className={`bar-grow group relative block h-5 rounded-r-[4px] outline-none focus-visible:ring-2 focus-visible:ring-cyan ${color}`}
-                      style={{ width: `${pct}%`, ["--bar-delay" as string]: `${150 + idx * 90}ms` }}
+                      className={`group relative block h-5 rounded-r-[4px] outline-none focus-visible:ring-2 focus-visible:ring-cyan ${color}`}
+                      style={{ width: `${pct}%` }}
                     >
                       <Tooltip>
                         {r.label}: {r.display} {unit}
@@ -167,7 +167,7 @@ export function StackedBar({
               key={s.key}
               tabIndex={0}
               aria-label={`${s.label}: ${s.display}`}
-              className={`bar-grow group relative flex items-center justify-center overflow-visible outline-none focus-visible:ring-2 focus-visible:ring-cyan ${s.color} ${
+              className={`group relative flex items-center justify-center overflow-visible outline-none focus-visible:ring-2 focus-visible:ring-cyan ${s.color} ${
                 i === 0 ? "rounded-l-[4px]" : ""
               } ${i === segments.length - 1 ? "rounded-r-[4px]" : ""}`}
               style={{ width: `${pct}%` }}

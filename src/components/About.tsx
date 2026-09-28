@@ -9,10 +9,10 @@ export function About({ c }: { c: Content }) {
   return (
     <section id="about" className="bg-white py-16 sm:py-24">
       <Container>
-        <div data-reveal>
+        <div>
           <SectionHeader kicker={about.kicker} title={about.title} lead={about.lead} />
         </div>
-        <div data-reveal className="mt-12 flex flex-wrap items-end justify-between gap-3">
+        <div className="mt-12 flex flex-wrap items-end justify-between gap-3">
           <h3 className="text-xl font-semibold text-navy-900">{about.modelTitle}</h3>
           <p className="text-sm text-muted">{about.modelLead}</p>
         </div>
@@ -25,9 +25,7 @@ export function About({ c }: { c: Content }) {
             return (
               <li
                 key={item.title}
-                data-reveal
-                style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
-                className="relative flex flex-col rounded-xl border border-line bg-sky-50 p-5 transition hover:-translate-y-0.5 hover:shadow-md"
+                className="relative flex flex-col rounded-xl border border-line bg-sky-50 p-5"
               >
                 <div className="flex items-center gap-3">
                   <span className="relative flex size-11 items-center justify-center rounded-full bg-navy-900 text-white ring-4 ring-white">

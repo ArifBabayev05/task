@@ -30,7 +30,7 @@ export function Hero({ c }: { c: Content }) {
             </h1>
             <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-white/80 sm:text-lg">{hero.lead}</p>
           </div>
-          <div className="rounded-2xl border border-white/15 bg-navy-900/70 p-6 shadow-2xl shadow-black/30 backdrop-blur-sm">
+          <div className="rounded-2xl border border-white/15 bg-navy-900/85 p-6 shadow-2xl shadow-black/30">
             <div className="flex items-start justify-between gap-3">
               <p className="text-sm font-semibold text-white">{hero.ambitionLabel}</p>
               <SourceMark label={ui.deckOnly} tone="dark" />

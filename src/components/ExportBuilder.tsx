@@ -35,7 +35,7 @@ export function ExportBuilder({
             type="button"
             aria-pressed={on[p.key]}
             onClick={() => setOn((s) => ({ ...s, [p.key]: !s[p.key] }))}
-            className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan ${
+            className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan ${
               on[p.key] ? "border-navy-900 bg-navy-900 text-white" : "border-line bg-white text-muted hover:text-navy-900"
             }`}
           >

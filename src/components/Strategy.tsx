@@ -20,7 +20,7 @@ export function Strategy({ c }: { c: Content }) {
           <p className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy-950">
             <Lock aria-hidden className="size-3.5" /> {ui.sectionInternal}
           </p>
-          <div data-reveal className="mt-6" id="strategy-title">
+          <div className="mt-6" id="strategy-title">
             <SectionHeader
               kicker={strategy.kicker}
               title={strategy.title}
@@ -45,7 +45,7 @@ function Criteria({ c }: { c: Content }) {
   return (
     <div className="bg-white py-16 sm:py-20">
       <Container>
-        <div data-reveal>
+        <div>
           <SlideTitle kicker={criteria.kicker} title={criteria.title} />
           <p className="mt-2 text-xs text-muted">{criteria.duplicateNote}</p>
         </div>
@@ -62,7 +62,7 @@ function Criteria({ c }: { c: Content }) {
                     ×
                   </span>
                 )}
-                <div data-reveal className={`overflow-hidden rounded-xl border ${blue ? "border-brand/30" : "border-leaf/30"}`}>
+                <div className={`overflow-hidden rounded-xl border ${blue ? "border-brand/30" : "border-leaf/30"}`}>
                   <h4
                     className={`flex items-center justify-between border-b px-5 py-4 text-lg font-semibold ${
                       blue ? "border-brand/20 text-brand" : "border-leaf/20 text-leaf"
@@ -77,7 +77,7 @@ function Criteria({ c }: { c: Content }) {
                       return (
                         <li key={item.title}>
                           <details className="group">
-                            <summary className="flex cursor-pointer list-none items-center gap-3 px-5 py-3.5 transition hover:bg-white/60 [&::-webkit-details-marker]:hidden">
+                            <summary className="flex cursor-pointer list-none items-center gap-3 px-5 py-3.5 hover:bg-white/60 [&::-webkit-details-marker]:hidden">
                               <Icon aria-hidden className={`size-6 shrink-0 ${blue ? "text-brand-600" : "text-leaf"}`} />
                               <span className="flex-1 font-semibold text-navy-900">{item.title}</span>
                               <ChevronDown aria-hidden className="size-4 text-muted transition group-open:rotate-180" />
@@ -104,11 +104,11 @@ function Explorer({ c }: { c: Content }) {
   return (
     <div className="bg-sky-50 py-16 sm:py-20">
       <Container>
-        <div data-reveal>
+        <div>
           <SlideTitle kicker={candidates.kicker} title={candidates.title} />
           <p className="mt-3 text-[15px] text-muted">{pools.title}</p>
         </div>
-        <div data-reveal className="mt-8">
+        <div className="mt-8">
           <CompanyExplorer
             modes={[
               {
@@ -132,18 +132,16 @@ function Explorer({ c }: { c: Content }) {
           />
         </div>
 
-        <p data-reveal className="mt-10 rounded-xl bg-navy-800 px-5 py-4 text-center text-base font-semibold text-white sm:text-lg">
+        <p className="mt-10 rounded-xl bg-navy-800 px-5 py-4 text-center text-base font-semibold text-white sm:text-lg">
           {pools.chainTitle}
         </p>
         <ol className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {pools.chain.map((step, i) => {
+          {pools.chain.map((step) => {
             const Icon = icons[step.icon];
             return (
               <li
                 key={step.label}
-                data-reveal
-                style={{ ["--reveal-delay" as string]: `${i * 70}ms` }}
-                className="flex flex-col items-center gap-3 rounded-xl bg-sky-100 px-3 py-5 text-center transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
+                className="flex flex-col items-center gap-3 rounded-xl bg-sky-100 px-3 py-5 text-center hover:bg-white"
               >
                 <Icon aria-hidden className="size-7 text-brand-600" strokeWidth={1.5} />
                 <span className="text-sm font-semibold leading-snug text-brand">{step.label}</span>
@@ -201,16 +199,16 @@ function Pathway1({ c }: { c: Content }) {
   return (
     <div className="bg-white py-16 sm:py-20">
       <Container>
-        <div data-reveal>
+        <div>
           <SlideTitle kicker={p.kicker} title={p.title} />
           <p className="mt-3 text-[15px] text-muted">{p.subtitle}</p>
         </div>
         <div className="mt-8 grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
           <ExitTimeline c={c} />
-          <ul data-reveal className="space-y-2.5">
+          <ul className="space-y-2.5">
             {p.rows.map((r) => (
               <li key={r.company.name}>
-                <details className="group rounded-xl border border-line bg-white transition open:shadow-md">
+                <details className="group rounded-xl border border-line bg-white open:shadow-md">
                   <summary className="flex cursor-pointer list-none flex-wrap items-center gap-x-4 gap-y-2 p-4 [&::-webkit-details-marker]:hidden">
                     <span className="w-28 shrink-0">
                       <Logo company={r.company} area={1800} maxWidth={110} maxHeight={36} />
@@ -257,14 +255,14 @@ function Pathway2({ c }: { c: Content }) {
   return (
     <div className="bg-sky-50 py-16 sm:py-20">
       <Container>
-        <div data-reveal>
+        <div>
           <SlideTitle kicker={p.kicker} title={p.title} />
           <p className="mt-3 text-[15px] text-muted">{p.subtitle}</p>
         </div>
         <ul className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2">
-          {p.rows.map((r, i) => (
-            <li key={r.company.map((co) => co.name).join("+")} data-reveal style={{ ["--reveal-delay" as string]: `${(i % 2) * 80}ms` }}>
-              <details className="group h-full rounded-xl border border-line bg-white transition open:shadow-md">
+          {p.rows.map((r) => (
+            <li key={r.company.map((co) => co.name).join("+")}>
+              <details className="group h-full rounded-xl border border-line bg-white open:shadow-md">
                 <summary className="flex cursor-pointer list-none items-center gap-4 p-4 [&::-webkit-details-marker]:hidden">
                   <span className="flex w-36 shrink-0 flex-wrap items-center gap-2">
                     {r.company.map((co) => (

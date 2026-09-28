@@ -51,7 +51,7 @@ export function CompanyExplorer({
                 setModeIdx(i);
                 setSel(null);
               }}
-              className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan ${
+              className={`rounded-full border px-3.5 py-1.5 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan ${
                 i === modeIdx ? "border-navy-900 bg-navy-900 text-white" : "border-line bg-white text-ink/80 hover:text-navy-900"
               }`}
             >
@@ -70,7 +70,7 @@ export function CompanyExplorer({
                   type="button"
                   aria-pressed={active}
                   onClick={() => setSel(active ? null : i)}
-                  className={`grid w-full grid-cols-[minmax(0,10rem)_1fr_2rem] items-center gap-3 rounded-lg px-2 py-1.5 text-left transition hover:bg-sky-50 focus-visible:outline-2 focus-visible:outline-cyan sm:grid-cols-[minmax(0,12rem)_1fr_2rem] ${
+                  className={`grid w-full grid-cols-[minmax(0,10rem)_1fr_2rem] items-center gap-3 rounded-lg px-2 py-1.5 text-left hover:bg-sky-50 focus-visible:outline-2 focus-visible:outline-cyan sm:grid-cols-[minmax(0,12rem)_1fr_2rem] ${
                     active ? "bg-sky-50" : ""
                   }`}
                 >
@@ -100,11 +100,10 @@ export function CompanyExplorer({
           </p>
         </div>
         <ul key={`${modeIdx}-${sel}`} className="mt-4 grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-3 xl:grid-cols-4">
-          {shown.map((co, i) => (
+          {shown.map((co) => (
             <li
               key={co.name}
-              className="relative flex min-h-12 animate-[fadeIn_.35s_ease-out_both] items-center justify-center rounded-lg px-2 py-2 transition hover:bg-sky-50"
-              style={{ animationDelay: `${Math.min(i * 20, 400)}ms` }}
+              className="relative flex min-h-12 items-center justify-center rounded-lg px-2 py-2 hover:bg-sky-50"
             >
               <Logo company={co} area={2000} maxWidth={110} maxHeight={40} />
               {multi.has(co.name) && (

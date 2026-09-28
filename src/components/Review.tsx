@@ -9,11 +9,11 @@ export function Review({ c }: { c: Content }) {
   return (
     <section id="review" className="border-t border-line bg-sky-50 py-16 sm:py-24">
       <Container>
-        <div data-reveal>
+        <div>
           <SectionHeader kicker={review.kicker} title={review.title} lead={review.lead} />
           <p className="mt-4 max-w-3xl text-sm text-muted">{ui.sourceLegend}</p>
         </div>
-        <div data-reveal className="mt-8">
+        <div className="mt-8">
           <ReviewList items={review.items} labels={review.severity} all={ui.all} filterLabel={review.filterLabel} />
         </div>
       </Container>
@@ -40,7 +40,7 @@ export function Footer({ c }: { c: Content }) {
         </div>
         <a
           href="#top"
-          className="inline-flex items-center gap-2 self-start rounded-md border border-white/20 px-3 py-2 text-sm text-white/85 transition hover:border-white/40 hover:text-white sm:self-auto"
+          className="inline-flex items-center gap-2 self-start rounded-md border border-white/20 px-3 py-2 text-sm text-white/85 hover:border-white/40 hover:text-white sm:self-auto"
         >
           <ArrowUp aria-hidden className="size-4" /> {ui.backToTop}
         </a>

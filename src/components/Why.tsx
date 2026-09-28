@@ -14,7 +14,7 @@ function Gateway({ c }: { c: Content }) {
   ];
   const center = { x: 260, y: 150 };
   return (
-    <figure data-reveal className="rounded-xl border border-line bg-white p-5">
+    <figure className="rounded-xl border border-line bg-white p-5">
       <figcaption className="flex flex-wrap items-baseline justify-between gap-2">
         <span className="font-semibold text-navy-900">{g.title}</span>
         <span className="text-xs text-muted">{g.caption}</span>
@@ -37,8 +37,6 @@ function Gateway({ c }: { c: Content }) {
               stroke="var(--color-series-1)"
               strokeWidth="2"
               strokeDasharray="6 10"
-              className="gateway-flow"
-              style={{ animationDelay: `${i * 0.4}s` }}
             />
           </g>
         ))}
@@ -74,7 +72,7 @@ export function Why({ c }: { c: Content }) {
     <section id="why-azerbaijan" className="bg-white py-16 sm:py-24">
       <Container>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[340px_1fr]">
-          <div data-reveal className="relative overflow-hidden rounded-2xl bg-navy-800 lg:min-h-[520px]">
+          <div className="relative overflow-hidden rounded-2xl bg-navy-800 lg:min-h-[520px]">
             <Image
               src="/images/gavel.jpg"
               alt=""
@@ -88,13 +86,11 @@ export function Why({ c }: { c: Content }) {
           </div>
           <div className="flex flex-col gap-6">
             <ol className="grid gap-3">
-              {why.reasons.map((r, i) => {
+              {why.reasons.map((r) => {
                 const Icon = icons[r.icon];
                 return (
                   <li
                     key={r.title}
-                    data-reveal
-                    style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
                     className="grid grid-cols-1 gap-4 rounded-xl border border-line bg-sky-50 p-5 sm:grid-cols-[48px_1fr]"
                   >
                     <span className="flex size-12 items-center justify-center rounded-xl bg-white text-brand shadow-sm">
