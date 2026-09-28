@@ -171,7 +171,6 @@ function ExitTimeline({ c }: { c: Content }) {
       year: e.year,
       month: e.month,
       display: row?.exit ?? String(e.year),
-      extra: row?.footprint ?? "",
     };
   });
   return (
@@ -182,8 +181,6 @@ function ExitTimeline({ c }: { c: Content }) {
         to={2023}
         locale={c.meta.locale}
         legend={{ exact: exits.exact, yearOnly: exits.yearOnly }}
-        tableLabel={c.charts.tableToggle}
-        headers={[exits.companyHeader, exits.exitHeader, exits.footprintHeader]}
       />
     </ChartCard>
   );

@@ -1,8 +1,8 @@
 /**
  * Lightweight, server-rendered charts (HTML/CSS, no chart library).
  * Conventions: bars ≤ 20px thick with a 4px rounded data-end and square baseline,
- * hairline solid grid, values in text tokens (never the series color), a hover/focus
- * tooltip on every mark, and a table twin behind a <details> toggle.
+ * hairline solid grid, values in text tokens (never the series color), and a hover/focus
+ * tooltip on every mark.
  */
 
 type Row = { key: string; label: string; value: number | null; display: string };
@@ -40,44 +40,12 @@ function Tooltip({ children }: { children: React.ReactNode }) {
   );
 }
 
-function TableTwin({ label, headers, rows }: { label: string; headers: string[]; rows: string[][] }) {
-  return (
-    <details className="mt-4 text-xs text-muted">
-      <summary className="cursor-pointer select-none font-medium text-brand hover:underline">{label}</summary>
-      <table className="mt-2 w-full border-collapse text-left">
-        <thead>
-          <tr className="border-b border-line">
-            {headers.map((h) => (
-              <th key={h} scope="col" className="py-1.5 pr-3 font-semibold text-ink/80">
-                {h}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((r) => (
-            <tr key={r.join("|")} className="border-b border-line/60">
-              {r.map((cell, i) => (
-                <td key={i} className={`py-1.5 pr-3 ${i > 0 ? "tabular-nums" : ""}`}>
-                  {cell}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </details>
-  );
-}
-
 /** Single-series horizontal bar chart (magnitude). Rows with `value: null` render a muted note. */
 export function HBarChart({
   rows,
   max,
   unit,
   nullLabel,
-  tableLabel,
-  headers,
   color = "bg-series-1",
   baseline,
 }: {
@@ -85,8 +53,6 @@ export function HBarChart({
   max: number;
   unit: string;
   nullLabel?: string;
-  tableLabel: string;
-  headers: [string, string];
   color?: string;
   /** Optional reference value drawn as a hairline (e.g. 100 = full deductibility). */
   baseline?: { value: number; label: string };
@@ -134,11 +100,6 @@ export function HBarChart({
           <span aria-hidden className="inline-block h-3 w-px bg-muted/60" /> {baseline.label}
         </p>
       )}
-      <TableTwin
-        label={tableLabel}
-        headers={headers}
-        rows={rows.map((r) => [r.label, r.value === null ? nullLabel ?? "—" : `${r.display} ${unit}`])}
-      />
     </div>
   );
 }
@@ -146,13 +107,9 @@ export function HBarChart({
 /** Part-to-whole bar with a 2px surface gap between segments and a legend. */
 export function StackedBar({
   segments,
-  tableLabel,
-  headers,
   note,
 }: {
   segments: { key: string; label: string; value: number; display: string; color: string; ink: "white" | "dark" }[];
-  tableLabel: string;
-  headers: [string, string];
   note?: string;
 }) {
   const total = segments.reduce((s, x) => s + x.value, 0);
@@ -193,7 +150,6 @@ export function StackedBar({
         ))}
       </ul>
       {note && <p className="mt-3 text-sm font-semibold text-navy-900">{note}</p>}
-      <TableTwin label={tableLabel} headers={headers} rows={segments.map((s) => [s.label, s.display])} />
     </div>
   );
 }
@@ -204,16 +160,12 @@ export function Timeline({
   from,
   to,
   legend,
-  tableLabel,
-  headers,
   locale,
 }: {
-  items: { key: string; label: string; year: number; month?: number; display: string; extra: string }[];
+  items: { key: string; label: string; year: number; month?: number; display: string }[];
   from: number;
   to: number;
   legend: { exact: string; yearOnly: string };
-  tableLabel: string;
-  headers: [string, string, string];
   locale: string;
 }) {
   const months = (to - from + 1) * 12;
@@ -293,7 +245,6 @@ export function Timeline({
           <span aria-hidden className="h-3 w-6 rounded-[3px] bg-series-1/20" /> {legend.yearOnly}
         </li>
       </ul>
-      <TableTwin label={tableLabel} headers={headers} rows={items.map((it) => [it.label, it.display, it.extra])} />
     </div>
   );
 }

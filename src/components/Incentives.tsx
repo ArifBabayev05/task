@@ -75,7 +75,9 @@ export function Incentives({ c }: { c: Content }) {
                 id: g.title,
                 label: (
                   <>
-                    <span className="text-3xl font-semibold tracking-tight">{g.headline.value}</span>
+                    <span className={`${g.headline.value.length > 5 ? "text-2xl" : "text-3xl"} max-w-full break-words font-semibold tracking-tight`}>
+                      {g.headline.value}
+                    </span>
                     <span className="mt-1 text-xs leading-snug opacity-75">{g.headline.label}</span>
                     <span className="mt-auto pt-3 text-[11px] font-semibold uppercase tracking-wider opacity-60">
                       {g.title}
@@ -99,8 +101,6 @@ export function Incentives({ c }: { c: Content }) {
                 max={250}
                 unit=""
                 baseline={{ value: 100, label: charts.deductions.baseline }}
-                tableLabel={charts.tableToggle}
-                headers={[charts.deductions.title, "%"]}
               />
             </ChartCard>
             <ChartCard title={charts.royalty.title} subtitle={charts.deductions.subtitle}>
@@ -110,8 +110,6 @@ export function Incentives({ c }: { c: Content }) {
                   { key: "taxed", label: charts.royalty.taxed, value: 5, display: "5%", color: "bg-series-2", ink: "dark" },
                 ]}
                 note={charts.royalty.effective}
-                tableLabel={charts.tableToggle}
-                headers={[charts.royalty.title, "%"]}
               />
             </ChartCard>
           </div>
@@ -178,10 +176,6 @@ export function Incentives({ c }: { c: Content }) {
                   };
                 })}
               />
-              <p className="mt-5 flex flex-wrap items-center gap-2 border-t border-line pt-4 text-xs text-muted">
-                <SourceMark label={ui.deckOnly} />
-                <span className="italic">“{exportSupport.deckIntro}”</span>
-              </p>
             </div>
           </div>
         </div>

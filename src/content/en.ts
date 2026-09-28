@@ -6,12 +6,12 @@ export const en: Content = {
     locale: "en",
     title: "Technology Resilience Cluster of Azerbaijan",
     description:
-      "Internal team briefing: the Technology Resilience Cluster of Azerbaijan — model, focus domains, incentives and anchor company strategy (based on BCG materials, September 2026).",
+      "Internal team briefing: the Technology Resilience Cluster of Azerbaijan: model, focus domains, incentives and anchor company strategy (based on BCG materials, September 2026).",
   },
   ui: {
     skipToContent: "Skip to content",
     internalBadge: "Internal",
-    internalNotice: "Internal working material — not for public distribution",
+    internalNotice: "Internal working material, not for public distribution",
     sourcesOn: "Source marks: on",
     sourcesOff: "Source marks: off",
     deckOnly: "Deck only",
@@ -38,10 +38,10 @@ export const en: Content = {
     eyebrow: "Resilience cluster company landing",
     title: "Technology Resilience Cluster of Azerbaijan",
     lead:
-      "A platform to attract, localize and scale the technologies that keep essential systems secure and running — and to export them from Azerbaijan.",
-    ambitionLabel: "Clear national ambition",
+      "The cluster brings in technologies that keep essential systems secure and running, localizes them in Azerbaijan and exports them to the region.",
+    ambitionLabel: "Target",
     ambitionValue: "$1B",
-    ambitionCaption: "ICT export",
+    ambitionCaption: "ICT exports",
     tagline: "Azerbaijan aims to attract, scale and export solutions",
     stats: [
       { value: "4", label: "connected commitments" },
@@ -71,7 +71,7 @@ export const en: Content = {
       },
       {
         title: "Enable the ecosystem",
-        short: "A soft-landing route into the market — no need to go it alone.",
+        short: "A soft-landing route into the market. Companies do not handle setup, partners and regulation alone.",
         body:
           "The cluster provides international players with a soft-landing platform, offering a streamlined route into the market without requiring companies to navigate entity setup, partner identification, and regulatory requirements independently.",
         bullets: [
@@ -160,7 +160,7 @@ export const en: Content = {
         source: "deck",
       },
     ],
-    listNote: "Lists are indicative — each domain ends with “…” in the deck.",
+    listNote: "Lists are indicative. Each domain ends with “…” in the deck.",
     exclusion: {
       title: "Out of scope",
       body:
@@ -169,12 +169,12 @@ export const en: Content = {
   },
   why: {
     kicker: "03 · Why Azerbaijan",
-    title: "A compelling platform for scaling resilience solutions",
-    lead: "Azerbaijan is a compelling platform for scaling resilience solutions for the following reasons.",
+    title: "Why base resilience solutions in Azerbaijan",
+    lead: "The BCG materials give three reasons.",
     reasons: [
       {
         icon: "landmark",
-        title: "A state-backed resilience agenda",
+        title: "State-backed demand",
         short: "A national priority with state-backed local demand.",
         body:
           "Resilience technology is a national-level priority in Azerbaijan, with local state-backed demand, supported by national priorities across public infrastructure and services.",
@@ -185,7 +185,7 @@ export const en: Content = {
       },
       {
         icon: "bridge",
-        title: "A trusted regional gateway with no political affiliation",
+        title: "Regional access and neutral relations",
         short: "One base within reach of Europe, Central Asia, the Middle East and Africa.",
         body:
           "Azerbaijan's strategic geographic location connects Europe, Central Asia, the Middle East, Africa and beyond, which puts a large share of the addressable resilience market within regional reach of a single base. The country maintains balanced, friendly and politically independent relations with all its neighbors and with countries across the region.",
@@ -196,7 +196,7 @@ export const en: Content = {
       },
       {
         icon: "gavel",
-        title: "An ongoing economic reform agenda",
+        title: "Economic reforms",
         short: "Business-environment reforms under way, with more planned.",
         body:
           "Azerbaijan is advancing a broader transformation agenda to improve the ease of doing business and strengthen investor confidence. Further regulatory reforms are planned to simplify business operations and reduce barriers to market entry and growth.",
@@ -207,7 +207,7 @@ export const en: Content = {
       },
     ],
     gateway: {
-      title: "A regional gateway",
+      title: "Regional reach",
       center: "Azerbaijan",
       nodes: ["Europe", "Central Asia", "Middle East", "Africa"],
       caption: "Balanced, friendly and politically independent relations across the region",
@@ -215,17 +215,15 @@ export const en: Content = {
   },
   incentives: {
     kicker: "04 · Incentives and benefits",
-    title: "A defined support package for cluster members",
+    title: "What cluster members receive",
     lead:
       "Membership in the Resilience Cluster provides access to a defined support package, including fiscal incentives, export development programs, and assistance with market entry and establishing operations in Azerbaijan.",
     tax: {
-      title: "4.1 A tax and regulatory framework built for technology companies",
-      headline:
-        "To support development of the resilience cluster, Azerbaijan is currently implementing the most comprehensive economic reform in the post-Soviet space",
+      title: "4.1 Tax and regulatory framework",
+      headline: "Azerbaijan is carrying out a broad tax and regulatory reform to support the cluster.",
       subline:
-        "This reform combines Estonia's governance architecture, the UAE's zero-tax fiscal stack, and Singapore's IP precision into a single legislative cycle, and positions Azerbaijan to leapfrog every regional peer on the tax and regulatory axis.",
-      intro:
-        "Azerbaijan is implementing a wide-ranging economic reform designed to make the country a competitive base for technology businesses:",
+        "The BCG deck calls it the most comprehensive economic reform in the post-Soviet space. It combines elements of Estonia's governance model, the UAE's zero-tax approach and Singapore's IP rules in one legislative cycle, with the aim of putting Azerbaijan ahead of regional peers on tax and regulation.",
+      intro: "The reform aims to make Azerbaijan a competitive base for technology companies. Selected measures:",
       selectedExamples: "Selected examples",
       hint: "Select a card to see the details",
       groups: [
@@ -268,7 +266,7 @@ export const en: Content = {
           body:
             "Royalty income is largely exempt, bringing the effective rate on qualifying IP income close to one percent.",
           rows: [
-            { category: "IP / technology income", label: "Royalty income", value: "95% exempt", note: "Only 5% taxed → ~1% effective" },
+            { category: "IP / technology income", label: "Royalty income", value: "95% exempt", note: "Only 5% is taxed, about 1% effective" },
           ],
         },
         {
@@ -287,7 +285,7 @@ export const en: Content = {
           body:
             "Company registration, digital identity and bank account onboarding are all completed remotely, so a company can be established and operating in Azerbaijan without travelling to do it.",
           rows: [
-            { category: "Soft landing", label: "Digital ID – Virtual FIN", value: "Remote" },
+            { category: "Soft landing", label: "Digital ID (virtual FIN)", value: "Remote" },
             { category: "Soft landing", label: "Company registration", value: "Remote" },
             { category: "Soft landing", label: "Bank account", value: "Digital onboarding" },
           ],
@@ -298,8 +296,6 @@ export const en: Content = {
       title: "4.2 Export support programs",
       intro:
         "In order to accelerate the growth of cluster members, dedicated export support programs are being developed across four areas:",
-      deckIntro:
-        "In order to accelerate growth of each and every member of the Cluster, dedicated export support programs are being developed.",
       builderHint: "Switch the programs on and off to see the annual ceiling per company",
       areas: [
         {
@@ -342,7 +338,7 @@ export const en: Content = {
             {
               name: "Embassy networking",
               detail:
-                "Embassies will become proactive sales representatives for companies, organizing meaningful meetings in destination countries.",
+                "Embassies will act as sales contacts for member companies and arrange meetings in target countries.",
             },
             {
               name: "Targeted media outreach",
@@ -400,7 +396,7 @@ export const en: Content = {
           title: "Localization feasibility",
           tone: "green",
           items: [
-            { icon: "pin", title: "Localization depth", body: "Scope to localize meaningful activities (engineering, integration, deployment, assembly, R&D)" },
+            { icon: "pin", title: "Localization depth", body: "Scope to localize substantial activities (engineering, integration, deployment, assembly, R&D)" },
             { icon: "hub", title: "New regional hub rationale", body: "Strategic logic to establish a new regional hub in Azerbaijan (e.g., post-Russia, coverage of new markets)" },
             { icon: "handshake", title: "Ongoing talks", body: "Already established relationship/operations with local companies" },
             { icon: "shield", title: "Geopolitical feasibility", body: "Acceptable geopolitical and regulatory conditions (export controls, approvals, alignment)" },
@@ -482,7 +478,7 @@ export const en: Content = {
           exit: "Mar-23",
           footprint: "No clear hub in region",
           fit: [
-            "Process control & SCADA – DeltaV / Ovation",
+            "Process control & SCADA (DeltaV / Ovation)",
             "Machinery & asset-health monitoring",
             "Predictive condition monitoring / early-warning analytics",
             "Remote monitoring of power, water and industrial assets",
@@ -497,7 +493,7 @@ export const en: Content = {
           exit: "Jul-22",
           footprint: "Istanbul HQ covering Central Asia",
           fit: [
-            "Asset-performance management – ABB Ability Genix APM",
+            "Asset-performance management (ABB Ability Genix APM)",
             "Real-time equipment condition monitoring",
             "Predictive maintenance & failure detection",
             "Fleet / infrastructure health dashboards and alerts",
@@ -571,7 +567,7 @@ export const en: Content = {
           ],
           fit: ["Threat detection & response", "Identity & access management"],
           flag:
-            "Corrected: the deck repeated the IAI row here (Earth observation / satellites). Replaced with the matching cybersecurity capabilities from deck slide 3 — to be confirmed by BCG.",
+            "Corrected: the deck repeated the IAI row here (Earth observation / satellites). Replaced with the matching cybersecurity capabilities from deck slide 3. To be confirmed by BCG.",
         },
         {
           company: [C.google, C.mandiant],
@@ -623,7 +619,6 @@ export const en: Content = {
     },
   },
   charts: {
-    tableToggle: "Show as table",
     framing: {
       title: "Two framings of the focus domains",
       word: { label: "Word draft", value: "4", caption: "core technology domains" },
@@ -637,7 +632,6 @@ export const en: Content = {
       subtitle: "Deck slide 8 · preliminary list, including Estonian companies",
       unit: "companies",
       notMapped: "not mapped",
-      domainHeader: "Domain",
     },
     deductions: {
       title: "Deduction per 100 of qualifying spend",
@@ -652,7 +646,7 @@ export const en: Content = {
       title: "Royalty income",
       exempt: "Exempt",
       taxed: "Taxed",
-      effective: "≈ 1% effective tax rate",
+      effective: "About 1% effective tax rate",
     },
     exportFunding: {
       title: "Target market support per company, per year",
@@ -667,9 +661,6 @@ export const en: Content = {
       subtitle: "Deck slide 11 · companies that left Russia and have no clear regional hub",
       exact: "Month given",
       yearOnly: "Year only",
-      companyHeader: "Company",
-      exitHeader: "Russia exit",
-      footprintHeader: "Regional footprint",
     },
   },
   review: {
@@ -700,9 +691,9 @@ export const en: Content = {
       },
       {
         severity: "medium",
-        title: "$1B ICT export ambition appears only in the deck",
+        title: "$1B ICT export target appears only in the deck",
         body:
-          "Slide 2 shows “$1B ICT export” as the national ambition, without a target year or baseline. The Word draft does not use the figure.",
+          "Slide 2 shows “$1B ICT export” as the national target, without a target year or baseline. The Word draft does not use the figure.",
       },
       {
         severity: "medium",
@@ -731,7 +722,7 @@ export const en: Content = {
         severity: "low",
         title: "Typos and stray text in the deck",
         body:
-          "Slide 5: “Estonian's governance architecture” → “Estonia's”. Slide 6: stray word “Remote” under targeted media outreach; “meting” → “meeting”; “Developed” capitalized mid-sentence; unclosed parenthesis in government road-trips.",
+          "Slide 5: “Estonian's governance architecture” should read “Estonia's”. Slide 6: stray word “Remote” under targeted media outreach; “meting” should read “meeting”; “Developed” capitalized mid-sentence; unclosed parenthesis in government road-trips.",
       },
       {
         severity: "low",
@@ -750,7 +741,7 @@ export const en: Content = {
   footer: {
     prepared: "Internal team briefing prepared from BCG materials (September 2026).",
     sources:
-      "Sources: “Resilience Cluster — website content draft” (Word) and “Technology resilience cluster v4” (BCG presentation).",
-    confidentiality: "Internal — contains preliminary company targeting. Do not distribute.",
+      "Sources: “Resilience Cluster website content draft” (Word) and “Technology resilience cluster v4” (BCG presentation).",
+    confidentiality: "Internal. Contains preliminary company targeting. Do not distribute.",
   },
 };

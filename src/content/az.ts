@@ -1,18 +1,18 @@
 import { C, candidatesByDomain, pools } from "./companies";
 import type { Content } from "./types";
 
-// Draft translation of en.ts — pending review by the content owner.
+// Draft translation of en.ts, pending review by the content owner.
 export const az: Content = {
   meta: {
     locale: "az",
     title: "Azərbaycan Texnoloji Dayanıqlılıq Klasteri",
     description:
-      "Komanda daxili brifinq: Azərbaycan Texnoloji Dayanıqlılıq Klasteri — model, fokus istiqamətləri, güzəştlər və anchor şirkət strategiyası (BCG materialları əsasında, sentyabr 2026).",
+      "Komanda daxili brifinq: Azərbaycan Texnoloji Dayanıqlılıq Klasteri: model, fokus istiqamətləri, güzəştlər və anchor şirkət strategiyası (BCG materialları əsasında, sentyabr 2026).",
   },
   ui: {
     skipToContent: "Məzmuna keç",
     internalBadge: "Daxili",
-    internalNotice: "Daxili iş materialı — ictimai yayım üçün deyil",
+    internalNotice: "Daxili iş materialı, ictimai yayım üçün deyil",
     sourcesOn: "Mənbə qeydləri: açıq",
     sourcesOff: "Mənbə qeydləri: bağlı",
     deckOnly: "Yalnız təqdimatda",
@@ -36,11 +36,11 @@ export const az: Content = {
     all: "Hamısı",
   },
   hero: {
-    eyebrow: "Dayanıqlılıq klasteri — şirkətlərin yerləşdirilməsi",
+    eyebrow: "Dayanıqlılıq klasteri: şirkətlərin yerləşdirilməsi",
     title: "Azərbaycan Texnoloji Dayanıqlılıq Klasteri",
     lead:
-      "Həyati sistemləri təhlükəsiz və fasiləsiz saxlayan texnologiyaları cəlb etmək, lokallaşdırmaq, miqyaslamaq və Azərbaycandan ixrac etmək üçün platforma.",
-    ambitionLabel: "Aydın milli hədəf",
+      "Klaster həyati sistemləri təhlükəsiz və fasiləsiz saxlayan texnologiyaları cəlb edir, onları Azərbaycanda lokallaşdırır və regiona ixrac edir.",
+    ambitionLabel: "Hədəf",
     ambitionValue: "$1 mlrd",
     ambitionCaption: "İKT ixracı",
     tagline: "Azərbaycan həlləri cəlb etməyi, miqyaslamağı və ixrac etməyi hədəfləyir",
@@ -72,7 +72,7 @@ export const az: Content = {
       },
       {
         title: "Ekosistemi təmin etmək",
-        short: "Bazara “yumşaq eniş” — şirkətlər hər şeylə təkbaşına məşğul olmur.",
+        short: "Bazara “yumşaq eniş”. Şirkətlər qeydiyyat, tərəfdaş və tənzimləmə məsələlərini təkbaşına həll etmir.",
         body:
           "Klaster beynəlxalq şirkətlərə “yumşaq eniş” (soft-landing) platforması təqdim edir: şirkətlər hüquqi şəxsin qeydiyyatı, tərəfdaş axtarışı və tənzimləyici tələblərlə təkbaşına məşğul olmadan bazara sadələşdirilmiş şəkildə daxil olurlar.",
         bullets: [
@@ -84,7 +84,7 @@ export const az: Content = {
         title: "Cəlb etmək və lokallaşdırmaq",
         short: "Aparıcı provayderləri cəlb etmək; xidmət, inteqrasiya və tətbiqi yerində qurmaq.",
         body:
-          "Klaster aparıcı dayanıqlılıq texnologiyası provayderlərini cəlb edir və onların dəyər zəncirinin seçilmiş hissələrinin — xüsusilə xidmətlər, inteqrasiya və tətbiqin — Azərbaycanda lokallaşdırılmasını dəstəkləyir, eyni zamanda yerli imkanları və ekspertizanı inkişaf etdirir.",
+          "Klaster aparıcı dayanıqlılıq texnologiyası provayderlərini cəlb edir və onların dəyər zəncirinin seçilmiş hissələrinin (xüsusilə xidmətlər, inteqrasiya və tətbiq) Azərbaycanda lokallaşdırılmasını dəstəkləyir, eyni zamanda yerli imkanları və ekspertizanı inkişaf etdirir.",
         bullets: [
           "Aparıcı dayanıqlılıq texnologiyası provayderlərini cəlb etmək",
           "Onların dəyər zəncirinin seçilmiş hissələrini lokallaşdırmaq (xidmətlər, inteqrasiya, tətbiq)",
@@ -174,7 +174,7 @@ export const az: Content = {
         source: "deck",
       },
     ],
-    listNote: "Siyahılar nümunəvidir — təqdimatda hər istiqamət “…” ilə bitir.",
+    listNote: "Siyahılar nümunəvidir. Təqdimatda hər istiqamət “…” ilə bitir.",
     exclusion: {
       title: "Əhatə dairəsindən kənar",
       body:
@@ -183,12 +183,12 @@ export const az: Content = {
   },
   why: {
     kicker: "03 · Niyə Azərbaycan",
-    title: "Dayanıqlılıq həllərinin miqyaslanması üçün cəlbedici platforma",
-    lead: "Azərbaycan aşağıdakı səbəblərə görə dayanıqlılıq həllərinin miqyaslanması üçün cəlbedici platformadır.",
+    title: "Dayanıqlılıq həlləri üçün niyə Azərbaycan",
+    lead: "BCG materiallarında üç səbəb göstərilir.",
     reasons: [
       {
         icon: "landmark",
-        title: "Dövlət tərəfindən dəstəklənən dayanıqlılıq gündəliyi",
+        title: "Dövlət dəstəkli tələb",
         short: "Dövlət dəstəkli yerli tələbə malik milli prioritet.",
         body:
           "Dayanıqlılıq texnologiyaları Azərbaycanda milli səviyyəli prioritetdir; dövlət infrastrukturu və xidmətləri üzrə milli prioritetlərlə dəstəklənən, dövlətin təmin etdiyi yerli tələb mövcuddur.",
@@ -199,7 +199,7 @@ export const az: Content = {
       },
       {
         icon: "bridge",
-        title: "Siyasi bloklara bağlı olmayan etibarlı regional qapı",
+        title: "Regional çıxış və neytral münasibətlər",
         short: "Avropa, Mərkəzi Asiya, Yaxın Şərq və Afrikaya vahid bazadan çıxış.",
         body:
           "Azərbaycanın strateji coğrafi mövqeyi Avropa, Mərkəzi Asiya, Yaxın Şərq, Afrika və digər regionları birləşdirir; bu da dayanıqlılıq bazarının böyük hissəsini vahid bazadan regional əlçatanlıq daxilində saxlayır. Ölkə bütün qonşuları və region ölkələri ilə balanslı, dostluq və siyasi cəhətdən müstəqil münasibətlər saxlayır.",
@@ -210,7 +210,7 @@ export const az: Content = {
       },
       {
         icon: "gavel",
-        title: "Davam edən iqtisadi islahatlar gündəliyi",
+        title: "İqtisadi islahatlar",
         short: "Biznes mühiti üzrə islahatlar davam edir, yeniləri planlaşdırılır.",
         body:
           "Azərbaycan biznes mühitini yaxşılaşdırmaq və investor inamını gücləndirmək məqsədilə daha geniş transformasiya gündəliyini irəli aparır. Biznes əməliyyatlarını sadələşdirmək, bazara daxilolma və böyümə qarşısındakı maneələri azaltmaq üçün əlavə tənzimləyici islahatlar planlaşdırılır.",
@@ -221,7 +221,7 @@ export const az: Content = {
       },
     ],
     gateway: {
-      title: "Regional qapı",
+      title: "Regional çıxış",
       center: "Azərbaycan",
       nodes: ["Avropa", "Mərkəzi Asiya", "Yaxın Şərq", "Afrika"],
       caption: "Region ölkələri ilə balanslı, dostluq və siyasi cəhətdən müstəqil münasibətlər",
@@ -229,17 +229,15 @@ export const az: Content = {
   },
   incentives: {
     kicker: "04 · Güzəştlər və üstünlüklər",
-    title: "Klaster üzvləri üçün müəyyən edilmiş dəstək paketi",
+    title: "Klaster üzvləri nə əldə edir",
     lead:
       "Dayanıqlılıq Klasterinə üzvlük fiskal güzəştlər, ixracın inkişafı proqramları, bazara daxilolma və Azərbaycanda fəaliyyətin qurulmasına yardım daxil olmaqla müəyyən edilmiş dəstək paketinə çıxış imkanı verir.",
     tax: {
-      title: "4.1 Texnologiya şirkətləri üçün qurulmuş vergi və tənzimləmə çərçivəsi",
-      headline:
-        "Dayanıqlılıq klasterinin inkişafını dəstəkləmək üçün Azərbaycan hazırda postsovet məkanında ən əhatəli iqtisadi islahatı həyata keçirir",
+      title: "4.1 Vergi və tənzimləmə çərçivəsi",
+      headline: "Azərbaycan klasteri dəstəkləmək üçün geniş vergi və tənzimləmə islahatı aparır.",
       subline:
-        "Bu islahat Estoniyanın idarəetmə arxitekturasını, BƏƏ-nin sıfır vergi fiskal modelini və Sinqapurun əqli mülkiyyət üzrə dəqiqliyini vahid qanunvericilik dövründə birləşdirir və Azərbaycanı vergi və tənzimləmə baxımından bütün regional həmkarlarını qabaqlamaq mövqeyinə gətirir.",
-      intro:
-        "Azərbaycan ölkəni texnologiya biznesləri üçün rəqabətqabiliyyətli bazaya çevirmək məqsədilə geniş miqyaslı iqtisadi islahat həyata keçirir:",
+        "BCG təqdimatı bunu postsovet məkanında ən əhatəli iqtisadi islahat adlandırır. İslahat Estoniyanın idarəetmə modelinin, BƏƏ-nin sıfır vergi yanaşmasının və Sinqapurun əqli mülkiyyət qaydalarının elementlərini bir qanunvericilik dövründə birləşdirir. Məqsəd Azərbaycanı vergi və tənzimləmə baxımından regiondakı ölkələrdən öndə çıxarmaqdır.",
+      intro: "İslahatın məqsədi Azərbaycanı texnologiya şirkətləri üçün rəqabətqabiliyyətli bazaya çevirməkdir. Seçilmiş tədbirlər:",
       selectedExamples: "Seçilmiş nümunələr",
       hint: "Ətraflı məlumat üçün karta klikləyin",
       groups: [
@@ -260,7 +258,7 @@ export const az: Content = {
           title: "İnsan resursları",
           headline: { value: "0%", label: "İKT mütəxəssisləri üçün gəlir vergisi · 20 il" },
           body:
-            "İKT mütəxəssisləri — xarici ekspertlər, geri qayıdan rezidentlər və tədqiqat-inkişaf (R&D) əməkdaşları — üçün iyirmi il müddətinə sıfır dərəcəli gəlir vergisi.",
+            "İKT mütəxəssisləri (xarici ekspertlər, geri qayıdan rezidentlər və R&D əməkdaşları) üçün iyirmi il müddətinə sıfır dərəcəli gəlir vergisi.",
           rows: [
             { category: "Gəlir vergisi", label: "İKT mütəxəssisləri", value: "0% (20 il)", note: "Xarici ekspertlərə, geri qayıdan rezidentlərə, R&D əməkdaşlarına şamil olunur" },
           ],
@@ -282,7 +280,7 @@ export const az: Content = {
           body:
             "Royalti gəlirləri böyük ölçüdə vergidən azaddır; bu da uyğun əqli mülkiyyət gəlirləri üzrə effektiv dərəcəni təxminən bir faizə endirir.",
           rows: [
-            { category: "Əqli mülkiyyət / texnologiya gəliri", label: "Royalti gəliri", value: "95% azad", note: "Yalnız 5%-i vergiyə cəlb olunur → ~1% effektiv" },
+            { category: "Əqli mülkiyyət / texnologiya gəliri", label: "Royalti gəliri", value: "95% azad", note: "Yalnız 5%-i vergiyə cəlb olunur, effektiv dərəcə təxminən 1%" },
           ],
         },
         {
@@ -301,7 +299,7 @@ export const az: Content = {
           body:
             "Şirkətin qeydiyyatı, rəqəmsal identifikasiya və bank hesabının açılması tam məsafədən həyata keçirilir; beləliklə, şirkət Azərbaycana səfər etmədən təsis oluna və fəaliyyətə başlaya bilər.",
           rows: [
-            { category: "Yumşaq eniş", label: "Rəqəmsal ID – Virtual VÖEN", value: "Məsafədən" },
+            { category: "Yumşaq eniş", label: "Rəqəmsal ID (virtual VÖEN)", value: "Məsafədən" },
             { category: "Yumşaq eniş", label: "Şirkətin qeydiyyatı", value: "Məsafədən" },
             { category: "Yumşaq eniş", label: "Bank hesabı", value: "Rəqəmsal qoşulma" },
           ],
@@ -312,8 +310,6 @@ export const az: Content = {
       title: "4.2 İxraca dəstək proqramları",
       intro:
         "Klaster üzvlərinin böyüməsini sürətləndirmək məqsədilə dörd istiqamət üzrə xüsusi ixraca dəstək proqramları hazırlanır:",
-      deckIntro:
-        "Klasterin hər bir üzvünün böyüməsini sürətləndirmək üçün xüsusi ixraca dəstək proqramları hazırlanır.",
       builderHint: "Hər şirkət üçün illik limiti görmək üçün proqramları açıb-bağlayın",
       areas: [
         {
@@ -356,7 +352,7 @@ export const az: Content = {
             {
               name: "Səfirliklər vasitəsilə şəbəkələşmə",
               detail:
-                "Səfirliklər şirkətlər üçün proaktiv satış nümayəndəsinə çevriləcək, təyinat ölkələrində mənalı görüşlər təşkil edəcək.",
+                "Səfirliklər üzv şirkətlər üçün satış əlaqəsi rolunu oynayacaq və hədəf ölkələrdə görüşlər təşkil edəcək.",
             },
             {
               name: "Hədəfli media təbliğatı",
@@ -368,7 +364,7 @@ export const az: Content = {
         {
           title: "Dövlət satışları",
           body:
-            "Üzvlər həm daxili, həm də xarici dövlət səviyyəli şəbəkələşmədən — Azərbaycana səfər edən xarici nümayəndə heyətləri ilə görüşlərdən və İRİA və Nazir tərəfindən rəhbərlik edilən seçilmiş beynəlxalq missiyalarda iştirakdan — faydalanır.",
+            "Üzvlər həm daxili, həm də xarici dövlət səviyyəli şəbəkələşmədən faydalanır: Azərbaycana səfər edən xarici nümayəndə heyətləri ilə görüşlər və İRİA və Nazirin rəhbərlik etdiyi seçilmiş beynəlxalq missiyalarda iştirak.",
           programs: [
             {
               name: "Dövlət səfərləri",
@@ -496,7 +492,7 @@ export const az: Content = {
           exit: "Mart 2023",
           footprint: "Regionda aydın hab yoxdur",
           fit: [
-            "Proses idarəetməsi və SCADA – DeltaV / Ovation",
+            "Proses idarəetməsi və SCADA (DeltaV / Ovation)",
             "Maşın və aktivlərin vəziyyətinin monitorinqi",
             "Proqnozlaşdırıcı vəziyyət monitorinqi / erkən xəbərdarlıq analitikası",
             "Enerji, su və sənaye aktivlərinin məsafədən monitorinqi",
@@ -511,7 +507,7 @@ export const az: Content = {
           exit: "İyul 2022",
           footprint: "Mərkəzi Asiyanı əhatə edən İstanbul qərargahı",
           fit: [
-            "Aktiv performansının idarə edilməsi – ABB Ability Genix APM",
+            "Aktiv performansının idarə edilməsi (ABB Ability Genix APM)",
             "Avadanlığın vəziyyətinin real vaxt monitorinqi",
             "Proqnozlaşdırıcı texniki xidmət və nasazlıqların aşkarlanması",
             "Park / infrastrukturun vəziyyəti üzrə panellər və xəbərdarlıqlar",
@@ -585,7 +581,7 @@ export const az: Content = {
           ],
           fit: ["Təhdidlərin aşkarlanması və cavab tədbirləri", "İdentifikasiya və giriş idarəetməsi"],
           flag:
-            "Düzəldilib: təqdimatda bu sətirdə IAI mətni təkrarlanırdı (Yerin müşahidəsi / peyklər). Təqdimatın 3-cü slaydındakı müvafiq kibertəhlükəsizlik imkanları ilə əvəz olunub — BCG tərəfindən təsdiqlənməlidir.",
+            "Düzəldilib: təqdimatda bu sətirdə IAI mətni təkrarlanırdı (Yerin müşahidəsi / peyklər). Təqdimatın 3-cü slaydındakı müvafiq kibertəhlükəsizlik imkanları ilə əvəz olunub. BCG tərəfindən təsdiqlənməlidir.",
         },
         {
           company: [C.google, C.mandiant],
@@ -637,7 +633,6 @@ export const az: Content = {
     },
   },
   charts: {
-    tableToggle: "Cədvəl kimi göstər",
     framing: {
       title: "Fokus istiqamətlərinin iki çərçivəsi",
       word: { label: "Word qaralaması", value: "4", caption: "əsas texnoloji istiqamət" },
@@ -651,7 +646,6 @@ export const az: Content = {
       subtitle: "Təqdimatın 8-ci slaydı · ilkin siyahı, Estoniya şirkətləri daxil olmaqla",
       unit: "şirkət",
       notMapped: "göstərilməyib",
-      domainHeader: "İstiqamət",
     },
     deductions: {
       title: "Hər 100 vahid uyğun xərc üzrə gəlirdən çıxılan məbləğ",
@@ -666,7 +660,7 @@ export const az: Content = {
       title: "Royalti gəliri",
       exempt: "Azad",
       taxed: "Vergiyə cəlb olunur",
-      effective: "≈ 1% effektiv vergi dərəcəsi",
+      effective: "Effektiv vergi dərəcəsi təxminən 1%",
     },
     exportFunding: {
       title: "Hər şirkət üçün illik hədəf bazar dəstəyi",
@@ -681,9 +675,6 @@ export const az: Content = {
       subtitle: "Təqdimatın 11-ci slaydı · Rusiyanı tərk etmiş və regionda aydın habı olmayan şirkətlər",
       exact: "Ay göstərilib",
       yearOnly: "Yalnız il",
-      companyHeader: "Şirkət",
-      exitHeader: "Rusiyadan çıxış",
-      footprintHeader: "Regional mövcudluq",
     },
   },
   review: {
@@ -698,7 +689,7 @@ export const az: Content = {
         severity: "done",
         title: "İstiqamətlərin sayı: dörd və ya altı",
         body:
-          "Word qaralaması dörd əsas istiqaməti əhatə edir, təqdimatın 3-cü slaydında isə “altı prioritet istiqamət” yazılıb (mülki PUA sistemləri — “ayrıca əhatə olunur”, data və Sİ — “kəsişən imkan”). Hər iki çərçivə indi 02-ci bölmədə yan-yana göstərilir, istiqamətlər üzrə namizəd şirkətlərin chartı ilə birlikdə.",
+          "Word qaralaması dörd əsas istiqaməti əhatə edir, təqdimatın 3-cü slaydında isə “altı prioritet istiqamət” yazılıb (mülki PUA sistemləri: “ayrıca əhatə olunur”, data və Sİ: “kəsişən imkan”). Hər iki çərçivə indi 02-ci bölmədə yan-yana göstərilir, istiqamətlər üzrə namizəd şirkətlərin chartı ilə birlikdə.",
       },
       {
         severity: "done",
@@ -716,7 +707,7 @@ export const az: Content = {
         severity: "medium",
         title: "$1 mlrd İKT ixracı hədəfi yalnız təqdimatdadır",
         body:
-          "2-ci slaydda milli hədəf kimi “$1B ICT export” göstərilib, lakin hədəf ili və ya baza göstəricisi yoxdur. Word qaralamasında bu rəqəm istifadə olunmur.",
+          "2-ci slaydda milli hədəf kimi “$1B ICT export” göstərilib, amma hədəf ili və ya baza göstəricisi yoxdur. Word qaralamasında bu rəqəm istifadə olunmur.",
       },
       {
         severity: "medium",
@@ -745,7 +736,7 @@ export const az: Content = {
         severity: "low",
         title: "Təqdimatda orfoqrafik səhvlər və artıq mətn",
         body:
-          "5-ci slayd: “Estonian's governance architecture” → “Estonia's”. 6-cı slayd: hədəfli media təbliğatı altında artıq “Remote” sözü; “meting” → “meeting”; cümlənin ortasında böyük hərflə “Developed”; dövlət səfərləri bəndində bağlanmamış mötərizə.",
+          "5-ci slayd: “Estonian's governance architecture” əvəzinə “Estonia's” olmalıdır. 6-cı slayd: hədəfli media təbliğatı altında artıq “Remote” sözü; “meting” əvəzinə “meeting” olmalıdır; cümlənin ortasında böyük hərflə “Developed”; dövlət səfərləri bəndində bağlanmamış mötərizə.",
       },
       {
         severity: "low",
@@ -764,7 +755,7 @@ export const az: Content = {
   footer: {
     prepared: "BCG materialları əsasında hazırlanmış komanda daxili brifinq (sentyabr 2026).",
     sources:
-      "Mənbələr: “Resilience Cluster — website content draft” (Word) və “Technology resilience cluster v4” (BCG təqdimatı).",
-    confidentiality: "Daxili — ilkin şirkət hədəfləməsini ehtiva edir. Yaymayın.",
+      "Mənbələr: “Resilience Cluster website content draft” (Word) və “Technology resilience cluster v4” (BCG təqdimatı).",
+    confidentiality: "Daxili. İlkin şirkət hədəfləməsini ehtiva edir. Yaymayın.",
   },
 };

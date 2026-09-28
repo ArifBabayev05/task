@@ -118,7 +118,6 @@ export type Content = {
     exportSupport: {
       title: string;
       intro: string;
-      deckIntro: string;
       builderHint: string;
       areas: {
         title: string;
@@ -202,7 +201,6 @@ export type Content = {
     };
   };
   charts: {
-    tableToggle: string;
     framing: {
       title: string;
       word: { label: string; value: string; caption: string };
@@ -210,7 +208,7 @@ export type Content = {
       coreLabel: string;
       extraLabel: string;
     };
-    candidates: { title: string; short: string; subtitle: string; unit: string; notMapped: string; domainHeader: string };
+    candidates: { title: string; short: string; subtitle: string; unit: string; notMapped: string };
     deductions: { title: string; subtitle: string; baseline: string; rows: { label: string; value: number }[] };
     royalty: { title: string; exempt: string; taxed: string; effective: string };
     exportFunding: { title: string; subtitle: string; research: string; sales: string; total: string };
@@ -220,9 +218,6 @@ export type Content = {
       subtitle: string;
       exact: string;
       yearOnly: string;
-      companyHeader: string;
-      exitHeader: string;
-      footprintHeader: string;
     };
   };
   review: {
