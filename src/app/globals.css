@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+/* Palette taken from the BCG deck: deep navy backgrounds, deck blue headings,
+   cyan highlights, green for "localization feasibility", yellow kicker accent. */
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-navy-950: #03162c;
+  --color-navy-900: #062447;
+  --color-navy-800: #0a3263;
+  --color-navy-700: #0e4380;
+  --color-brand: #0f5a92;
+  --color-brand-600: #1570b5;
+  --color-cyan: #26a9e0;
+  --color-cyan-soft: #e6f4fc;
+  --color-sky-50: #f1f6fb;
+  --color-sky-100: #e3edf7;
+  --color-line: #d9e3ee;
+  --color-ink: #17212e;
+  --color-muted: #566376;
+  --color-accent: #f0c232;
+  --color-leaf: #1d6b46;
+  --color-leaf-50: #edf6f0;
+  --color-leaf-100: #d7ecdf;
+  --color-alert: #c2410c;
+  --color-alert-50: #fff4ed;
+  --color-done: #1d6b46;
+
+  /* Chart roles — validated with the dataviz palette checker (light surface):
+     series-1/series-2 pass lightness, chroma, CVD separation and 3:1 contrast. */
+  --color-series-1: #1570b5;
+  --color-series-2: #eb6834;
+  --color-grid: #e3e8ef;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Source marks can be hidden from the header toggle. */
+html[data-sources="off"] .source-mark {
+  display: none;
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgb(255 255 255 / 0.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
