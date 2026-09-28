@@ -6,17 +6,14 @@ export const en: Content = {
     locale: "en",
     title: "Technology Resilience Cluster of Azerbaijan",
     description:
-      "Internal team briefing: the Technology Resilience Cluster of Azerbaijan: model, focus domains, incentives and anchor company strategy (based on BCG materials, September 2026).",
+      "Technology Resilience Cluster of Azerbaijan: model, focus domains, incentives and anchor company strategy, based on BCG materials (September 2026).",
   },
   ui: {
     skipToContent: "Skip to content",
-    internalBadge: "Internal",
     sourcesOn: "Source marks: on",
     sourcesOff: "Source marks: off",
     deckOnly: "Deck only",
     wordOnly: "Word only",
-    sourceLegend:
-      "Content merges the BCG website draft (Word) and the BCG presentation (deck). Items found only in one source are marked.",
     languageLabel: "Language",
     nav: [
       { id: "about", label: "About" },
@@ -24,10 +21,7 @@ export const en: Content = {
       { id: "why-azerbaijan", label: "Why Azerbaijan" },
       { id: "incentives", label: "Incentives" },
       { id: "strategy", label: "Anchor strategy" },
-      { id: "review", label: "Review notes" },
     ],
-    sectionPublic: "Cluster narrative",
-    sectionInternal: "Internal strategy",
     backToTop: "Back to top",
     readMore: "Read more",
     showLess: "Show less",
@@ -662,85 +656,9 @@ export const en: Content = {
       yearOnly: "Year only",
     },
   },
-  review: {
-    kicker: "06 · Review notes",
-    title: "Open points found while merging the two sources",
-    lead:
-      "Inconsistencies and gaps to clarify with BCG before any content goes further. Obvious typos are corrected on the page; everything substantive is shown as in the source and flagged here.",
-    severity: { high: "Clarify", medium: "Check", low: "Fix", done: "Addressed" },
-    filterLabel: "Filter by status",
-    items: [
-      {
-        severity: "done",
-        title: "Number of domains: four vs. six",
-        body:
-          "The Word draft covers four core domains; deck slide 3 says “six priority domains”, adding civilian UAV systems (“covered separately”) and data & AI (“cross-cutting”). Both framings are now shown side by side in section 02, with a chart of candidate companies per domain.",
-      },
-      {
-        severity: "done",
-        title: "0% profit tax: export condition added to the copy",
-        body:
-          "Deck slide 5 attaches a bank inflow condition (“income must enter AZ accounts”) to the zero-rate profit tax, which the Word draft omitted. The condition is now included in the “Profits and dividends” text in section 4.1.",
-      },
-      {
-        severity: "done",
-        title: "CrowdStrike “cluster fit” corrected",
-        body:
-          "On slide 12 the CrowdStrike row repeated the IAI text (Earth observation / satellite engineering). It is replaced with the matching cybersecurity capabilities from slide 3 (threat detection & response; identity & access management), so no row is duplicated. BCG should confirm the final wording.",
-      },
-      {
-        severity: "medium",
-        title: "$1B ICT export target appears only in the deck",
-        body:
-          "Slide 2 shows “$1B ICT export” as the national target, without a target year or baseline. The Word draft does not use the figure.",
-      },
-      {
-        severity: "medium",
-        title: "Investment deduction “100% (<50%)” is ambiguous",
-        body:
-          "The meaning of “(<50%)” is not explained (cap on share of income/profit?). The Word draft only says “full deductibility of qualifying investment”.",
-      },
-      {
-        severity: "medium",
-        title: "Mandiant: “engaged in AZ” vs. “no project identified”",
-        body:
-          "Slide 9 places Google/Mandiant in the pool of players engaged in AZ negotiations/tenders, while slide 12 states that no Mandiant-specific AZE project is publicly identified.",
-      },
-      {
-        severity: "medium",
-        title: "Domain taxonomy differs between slides",
-        body:
-          "Slides 11–12 group companies under “Data, cloud & AI” (e.g. Siemens, Microsoft), while slide 3 treats data & AI as cross-cutting rather than a domain.",
-      },
-      {
-        severity: "low",
-        title: "Duplicate slide",
-        body: "Slides 7 and 10 (prioritization criteria) are identical. Shown once on this page.",
-      },
-      {
-        severity: "low",
-        title: "Typos and stray text in the deck",
-        body:
-          "Slide 5: “Estonian's governance architecture” should read “Estonia's”. Slide 6: stray word “Remote” under targeted media outreach; “meting” should read “meeting”; “Developed” capitalized mid-sentence; unclosed parenthesis in government road-trips.",
-      },
-      {
-        severity: "low",
-        title: "Formatting errors in the Word draft",
-        body:
-          "Several body paragraphs are styled as headings (the “What the cluster is” text, “Enable the ecosystem” text, and the “economic reform agenda” text, which is styled as Heading 1). “For outlined reasons” reads awkwardly. Fix before hand-off to any CMS.",
-      },
-      {
-        severity: "low",
-        title: "Azerbaijani version is a draft translation",
-        body:
-          "The AZ version of this page is an internal draft translation and needs review by the content owner before any external use.",
-      },
-    ],
-  },
   footer: {
-    prepared: "Internal team briefing prepared from BCG materials (September 2026).",
+    prepared: "Prepared from BCG materials (September 2026).",
     sources:
       "Sources: “Resilience Cluster website content draft” (Word) and “Technology resilience cluster v4” (BCG presentation).",
-    confidentiality: "Internal. Contains preliminary company targeting. Do not distribute.",
   },
 };

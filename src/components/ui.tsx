@@ -187,7 +187,7 @@ export function More({
       <summary className="inline-flex cursor-pointer select-none items-center gap-1 rounded text-sm font-semibold text-brand-600 hover:text-navy-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan">
         <span className="more-closed">{more}</span>
         <span className="more-open">{less}</span>
-        <svg aria-hidden viewBox="0 0 16 16" className="size-3.5 transition group-open:rotate-180">
+        <svg aria-hidden viewBox="0 0 16 16" className="size-3.5 transition-transform group-open:rotate-180">
           <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
         </svg>
       </summary>

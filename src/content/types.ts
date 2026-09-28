@@ -22,16 +22,12 @@ export type Content = {
   meta: { locale: string; title: string; description: string };
   ui: {
     skipToContent: string;
-    internalBadge: string;
     sourcesOn: string;
     sourcesOff: string;
     deckOnly: string;
     wordOnly: string;
-    sourceLegend: string;
     languageLabel: string;
     nav: { id: string; label: string }[];
-    sectionPublic: string;
-    sectionInternal: string;
     backToTop: string;
     readMore: string;
     showLess: string;
@@ -219,17 +215,8 @@ export type Content = {
       yearOnly: string;
     };
   };
-  review: {
-    kicker: string;
-    title: string;
-    lead: string;
-    severity: { high: string; medium: string; low: string; done: string };
-    filterLabel: string;
-    items: { severity: "high" | "medium" | "low" | "done"; title: string; body: string }[];
-  };
   footer: {
     prepared: string;
     sources: string;
-    confidentiality: string;
   };
 };

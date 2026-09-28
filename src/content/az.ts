@@ -7,17 +7,14 @@ export const az: Content = {
     locale: "az",
     title: "Azərbaycan Texnoloji Dayanıqlılıq Klasteri",
     description:
-      "Komanda daxili brifinq: Azərbaycan Texnoloji Dayanıqlılıq Klasteri: model, fokus istiqamətləri, güzəştlər və anchor şirkət strategiyası (BCG materialları əsasında, sentyabr 2026).",
+      "Azərbaycan Texnoloji Dayanıqlılıq Klasteri: model, fokus istiqamətləri, güzəştlər və anchor şirkət strategiyası, BCG materialları əsasında (sentyabr 2026).",
   },
   ui: {
     skipToContent: "Məzmuna keç",
-    internalBadge: "Daxili",
     sourcesOn: "Mənbə qeydləri: açıq",
     sourcesOff: "Mənbə qeydləri: bağlı",
     deckOnly: "Yalnız təqdimatda",
     wordOnly: "Yalnız Word-də",
-    sourceLegend:
-      "Məzmun BCG-nin sayt mətni qaralaması (Word) və BCG təqdimatı birləşdirilərək hazırlanıb. Yalnız bir mənbədə olan məlumatlar işarələnib.",
     languageLabel: "Dil",
     nav: [
       { id: "about", label: "Klaster haqqında" },
@@ -25,10 +22,7 @@ export const az: Content = {
       { id: "why-azerbaijan", label: "Niyə Azərbaycan" },
       { id: "incentives", label: "Güzəştlər" },
       { id: "strategy", label: "Anchor strategiyası" },
-      { id: "review", label: "Yoxlama qeydləri" },
     ],
-    sectionPublic: "Klaster narrativi",
-    sectionInternal: "Daxili strategiya",
     backToTop: "Yuxarı qayıt",
     readMore: "Ətraflı",
     showLess: "Qısalt",
@@ -676,85 +670,9 @@ export const az: Content = {
       yearOnly: "Yalnız il",
     },
   },
-  review: {
-    kicker: "06 · Yoxlama qeydləri",
-    title: "İki mənbə birləşdirilərkən aşkar edilən açıq məsələlər",
-    lead:
-      "Məzmun növbəti mərhələyə keçməzdən əvvəl BCG ilə dəqiqləşdirilməli olan uyğunsuzluqlar və boşluqlar. Aşkar orfoqrafik səhvlər səhifədə düzəldilib; mahiyyət etibarilə olan hər şey mənbədə olduğu kimi göstərilib və burada qeyd olunub.",
-    severity: { high: "Dəqiqləşdir", medium: "Yoxla", low: "Düzəlt", done: "Həll olunub" },
-    filterLabel: "Statusa görə filtr",
-    items: [
-      {
-        severity: "done",
-        title: "İstiqamətlərin sayı: dörd və ya altı",
-        body:
-          "Word qaralaması dörd əsas istiqaməti əhatə edir, təqdimatın 3-cü slaydında isə “altı prioritet istiqamət” yazılıb (mülki PUA sistemləri: “ayrıca əhatə olunur”, data və Sİ: “kəsişən imkan”). Hər iki çərçivə indi 02-ci bölmədə yan-yana göstərilir, istiqamətlər üzrə namizəd şirkətlərin chartı ilə birlikdə.",
-      },
-      {
-        severity: "done",
-        title: "0% mənfəət vergisi: ixrac şərti mətnə əlavə edilib",
-        body:
-          "Təqdimatın 5-ci slaydında sıfır dərəcəli mənfəət vergisinə bank daxilolma şərti (“gəlir Azərbaycandakı hesablara daxil olmalıdır”) əlavə olunub, Word qaralamasında isə bu şərt yox idi. Şərt indi 4.1 bölməsində “Mənfəət və dividendlər” mətninə daxil edilib.",
-      },
-      {
-        severity: "done",
-        title: "CrowdStrike üçün “klasterə uyğunluq” düzəldilib",
-        body:
-          "12-ci slaydda CrowdStrike sətri IAI mətnini təkrarlayırdı (Yerin müşahidəsi / peyk mühəndisliyi). O, 3-cü slayddakı müvafiq kibertəhlükəsizlik imkanları (təhdidlərin aşkarlanması və cavab tədbirləri; identifikasiya və giriş idarəetməsi) ilə əvəz olunub, təkrar qalmayıb. Yekun ifadəni BCG təsdiqləməlidir.",
-      },
-      {
-        severity: "medium",
-        title: "$1 mlrd İKT ixracı hədəfi yalnız təqdimatdadır",
-        body:
-          "2-ci slaydda milli hədəf kimi “$1B ICT export” göstərilib, amma hədəf ili və ya baza göstəricisi yoxdur. Word qaralamasında bu rəqəm istifadə olunmur.",
-      },
-      {
-        severity: "medium",
-        title: "İnvestisiya güzəşti “100% (<50%)” qeyri-müəyyəndir",
-        body:
-          "“(<50%)” ifadəsinin mənası izah olunmayıb (gəlirin/mənfəətin payı üzrə limit?). Word qaralamasında yalnız “uyğun investisiyaların tam məbləğdə çıxılması” deyilir.",
-      },
-      {
-        severity: "medium",
-        title: "Mandiant: “Azərbaycanda iştirak edir” və “layihə müəyyən edilməyib”",
-        body:
-          "9-cu slaydda Google/Mandiant Azərbaycanda danışıqlarda/tenderlərdə iştirak edən şirkətlər qrupuna daxil edilib, 12-ci slaydda isə Mandiant-a aid Azərbaycan layihəsinin ictimai şəkildə müəyyən edilmədiyi qeyd olunur.",
-      },
-      {
-        severity: "medium",
-        title: "Slaydlar arasında istiqamət təsnifatı fərqlənir",
-        body:
-          "11–12-ci slaydlarda şirkətlər “Data, bulud və Sİ” altında qruplaşdırılıb (məs. Siemens, Microsoft), 3-cü slaydda isə data və Sİ ayrıca istiqamət deyil, kəsişən imkan kimi təqdim olunur.",
-      },
-      {
-        severity: "low",
-        title: "Təkrarlanan slayd",
-        body: "7 və 10-cu slaydlar (prioritetləşdirmə meyarları) eynidir. Bu səhifədə bir dəfə göstərilib.",
-      },
-      {
-        severity: "low",
-        title: "Təqdimatda orfoqrafik səhvlər və artıq mətn",
-        body:
-          "5-ci slayd: “Estonian's governance architecture” əvəzinə “Estonia's” olmalıdır. 6-cı slayd: hədəfli media təbliğatı altında artıq “Remote” sözü; “meting” əvəzinə “meeting” olmalıdır; cümlənin ortasında böyük hərflə “Developed”; dövlət səfərləri bəndində bağlanmamış mötərizə.",
-      },
-      {
-        severity: "low",
-        title: "Word qaralamasında formatlama səhvləri",
-        body:
-          "Bir neçə əsas mətn abzası başlıq kimi formatlanıb (“What the cluster is” mətni, “Enable the ecosystem” mətni və Heading 1 kimi formatlanmış “economic reform agenda” mətni). “For outlined reasons” ifadəsi qeyri-təbii səslənir. Hər hansı CMS-ə ötürməzdən əvvəl düzəldilməlidir.",
-      },
-      {
-        severity: "low",
-        title: "Azərbaycan dilində versiya qaralama tərcümədir",
-        body:
-          "Bu səhifənin AZ versiyası daxili qaralama tərcümədir və hər hansı xarici istifadədən əvvəl məzmun sahibi tərəfindən yoxlanılmalıdır.",
-      },
-    ],
-  },
   footer: {
-    prepared: "BCG materialları əsasında hazırlanmış komanda daxili brifinq (sentyabr 2026).",
+    prepared: "BCG materialları əsasında hazırlanıb (sentyabr 2026).",
     sources:
       "Mənbələr: “Resilience Cluster website content draft” (Word) və “Technology resilience cluster v4” (BCG təqdimatı).",
-    confidentiality: "Daxili. İlkin şirkət hədəfləməsini ehtiva edir. Yaymayın.",
   },
 };

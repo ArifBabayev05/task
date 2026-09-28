@@ -5,7 +5,7 @@ A one-page internal briefing site for the Technology Resilience Cluster of Azerb
 - **Word:** *Resilience Cluster — website content draft*, the cluster narrative
 - **Deck:** *Technology resilience cluster v4*, which adds figures, six domains, the tax table and the anchor-company strategy
 
-Every piece of content from both sources is on the page. Anything that appears in only one source is tagged **Deck only**. Inconsistencies between the sources are listed in the **Review notes** section.
+Every piece of content from both sources is on the page. Anything that appears in only one source is tagged **Deck only** (hidden by default, toggle in the header). Inconsistencies between the sources are listed in [`docs/PROPOSAL.md`](docs/PROPOSAL.md), section 8.
 
 The structure and timeline proposal for management (in Azerbaijani) is in [`docs/PROPOSAL.md`](docs/PROPOSAL.md).
 
@@ -19,7 +19,7 @@ The structure and timeline proposal for management (in Azerbaijani) is in [`docs
 ```
 src/
   app/[lang]/        layout + page (en, az)
-  components/        page sections (Hero, About, Domains, Why, Incentives, Strategy, Review)
+  components/        page sections (Hero, About, Domains, Why, Incentives, Strategy, Footer)
   content/
     types.ts         content schema
     en.ts, az.ts     all copy (AZ is a draft translation)

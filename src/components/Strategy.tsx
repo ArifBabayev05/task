@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ChevronDown, Lock, TriangleAlert } from "lucide-react";
+import { ChevronDown, TriangleAlert } from "lucide-react";
 import { candidatesByDomain, russiaExits } from "@/content/companies";
 import type { Content } from "@/content/types";
 import { ChartCard, Timeline } from "./charts";
@@ -17,10 +17,7 @@ export function Strategy({ c }: { c: Content }) {
         </div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 from-40% via-navy-950/80 to-navy-950/20" />
         <Container>
-          <p className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy-950">
-            <Lock aria-hidden className="size-3.5" /> {ui.sectionInternal}
-          </p>
-          <div className="mt-6" id="strategy-title">
+          <div id="strategy-title">
             <SectionHeader
               kicker={strategy.kicker}
               title={strategy.title}
@@ -80,7 +77,7 @@ function Criteria({ c }: { c: Content }) {
                             <summary className="flex cursor-pointer list-none items-center gap-3 px-5 py-3.5 hover:bg-white/60 [&::-webkit-details-marker]:hidden">
                               <Icon aria-hidden className={`size-6 shrink-0 ${blue ? "text-brand-600" : "text-leaf"}`} />
                               <span className="flex-1 font-semibold text-navy-900">{item.title}</span>
-                              <ChevronDown aria-hidden className="size-4 text-muted transition group-open:rotate-180" />
+                              <ChevronDown aria-hidden className="size-4 text-muted transition-transform group-open:rotate-180" />
                             </summary>
                             <p className="px-5 pb-4 pl-14 text-sm leading-relaxed text-ink/80">{item.body}</p>
                           </details>
@@ -218,7 +215,7 @@ function Pathway1({ c }: { c: Content }) {
                     >
                       {r.current}
                     </span>
-                    <ChevronDown aria-hidden className="size-4 text-muted transition group-open:rotate-180" />
+                    <ChevronDown aria-hidden className="size-4 text-muted transition-transform group-open:rotate-180" />
                   </summary>
                   <div className="grid grid-cols-1 gap-4 border-t border-line p-4 sm:grid-cols-2">
                     <div className="sm:col-span-2">
@@ -271,7 +268,7 @@ function Pathway2({ c }: { c: Content }) {
                     <span className="mt-0.5 line-clamp-1 text-[13px] text-muted">{r.projects[0]}</span>
                   </span>
                   {r.flag && <TriangleAlert aria-hidden className="size-4 shrink-0 text-alert" />}
-                  <ChevronDown aria-hidden className="size-4 shrink-0 text-muted transition group-open:rotate-180" />
+                  <ChevronDown aria-hidden className="size-4 shrink-0 text-muted transition-transform group-open:rotate-180" />
                 </summary>
                 <div className="grid gap-4 border-t border-line p-4">
                   <div>

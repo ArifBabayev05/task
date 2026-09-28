@@ -4,7 +4,7 @@ import { Domains } from "@/components/Domains";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Incentives } from "@/components/Incentives";
-import { Footer, Review } from "@/components/Review";
+import { Footer } from "@/components/Footer";
 import { Strategy } from "@/components/Strategy";
 import { Why } from "@/components/Why";
 import { getContent, hasLocale } from "@/content";
@@ -30,7 +30,6 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Why c={c} />
         <Incentives c={c} />
         <Strategy c={c} />
-        <Review c={c} />
       </main>
       <Footer c={c} />
     </>

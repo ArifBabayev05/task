@@ -1,25 +1,7 @@
 import Image from "next/image";
 import { ArrowUp } from "lucide-react";
 import type { Content } from "@/content/types";
-import { ReviewList } from "./ReviewList";
-import { Container, SectionHeader } from "./ui";
-
-export function Review({ c }: { c: Content }) {
-  const { review, ui } = c;
-  return (
-    <section id="review" className="border-t border-line bg-sky-50 py-16 sm:py-24">
-      <Container>
-        <div>
-          <SectionHeader kicker={review.kicker} title={review.title} lead={review.lead} />
-          <p className="mt-4 max-w-3xl text-sm text-muted">{ui.sourceLegend}</p>
-        </div>
-        <div className="mt-8">
-          <ReviewList items={review.items} labels={review.severity} all={ui.all} filterLabel={review.filterLabel} />
-        </div>
-      </Container>
-    </section>
-  );
-}
+import { Container } from "./ui";
 
 export function Footer({ c }: { c: Content }) {
   const { footer, ui } = c;
@@ -36,7 +18,6 @@ export function Footer({ c }: { c: Content }) {
           />
           <p className="max-w-xl text-sm">{footer.prepared}</p>
           <p className="max-w-xl text-xs text-white/50">{footer.sources}</p>
-          <p className="text-xs font-semibold text-accent">{footer.confidentiality}</p>
         </div>
         <a
           href="#top"

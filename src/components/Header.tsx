@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Lock } from "lucide-react";
 import { locales, type Locale } from "@/content";
 import type { Content } from "@/content/types";
 import { SourceToggle } from "./SourceToggle";
@@ -19,10 +18,6 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
             className="h-8 w-auto sm:h-9"
           />
         </a>
-        <span className="ml-1 hidden items-center gap-1.5 rounded-full bg-accent/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent md:inline-flex">
-          <Lock aria-hidden className="size-3" />
-          {c.ui.internalBadge}
-        </span>
         <div className="ml-auto flex items-center gap-2">
           <SourceToggle onLabel={c.ui.sourcesOn} offLabel={c.ui.sourcesOff} />
           <nav aria-label={c.ui.languageLabel} className="flex rounded-md border border-white/20 p-0.5 text-xs font-semibold">
