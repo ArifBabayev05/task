@@ -1,11 +1,62 @@
 import { Megaphone, Plane, Target, Users } from "lucide-react";
 import type { Content } from "@/content/types";
+import { ChartCard, HBarChart, StackedBar } from "./charts";
 import { Container, SectionHeader, SourceMark } from "./ui";
 
 const areaIcons = [Target, Plane, Megaphone, Users];
 
+function TaxCharts({ c }: { c: Content }) {
+  const { charts, ui } = c;
+  return (
+    <div className="mt-8 space-y-4">
+      <div>
+        <p className="mb-3 text-sm font-semibold text-navy-900">{charts.zeroRates.title}</p>
+        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3 lg:grid-cols-5">
+          {charts.zeroRates.items.map((z) => (
+            <div key={z.label} className="flex flex-col-reverse justify-end bg-white p-4">
+              <dt className="mt-1 text-xs leading-snug text-muted">{z.label}</dt>
+              <dd className="text-3xl font-semibold tracking-tight text-navy-900">{z.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <div className="grid gap-4 lg:grid-cols-2">
+        <ChartCard title={charts.deductions.title} subtitle={charts.deductions.subtitle}>
+          <HBarChart
+            rows={charts.deductions.rows.map((r) => ({
+              key: r.label,
+              label: r.label,
+              value: r.value,
+              display: `${r.value}%`,
+            }))}
+            max={250}
+            unit=""
+            baseline={{ value: 100, label: charts.deductions.baseline }}
+            tableLabel={charts.tableToggle}
+            headers={[charts.deductions.title, "%"]}
+          />
+          <p className="mt-auto pt-3">
+            <SourceMark label={ui.deckOnly} />
+          </p>
+        </ChartCard>
+        <ChartCard title={charts.royalty.title} subtitle={charts.deductions.subtitle}>
+          <StackedBar
+            segments={[
+              { key: "exempt", label: charts.royalty.exempt, value: 95, display: "95%", color: "bg-series-1", ink: "white" },
+              { key: "taxed", label: charts.royalty.taxed, value: 5, display: "5%", color: "bg-series-2", ink: "dark" },
+            ]}
+            note={charts.royalty.effective}
+            tableLabel={charts.tableToggle}
+            headers={[charts.royalty.title, "%"]}
+          />
+        </ChartCard>
+      </div>
+    </div>
+  );
+}
+
 export function Incentives({ c }: { c: Content }) {
-  const { incentives, ui } = c;
+  const { incentives, ui, charts } = c;
   const { tax, exportSupport } = incentives;
   return (
     <section id="incentives" className="bg-sky-50 py-16 sm:py-24">
@@ -32,6 +83,11 @@ export function Incentives({ c }: { c: Content }) {
                 <div className="p-5">
                   <h4 className="text-base font-semibold text-navy-900">{g.title}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-ink/80">{g.body}</p>
+                  {g.addition && (
+                    <p className="mt-3 rounded-lg border-l-2 border-series-1 bg-cyan-soft px-3 py-2 text-sm leading-relaxed text-ink/90">
+                      {g.addition} <SourceMark label={ui.deckOnly} />
+                    </p>
+                  )}
                 </div>
                 <dl className="mt-auto divide-y divide-line border-t border-line bg-sky-50/60">
                   {g.rows.map((r) => (
@@ -54,10 +110,27 @@ export function Incentives({ c }: { c: Content }) {
           </div>
         </div>
 
+        <TaxCharts c={c} />
+
         {/* 4.2 Export support programs */}
         <div className="mt-16">
           <h3 className="text-xl font-semibold text-navy-900">{exportSupport.title}</h3>
           <p className="mt-3 max-w-3xl text-[15px] text-ink/85">{exportSupport.intro}</p>
+          <ChartCard
+            className="mt-6"
+            title={charts.exportFunding.title}
+            subtitle={charts.exportFunding.subtitle}
+          >
+            <StackedBar
+              segments={[
+                { key: "research", label: charts.exportFunding.research, value: 20000, display: "$20,000", color: "bg-series-1", ink: "white" },
+                { key: "sales", label: charts.exportFunding.sales, value: 50000, display: "$50,000", color: "bg-series-2", ink: "dark" },
+              ]}
+              note={charts.exportFunding.total}
+              tableLabel={charts.tableToggle}
+              headers={[exportSupport.title, "USD"]}
+            />
+          </ChartCard>
           <div className="mt-6 space-y-4">
             {exportSupport.areas.map((area, i) => {
               const Icon = areaIcons[i] ?? Target;

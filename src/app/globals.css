@@ -25,6 +25,13 @@
   --color-leaf-100: #d7ecdf;
   --color-alert: #c2410c;
   --color-alert-50: #fff4ed;
+  --color-done: #1d6b46;
+
+  /* Chart roles — validated with the dataviz palette checker (light surface):
+     series-1/series-2 pass lightness, chroma, CVD separation and 3:1 contrast. */
+  --color-series-1: #1570b5;
+  --color-series-2: #eb6834;
+  --color-grid: #e3e8ef;
 }
 
 :root {

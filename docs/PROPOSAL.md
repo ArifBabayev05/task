@@ -10,7 +10,7 @@
 
 - BCG materialları **bir uzun səhifəlik (landing) sayt** formatına tam uyğundur. Mətnin həcmi ikinci səhifəni əsaslandırmır, lövbər naviqasiyası ilə bütün bölmələr bir səhifədə rahat oxunur.
 - Sayt hələlik **yalnız komanda daxili** istifadə üçündür. Word sənədindəki mətnlə yanaşı təqdimatdakı daxili strategiya materialları da (anchor şirkətlər, lokallaşdırma yolları) səhifəyə daxil edilib. Heç bir məlumat buraxılmayıb.
-- Materialları birləşdirərkən **11 uyğunsuzluq və boşluq** aşkar edilib. Onlar saytın sonunda "Yoxlama qeydləri" bölməsində toplanıb, 3-ü BCG ilə mütləq dəqiqləşdirilməlidir (bax: bölmə 5).
+- Materialları birləşdirərkən **11 uyğunsuzluq və boşluq** aşkar edilib. Onlar saytın sonunda "Yoxlama qeydləri" bölməsində toplanıb. Ən vacib 3-ü saytda artıq həll olunub (bax: bölmə 5), qalanları BCG ilə dəqiqləşdirilməlidir.
 - Təxmini icra müddəti: **cəmi ~5 iş günü**. Prototip artıq hazır olduğu üçün qalan hissə əsasən rəy, düzəlişlər və deploydur (bax: bölmə 4).
 
 ## 2. Mənbələr
@@ -64,11 +64,13 @@ Gələcəkdə sayt **publik** versiyaya keçərsə: 05-ci bölmə çıxarılır,
 
 **Publik versiya lazım olarsa (əlavə, təxminən 1–2 həftə):** daxili bölmənin çıxarılması, müraciət/əlaqə forması, domen (məs. nazirliyin subdomeni), analitika, hüquqi və kommunikasiya yoxlaması.
 
-## 5. BCG ilə dəqiqləşdirilməli əsas məsələlər
+## 5. Əsas məsələlər və həlli
 
-1. **İstiqamətlərin sayı:** Word-də 4, təqdimatda 6 (PUA və Data/Sİ əlavə). Rəsmi çərçivə hansıdır?
-2. **0% mənfəət vergisinin ixrac şərti:** təqdimatda "gəlir Azərbaycan hesablarına daxil olmalıdır" şərti var, Word-də yoxdur.
-3. **CrowdStrike (slayd 12):** "klasterə uyğunluq" mətni IAI sətrinin təkrarıdır (peyk/Yer müşahidəsi). Ehtimal ki, kopyalama xətasıdır.
+1. **İstiqamətlərin sayı:** Word-də 4, təqdimatda 6 (PUA və Data/Sİ əlavə). ✅ Hər iki çərçivə saytda yan-yana göstərilir, istiqamətlər üzrə namizəd şirkətlərin chartı ilə.
+2. **0% mənfəət vergisinin ixrac şərti:** təqdimatda "gəlir Azərbaycan hesablarına daxil olmalıdır" şərti var, Word-də yox idi. ✅ Şərt saytın əsas mətninə əlavə edilib.
+3. **CrowdStrike (slayd 12):** "klasterə uyğunluq" mətni IAI sətrinin təkrarı idi. ✅ 3-cü slayddakı kiber imkanlarla əvəz olunub, təkrar yoxdur. Yekun ifadəni BCG təsdiqləməlidir.
+
+Saytda əsas rəqəmlər chartlarla da göstərilir: istiqamətlər üzrə namizəd şirkətlər, vergi güzəştləri, royalti, ixrac dəstəyi məbləğləri, prioritet qruplar və Rusiyadan çıxış xronologiyası.
 
 Digər məsələlər ($1B hədəfinin ili, "100% (<50%)" ifadəsinin mənası, Mandiant uyğunsuzluğu, təkrarlanan slayd, orfoqrafik və formatlama səhvləri) saytın "Yoxlama qeydləri" bölməsində ətraflı verilib.
 

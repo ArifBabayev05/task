@@ -1,7 +1,79 @@
 import Image from "next/image";
 import { Ban, BrainCircuit, Drone, Radar, RadioTower, Satellite, ShieldCheck, type LucideIcon } from "lucide-react";
+import { candidatesByDomain } from "@/content/companies";
 import type { Content } from "@/content/types";
+import { ChartCard, HBarChart } from "./charts";
 import { Bullets, Container, SectionHeader, SourceMark } from "./ui";
+
+/** Word (4) vs deck (6) framing side by side, plus candidate companies per domain. */
+function DomainFraming({ c }: { c: Content }) {
+  const { domains, charts } = c;
+  const core = domains.items.filter((d) => d.status === "core");
+  const extra = domains.items.filter((d) => d.status !== "core");
+  const counts = candidatesByDomain.map((list) => list.length);
+  const rows = domains.items.map((d, i) => ({
+    key: d.id,
+    label: d.title,
+    value: i < counts.length ? counts[i] : null,
+    display: i < counts.length ? String(counts[i]) : "",
+  }));
+
+  return (
+    <div className="mt-10 grid gap-4 lg:grid-cols-2 lg:items-start">
+      <ChartCard title={charts.framing.title}>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {[charts.framing.word, charts.framing.deck].map((f, idx) => (
+            <div key={f.label} className="rounded-lg bg-sky-50 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted">{f.label}</p>
+              <p className="mt-1 flex items-baseline gap-2">
+                <span className="text-4xl font-semibold tracking-tight text-navy-900">{f.value}</span>
+                <span className="text-sm text-ink/80">{f.caption}</span>
+              </p>
+              <ul className="mt-3 space-y-1.5">
+                {(idx === 0 ? core : [...core, ...extra]).map((d) => {
+                  const isCore = d.status === "core";
+                  return (
+                    <li key={d.id} className="flex items-start gap-2 text-[13px] leading-snug text-ink/85">
+                      <span
+                        aria-hidden
+                        className={`mt-1 size-2.5 shrink-0 rounded-sm ${
+                          isCore ? "bg-series-1" : "border border-series-1 bg-white"
+                        }`}
+                      />
+                      <span>
+                        {d.title}
+                        {!isCore && <span className="text-muted"> · {domains.statusLabels[d.status]}</span>}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-ink/80">
+          <li className="flex items-center gap-1.5">
+            <span aria-hidden className="size-2.5 rounded-sm bg-series-1" /> {charts.framing.coreLabel}
+          </li>
+          <li className="flex items-center gap-1.5">
+            <span aria-hidden className="size-2.5 rounded-sm border border-series-1 bg-white" /> {charts.framing.extraLabel}
+          </li>
+        </ul>
+      </ChartCard>
+
+      <ChartCard title={charts.candidates.title} subtitle={charts.candidates.subtitle}>
+        <HBarChart
+          rows={rows}
+          max={Math.max(...counts)}
+          unit={charts.candidates.unit}
+          nullLabel={charts.candidates.notMapped}
+          tableLabel={charts.tableToggle}
+          headers={[charts.candidates.domainHeader, charts.candidates.unit]}
+        />
+      </ChartCard>
+    </div>
+  );
+}
 
 const domainIcons: Record<string, LucideIcon> = {
   cyber: ShieldCheck,
@@ -37,7 +109,9 @@ export function Domains({ c }: { c: Content }) {
           </div>
         </div>
 
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <DomainFraming c={c} />
+
+        <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {domains.items.map((d) => {
             const Icon = domainIcons[d.id] ?? ShieldCheck;
             const core = d.status === "core";

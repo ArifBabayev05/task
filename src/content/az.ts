@@ -4,6 +4,7 @@ import type { Content } from "./types";
 // Draft translation of en.ts — pending review by the content owner.
 export const az: Content = {
   meta: {
+    locale: "az",
     title: "Azərbaycan Texnoloji Dayanıqlılıq Klasteri",
     description:
       "Komanda daxili brifinq: Azərbaycan Texnoloji Dayanıqlılıq Klasteri — model, fokus istiqamətləri, güzəştlər və anchor şirkət strategiyası (BCG materialları əsasında, sentyabr 2026).",
@@ -101,7 +102,7 @@ export const az: Content = {
     lead:
       "Dayanıqlılıq Klasteri mülki və ikili təyinatlı dayanıqlılıq texnologiyalarına fokuslanır. Dörd əsas texnoloji istiqamət əhatə olunur.",
     deckTitle:
-      "Təqdimatda altı prioritet istiqamət göstərilir: aşağıdakı dörd əsas istiqamət, üstəgəl mülki avtonom və PUA sistemləri (ayrıca əhatə olunur) və data və süni intellekt (kəsişən dəstəkləyici imkan).",
+      "İki mənbə istiqamətləri fərqli təqdim edir: Word qaralamasında dörd əsas istiqamət, təqdimatda isə altı prioritet istiqamət var — eyni dörd əsas istiqamət, üstəgəl mülki avtonom və PUA sistemləri (ayrıca əhatə olunur) və data və süni intellekt (kəsişən dəstəkləyici imkan). Aşağıda hər iki çərçivə göstərilib.",
     statusLabels: {
       core: "Əsas istiqamət",
       separate: "Ayrıca əhatə olunur",
@@ -231,6 +232,8 @@ export const az: Content = {
           title: "Mənfəət və dividendlər",
           body:
             "Süni intellekt, rəqəmsal və kibertəhlükəsizlik daxil olmaqla uyğun fəaliyyətlər üçün uzunmüddətli sıfır dərəcəli mənfəət vergisi və innovasiya sektorunda dividendlərə sıfır dərəcə.",
+          addition:
+            "İxrac şərti: sıfır dərəcədən yararlanmaq üçün gəlir Azərbaycandakı bank hesablarına daxil olmalıdır (bank daxilolma şərti).",
           rows: [
             { category: "Korporativ və rəqəmsal vergitutma", label: "Mənfəət vergisi", value: "0% (uzunmüddətli)", note: "Süni intellekt, rəqəmsal və kibertəhlükəsizlik fəaliyyətlərinə şamil olunur" },
             { category: "Korporativ və rəqəmsal vergitutma", label: "İxrac şərti", value: "Bank daxilolma şərti", note: "Gəlir Azərbaycandakı hesablara daxil olmalıdır", source: "deck" },
@@ -550,8 +553,9 @@ export const az: Content = {
           projects: [
             "Milli Kibertəhlükəsizlik Forumunda, dövlət rəsmiləri ilə dəyirmi masalarda və digər tədbirlərdə iştirak",
           ],
-          fit: ["Suveren Yer müşahidəsi və monitorinq imkanı", "Yerli peyk mühəndisliyi, yığımı və bacarıqların ötürülməsi"],
-          flag: "Uyğunluq mətni IAI sətrini təkrarlayır (Yerin müşahidəsi / peyklər) — ehtimal ki, təqdimatda kopyalama xətasıdır.",
+          fit: ["Təhdidlərin aşkarlanması və cavab tədbirləri", "İdentifikasiya və giriş idarəetməsi"],
+          flag:
+            "Düzəldilib: təqdimatda bu sətirdə IAI mətni təkrarlanırdı (Yerin müşahidəsi / peyklər). Təqdimatın 3-cü slaydındakı müvafiq kibertəhlükəsizlik imkanları ilə əvəz olunub — BCG tərəfindən təsdiqlənməlidir.",
         },
         {
           company: [C.google, C.mandiant],
@@ -602,30 +606,89 @@ export const az: Content = {
       ],
     },
   },
+  charts: {
+    tableToggle: "Cədvəl kimi göstər",
+    framing: {
+      title: "Fokus istiqamətlərinin iki çərçivəsi",
+      word: { label: "Word qaralaması", value: "4", caption: "əsas texnoloji istiqamət" },
+      deck: { label: "Təqdimat, 3-cü slayd", value: "6", caption: "prioritet istiqamət (4 əsas + 2 əlavə)" },
+      coreLabel: "Əsas istiqamət",
+      extraLabel: "Təqdimatda əlavə",
+    },
+    candidates: {
+      title: "İstiqamət üzrə namizəd anchor şirkətlər",
+      subtitle: "Təqdimatın 8-ci slaydı · ilkin siyahı, Estoniya şirkətləri daxil olmaqla",
+      unit: "şirkət",
+      notMapped: "göstərilməyib",
+      domainHeader: "İstiqamət",
+    },
+    zeroRates: {
+      title: "Sıfır dərəcəli maddələr",
+      items: [
+        { value: "0%", label: "Mənfəət vergisi (uzunmüddətli)" },
+        { value: "0%", label: "Dividend vergisi (innovasiya sektoru)" },
+        { value: "0%", label: "Gəlir vergisi, İKT mütəxəssisləri (20 il)" },
+        { value: "0%", label: "Texnologiya idxalı və xidmətlərinə ƏDV" },
+        { value: "0%", label: "Avadanlıq idxalına gömrük rüsumu" },
+      ],
+    },
+    deductions: {
+      title: "Hər 100 vahid uyğun xərc üzrə gəlirdən çıxılan məbləğ",
+      subtitle: "Təqdimatın 5-ci slaydı",
+      baseline: "100 = tam çıxılma",
+      rows: [
+        { label: "İnvestisiya güzəşti (<50%)", value: 100 },
+        { label: "R&D üzrə super güzəşt", value: 250 },
+      ],
+    },
+    royalty: {
+      title: "Royalti gəliri",
+      exempt: "Azad",
+      taxed: "Vergiyə cəlb olunur",
+      effective: "≈ 1% effektiv vergi dərəcəsi",
+    },
+    exportFunding: {
+      title: "Hər şirkət üçün illik hədəf bazar dəstəyi",
+      subtitle: "Maksimum məbləğlər, təqdimatın 6-cı slaydı",
+      research: "Bazar tədqiqatı qrantı",
+      sales: "Satış mütəxəssisi və təlim",
+      total: "hər iki proqramdan istifadə edildikdə 70 000 ABŞ dollarınadək (iki limitin cəmi)",
+    },
+    pools: { title: "Prioritet qruplar üzrə şirkət sayı", unit: "şirkət" },
+    exits: {
+      title: "Lokallaşdırma yolu 1: Rusiyadan çıxış xronologiyası",
+      subtitle: "Təqdimatın 11-ci slaydı · Rusiyanı tərk etmiş və regionda aydın habı olmayan şirkətlər",
+      exact: "Ay göstərilib",
+      yearOnly: "Yalnız il",
+      companyHeader: "Şirkət",
+      exitHeader: "Rusiyadan çıxış",
+      footprintHeader: "Regional mövcudluq",
+    },
+  },
   review: {
     kicker: "06 · Yoxlama qeydləri",
     title: "İki mənbə birləşdirilərkən aşkar edilən açıq məsələlər",
     lead:
       "Məzmun növbəti mərhələyə keçməzdən əvvəl BCG ilə dəqiqləşdirilməli olan uyğunsuzluqlar və boşluqlar. Aşkar orfoqrafik səhvlər səhifədə düzəldilib; mahiyyət etibarilə olan hər şey mənbədə olduğu kimi göstərilib və burada qeyd olunub.",
-    severity: { high: "Dəqiqləşdir", medium: "Yoxla", low: "Düzəlt" },
+    severity: { high: "Dəqiqləşdir", medium: "Yoxla", low: "Düzəlt", done: "Həll olunub" },
     items: [
       {
-        severity: "high",
+        severity: "done",
         title: "İstiqamətlərin sayı: dörd və ya altı",
         body:
-          "Word qaralaması dörd əsas istiqaməti əhatə edir. Təqdimatın 3-cü slaydında “altı prioritet istiqamət” yazılıb və mülki PUA sistemləri (“ayrıca əhatə olunur”) və data və Sİ (“kəsişən imkan”) əlavə olunub. 7, 11 və 12-ci slaydlarda da PUA və “Data, bulud və Sİ” kateqoriya kimi istifadə olunur. Səhifədə altısı da statusu ilə göstərilib — rəsmi çərçivəni təsdiqləyin.",
+          "Word qaralaması dörd əsas istiqaməti əhatə edir, təqdimatın 3-cü slaydında isə “altı prioritet istiqamət” yazılıb (mülki PUA sistemləri — “ayrıca əhatə olunur”, data və Sİ — “kəsişən imkan”). Hər iki çərçivə indi 02-ci bölmədə yan-yana göstərilir, istiqamətlər üzrə namizəd şirkətlərin chartı ilə birlikdə.",
       },
       {
-        severity: "high",
-        title: "0% mənfəət vergisi: ixrac şərti Word-də yoxdur",
+        severity: "done",
+        title: "0% mənfəət vergisi: ixrac şərti mətnə əlavə edilib",
         body:
-          "Təqdimatın 5-ci slaydında sıfır dərəcəli mənfəət vergisinə bank daxilolma şərti (“gəlir Azərbaycandakı hesablara daxil olmalıdır”) əlavə olunub. Word qaralamasında bu şərt qeyd edilmir.",
+          "Təqdimatın 5-ci slaydında sıfır dərəcəli mənfəət vergisinə bank daxilolma şərti (“gəlir Azərbaycandakı hesablara daxil olmalıdır”) əlavə olunub, Word qaralamasında isə bu şərt yox idi. Şərt indi 4.1 bölməsində “Mənfəət və dividendlər” mətninə daxil edilib.",
       },
       {
-        severity: "high",
-        title: "CrowdStrike üçün “klasterə uyğunluq” IAI-dən kopyalanmış görünür",
+        severity: "done",
+        title: "CrowdStrike üçün “klasterə uyğunluq” düzəldilib",
         body:
-          "12-ci slaydda CrowdStrike sətrində “Suveren Yer müşahidəsi və monitorinq imkanı; Yerli peyk mühəndisliyi, yığımı və bacarıqların ötürülməsi” göstərilib — bu, IAI sətri ilə eynidir və kibertəhlükəsizliklə əlaqəli deyil.",
+          "12-ci slaydda CrowdStrike sətri IAI mətnini təkrarlayırdı (Yerin müşahidəsi / peyk mühəndisliyi). O, 3-cü slayddakı müvafiq kibertəhlükəsizlik imkanları (təhdidlərin aşkarlanması və cavab tədbirləri; identifikasiya və giriş idarəetməsi) ilə əvəz olunub, təkrar qalmayıb. Yekun ifadəni BCG təsdiqləməlidir.",
       },
       {
         severity: "medium",

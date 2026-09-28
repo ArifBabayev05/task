@@ -127,3 +127,15 @@ export const pools: LogoRef[][] = [
   [C.google, C.mandiant, C.crowdstrike, C.spacex, C.microsoft, C.thales],
   [C.fortinet, C.checkpoint, C.claroty, C.radware],
 ];
+
+/**
+ * Deck slide 11 — Russia exit dates for the timeline chart.
+ * `month` is 1–12 when the deck gives a month; omitted when it gives only the year.
+ */
+export const russiaExits: { company: LogoRef; year: number; month?: number }[] = [
+  { company: C.honeywell, year: 2022, month: 6 },
+  { company: C.abb, year: 2022, month: 7 },
+  { company: C.siemens, year: 2022 },
+  { company: C.emerson, year: 2023, month: 3 },
+  { company: C.nokia, year: 2023 },
+];

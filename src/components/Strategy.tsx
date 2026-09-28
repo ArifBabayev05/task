@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { ChevronDown, Lock, TriangleAlert } from "lucide-react";
+import { russiaExits } from "@/content/companies";
 import type { Content } from "@/content/types";
+import { ChartCard, HBarChart, Timeline } from "./charts";
 import { Bullets, Container, Logo, SectionHeader, SlideTitle, SourceMark, icons } from "./ui";
 
 const poolTones: Record<string, string> = {
@@ -176,8 +178,51 @@ function Pools({ c }: { c: Content }) {
           })}
         </ol>
         <p className="mt-4 text-xs text-muted">{pools.footnote}</p>
+        <ChartCard className="mt-8 lg:max-w-2xl" title={c.charts.pools.title}>
+          <HBarChart
+            rows={pools.pools.map((p) => ({
+              key: p.title,
+              label: p.title,
+              value: p.companies.length,
+              display: String(p.companies.length),
+            }))}
+            max={Math.max(...pools.pools.map((p) => p.companies.length))}
+            unit={c.charts.pools.unit}
+            tableLabel={c.charts.tableToggle}
+            headers={[pools.kicker, c.charts.pools.unit]}
+          />
+        </ChartCard>
       </Container>
     </div>
+  );
+}
+
+function ExitTimeline({ c }: { c: Content }) {
+  const { pathway1: p } = c.strategy;
+  const { exits } = c.charts;
+  const items = russiaExits.map((e) => {
+    const row = p.rows.find((r) => r.company.name === e.company.name);
+    return {
+      key: e.company.name,
+      label: e.company.name,
+      year: e.year,
+      month: e.month,
+      display: row?.exit ?? String(e.year),
+      extra: row?.footprint ?? "",
+    };
+  });
+  return (
+    <ChartCard className="mt-8" title={exits.title} subtitle={exits.subtitle}>
+      <Timeline
+        items={items}
+        from={2022}
+        to={2023}
+        locale={c.meta.locale}
+        legend={{ exact: exits.exact, yearOnly: exits.yearOnly }}
+        tableLabel={c.charts.tableToggle}
+        headers={[exits.companyHeader, exits.exitHeader, exits.footprintHeader]}
+      />
+    </ChartCard>
   );
 }
 
@@ -189,6 +234,7 @@ function Pathway1({ c }: { c: Content }) {
       <Container>
         <SlideTitle kicker={p.kicker} title={p.title} />
         <p className="mt-3 text-[15px] text-muted">{p.subtitle}</p>
+        <ExitTimeline c={c} />
 
         <div
           aria-hidden

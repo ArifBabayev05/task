@@ -19,7 +19,7 @@ export type LogoRef = {
 export type DomainStatus = "core" | "separate" | "crossCutting";
 
 export type Content = {
-  meta: { title: string; description: string };
+  meta: { locale: string; title: string; description: string };
   ui: {
     skipToContent: string;
     internalBadge: string;
@@ -101,6 +101,8 @@ export type Content = {
       groups: {
         title: string;
         body: string;
+        /** Sentence added to the Word copy from the deck (shown highlighted). */
+        addition?: string;
         rows: { category: string; label: string; value: string; note?: string; source?: Source }[];
       }[];
     };
@@ -181,12 +183,37 @@ export type Content = {
       }[];
     };
   };
+  charts: {
+    tableToggle: string;
+    framing: {
+      title: string;
+      word: { label: string; value: string; caption: string };
+      deck: { label: string; value: string; caption: string };
+      coreLabel: string;
+      extraLabel: string;
+    };
+    candidates: { title: string; subtitle: string; unit: string; notMapped: string; domainHeader: string };
+    zeroRates: { title: string; items: { value: string; label: string }[] };
+    deductions: { title: string; subtitle: string; baseline: string; rows: { label: string; value: number }[] };
+    royalty: { title: string; exempt: string; taxed: string; effective: string };
+    exportFunding: { title: string; subtitle: string; research: string; sales: string; total: string };
+    pools: { title: string; unit: string };
+    exits: {
+      title: string;
+      subtitle: string;
+      exact: string;
+      yearOnly: string;
+      companyHeader: string;
+      exitHeader: string;
+      footprintHeader: string;
+    };
+  };
   review: {
     kicker: string;
     title: string;
     lead: string;
-    severity: { high: string; medium: string; low: string };
-    items: { severity: "high" | "medium" | "low"; title: string; body: string }[];
+    severity: { high: string; medium: string; low: string; done: string };
+    items: { severity: "high" | "medium" | "low" | "done"; title: string; body: string }[];
   };
   footer: {
     prepared: string;

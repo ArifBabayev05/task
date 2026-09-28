@@ -7,6 +7,7 @@ const severityStyles = {
   high: "bg-alert text-white",
   medium: "bg-accent text-navy-950",
   low: "bg-sky-100 text-brand",
+  done: "bg-leaf text-white",
 } as const;
 
 export function Review({ c }: { c: Content }) {

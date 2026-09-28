@@ -3,6 +3,7 @@ import type { Content } from "./types";
 
 export const en: Content = {
   meta: {
+    locale: "en",
     title: "Technology Resilience Cluster of Azerbaijan",
     description:
       "Internal team briefing: the Technology Resilience Cluster of Azerbaijan — model, focus domains, incentives and anchor company strategy (based on BCG materials, September 2026).",
@@ -100,7 +101,7 @@ export const en: Content = {
     lead:
       "The Resilience Cluster focuses on civilian and dual-use resilience technologies. Four core technology domains are covered.",
     deckTitle:
-      "The deck frames six priority domains: the four core domains below, plus civilian autonomous & UAV systems (covered separately) and data & AI (a cross-cutting enabler).",
+      "The two sources frame the domains differently: the Word draft names four core domains, while the deck names six priority domains — the same four core domains plus civilian autonomous & UAV systems (covered separately) and data & AI (a cross-cutting enabler). Both framings are shown below.",
     statusLabels: {
       core: "Core domain",
       separate: "Covered separately",
@@ -217,6 +218,8 @@ export const en: Content = {
           title: "Profits and dividends",
           body:
             "Long-term zero-rate profit tax for qualifying activities including AI, digital and cybersecurity, and a zero rate on dividends in the innovation sector.",
+          addition:
+            "Export condition: to qualify for the zero rate, income must be received into bank accounts in Azerbaijan (bank inflow condition).",
           rows: [
             { category: "Corporate & digital taxation", label: "Profit tax", value: "0% (long-term)", note: "Applies to AI, digital, cybersecurity activities" },
             { category: "Corporate & digital taxation", label: "Export condition", value: "Bank inflow condition", note: "Income must enter AZ accounts", source: "deck" },
@@ -536,8 +539,9 @@ export const en: Content = {
           projects: [
             "Involvement in National Cybersecurity Forum, roundtables with government officials, and other events",
           ],
-          fit: ["Sovereign EO & monitoring capability", "Local satellite engineering, assembly and skills transfer"],
-          flag: "The fit text repeats the IAI row (Earth observation / satellites) — likely a copy-paste error in the deck.",
+          fit: ["Threat detection & response", "Identity & access management"],
+          flag:
+            "Corrected: the deck repeated the IAI row here (Earth observation / satellites). Replaced with the matching cybersecurity capabilities from deck slide 3 — to be confirmed by BCG.",
         },
         {
           company: [C.google, C.mandiant],
@@ -588,30 +592,89 @@ export const en: Content = {
       ],
     },
   },
+  charts: {
+    tableToggle: "Show as table",
+    framing: {
+      title: "Two framings of the focus domains",
+      word: { label: "Word draft", value: "4", caption: "core technology domains" },
+      deck: { label: "Deck, slide 3", value: "6", caption: "priority domains (4 core + 2 additional)" },
+      coreLabel: "Core domain",
+      extraLabel: "Additional in the deck",
+    },
+    candidates: {
+      title: "Candidate anchor companies per domain",
+      subtitle: "Deck slide 8 · preliminary list, including Estonian companies",
+      unit: "companies",
+      notMapped: "not mapped",
+      domainHeader: "Domain",
+    },
+    zeroRates: {
+      title: "Zero-rate items",
+      items: [
+        { value: "0%", label: "Profit tax (long-term)" },
+        { value: "0%", label: "Dividend tax (innovation sector)" },
+        { value: "0%", label: "Personal income tax, ICT specialists (20 years)" },
+        { value: "0%", label: "VAT on tech imports & services" },
+        { value: "0%", label: "Customs on equipment imports" },
+      ],
+    },
+    deductions: {
+      title: "Deduction per 100 of qualifying spend",
+      subtitle: "Deck slide 5",
+      baseline: "100 = full deductibility",
+      rows: [
+        { label: "Investment deduction (<50%)", value: 100 },
+        { label: "R&D super deduction", value: 250 },
+      ],
+    },
+    royalty: {
+      title: "Royalty income",
+      exempt: "Exempt",
+      taxed: "Taxed",
+      effective: "≈ 1% effective tax rate",
+    },
+    exportFunding: {
+      title: "Target market support per company, per year",
+      subtitle: "Maximum amounts, deck slide 6",
+      research: "Market research grant",
+      sales: "Sales hire & training",
+      total: "up to $70,000 if both programs are used (sum of the two ceilings)",
+    },
+    pools: { title: "Companies per priority pool", unit: "companies" },
+    exits: {
+      title: "Pathway 1: Russia exit timeline",
+      subtitle: "Deck slide 11 · companies that left Russia and have no clear regional hub",
+      exact: "Month given",
+      yearOnly: "Year only",
+      companyHeader: "Company",
+      exitHeader: "Russia exit",
+      footprintHeader: "Regional footprint",
+    },
+  },
   review: {
     kicker: "06 · Review notes",
     title: "Open points found while merging the two sources",
     lead:
       "Inconsistencies and gaps to clarify with BCG before any content goes further. Obvious typos are corrected on the page; everything substantive is shown as in the source and flagged here.",
-    severity: { high: "Clarify", medium: "Check", low: "Fix" },
+    severity: { high: "Clarify", medium: "Check", low: "Fix", done: "Addressed" },
     items: [
       {
-        severity: "high",
+        severity: "done",
         title: "Number of domains: four vs. six",
         body:
-          "The Word draft covers four core domains. Deck slide 3 says “six priority domains”, adding civilian UAV systems (“covered separately”) and data & AI (“cross-cutting”). Slides 7, 11 and 12 also use UAV and “Data, cloud & AI” as categories. The page shows all six with their status — confirm the official framing.",
+          "The Word draft covers four core domains; deck slide 3 says “six priority domains”, adding civilian UAV systems (“covered separately”) and data & AI (“cross-cutting”). Both framings are now shown side by side in section 02, with a chart of candidate companies per domain.",
       },
       {
-        severity: "high",
-        title: "0% profit tax: export condition missing in Word",
+        severity: "done",
+        title: "0% profit tax: export condition added to the copy",
         body:
-          "Deck slide 5 attaches a bank inflow condition (“income must enter AZ accounts”) to the zero-rate profit tax. The Word draft does not mention this condition.",
+          "Deck slide 5 attaches a bank inflow condition (“income must enter AZ accounts”) to the zero-rate profit tax, which the Word draft omitted. The condition is now included in the “Profits and dividends” text in section 4.1.",
       },
       {
-        severity: "high",
-        title: "CrowdStrike “cluster fit” looks copied from IAI",
+        severity: "done",
+        title: "CrowdStrike “cluster fit” corrected",
         body:
-          "On slide 12 the CrowdStrike row lists “Sovereign EO & monitoring capability; Local satellite engineering, assembly and skills transfer” — identical to the IAI row and unrelated to cybersecurity.",
+          "On slide 12 the CrowdStrike row repeated the IAI text (Earth observation / satellite engineering). It is replaced with the matching cybersecurity capabilities from slide 3 (threat detection & response; identity & access management), so no row is duplicated. BCG should confirm the final wording.",
       },
       {
         severity: "medium",
