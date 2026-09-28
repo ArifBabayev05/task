@@ -12,7 +12,7 @@ The structure and timeline proposal for management (in Azerbaijani) is in [`docs
 ## Stack
 
 - Next.js 16 (App Router, statically prerendered `/en` and `/az`), TypeScript, Tailwind CSS v4
-- `src/proxy.ts` puts every route and asset behind HTTP Basic Auth
+- `src/proxy.ts`: optional HTTP Basic Auth for every route and asset (off unless `SITE_PASSWORD` is set)
 
 ## Project layout
 
@@ -24,7 +24,7 @@ src/
     types.ts         content schema
     en.ts, az.ts     all copy (AZ is a draft translation)
     companies.ts     company list, logo sizes, deck groupings
-  proxy.ts           Basic Auth gate
+  proxy.ts           optional Basic Auth gate
 public/
   logos/             company logos extracted from the deck
   images/            photos and ministry logo from the deck
@@ -37,17 +37,16 @@ To change copy, edit `src/content/en.ts` or `src/content/az.ts`. Both files must
 
 ```bash
 npm install
-npm run dev          # http://localhost:3000 (no password in dev unless SITE_PASSWORD is set)
+npm run dev          # http://localhost:3000
 npm run lint
-npm run build && SITE_PASSWORD=secret npm start
+npm run build && npm start
 ```
 
-## Deploy to Vercel (password-protected)
+## Deploy to Vercel
 
 1. Import the repository in Vercel. The framework preset is detected as Next.js.
-2. Under **Settings → Environment Variables**, add:
-   - `SITE_PASSWORD`: required. Without it the production site returns `503` for every request (fails closed).
-   - `SITE_USER`: optional, defaults to `team`.
-3. Deploy, then share the URL, user name and password with the team through a separate channel.
+2. Deploy. No environment variables are needed, and the site is public.
+
+To put the site behind a password later, add `SITE_PASSWORD` (and optionally `SITE_USER`, which defaults to `team`) under **Settings → Environment Variables**, then redeploy.
 
 Pages send `X-Robots-Tag: noindex` and `robots: noindex`, so they are not indexed.

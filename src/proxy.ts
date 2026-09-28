@@ -1,23 +1,18 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 /**
- * HTTP Basic Auth gate for the whole site (pages and static assets).
+ * Optional HTTP Basic Auth gate for the whole site (pages and static assets).
  *
- * Configure on Vercel (Project → Settings → Environment Variables):
+ * The site is public by default. To require a password, set on Vercel
+ * (Project → Settings → Environment Variables) and redeploy:
+ *   SITE_PASSWORD  (turns the gate on)
  *   SITE_USER      (optional, defaults to "team")
- *   SITE_PASSWORD  (required in production)
- *
- * Fails closed: in production, if SITE_PASSWORD is missing, every request is refused.
- * In development without SITE_PASSWORD the gate is skipped.
  */
 export function proxy(request: NextRequest) {
   const password = process.env.SITE_PASSWORD;
   const user = process.env.SITE_USER || "team";
 
-  if (!password) {
-    if (process.env.NODE_ENV !== "production") return NextResponse.next();
-    return new NextResponse("Site password is not configured.", { status: 503 });
-  }
+  if (!password) return NextResponse.next();
 
   const header = request.headers.get("authorization") ?? "";
   if (header.startsWith("Basic ")) {
