@@ -16,11 +16,7 @@ export function Hero({ c }: { c: Content }) {
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy-950/60 via-navy-950/40 to-navy-950" />
       <Container className="pb-12 pt-14 sm:pb-16 sm:pt-20 lg:pt-24">
-        <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-white/80">
-          <span aria-hidden className="size-1.5 rounded-full bg-accent" />
-          {ui.internalNotice}
-        </p>
-        <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-end">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-end">
           <div>
             <p className="flex flex-wrap items-center gap-2 text-sm font-medium text-cyan">
               {hero.eyebrow} <SourceMark label={ui.deckOnly} tone="dark" />

@@ -23,7 +23,6 @@ export type Content = {
   ui: {
     skipToContent: string;
     internalBadge: string;
-    internalNotice: string;
     sourcesOn: string;
     sourcesOff: string;
     deckOnly: string;

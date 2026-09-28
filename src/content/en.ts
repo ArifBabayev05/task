@@ -11,7 +11,6 @@ export const en: Content = {
   ui: {
     skipToContent: "Skip to content",
     internalBadge: "Internal",
-    internalNotice: "Internal working material, not for public distribution",
     sourcesOn: "Source marks: on",
     sourcesOff: "Source marks: off",
     deckOnly: "Deck only",

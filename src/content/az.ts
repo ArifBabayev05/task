@@ -12,7 +12,6 @@ export const az: Content = {
   ui: {
     skipToContent: "Məzmuna keç",
     internalBadge: "Daxili",
-    internalNotice: "Daxili iş materialı, ictimai yayım üçün deyil",
     sourcesOn: "Mənbə qeydləri: açıq",
     sourcesOff: "Mənbə qeydləri: bağlı",
     deckOnly: "Yalnız təqdimatda",
