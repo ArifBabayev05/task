@@ -31,12 +31,15 @@ export const az: Content = {
     sectionPublic: "Klaster narrativi",
     sectionInternal: "Daxili strategiya",
     backToTop: "Yuxarı qayıt",
+    readMore: "Ətraflı",
+    showLess: "Qısalt",
+    all: "Hamısı",
   },
   hero: {
     eyebrow: "Dayanıqlılıq klasteri — şirkətlərin yerləşdirilməsi",
     title: "Azərbaycan Texnoloji Dayanıqlılıq Klasteri",
     lead:
-      "Azərbaycan Dayanıqlılıq Klasterini həyati sistemlərin təhlükəsizliyini və fasiləsizliyini gücləndirən texnologiyaların cəlb edilməsi və lokallaşdırılması üçün əsas platforma kimi mövqeləndirir, eyni zamanda bu həllərin miqyaslanmasına və ixrac bazarlarında rəqabət aparmasına şərait yaradır.",
+      "Həyati sistemləri təhlükəsiz və fasiləsiz saxlayan texnologiyaları cəlb etmək, lokallaşdırmaq, miqyaslamaq və Azərbaycandan ixrac etmək üçün platforma.",
     ambitionLabel: "Aydın milli hədəf",
     ambitionValue: "$1 mlrd",
     ambitionCaption: "İKT ixracı",
@@ -60,6 +63,7 @@ export const az: Content = {
     commitments: [
       {
         title: "Mövcud güclü tərəflərə əsaslanmaq",
+        short: "Azərbaycanın infrastrukturu, bacarıqları və tərəfdaşlıqları başlanğıc nöqtəsidir.",
         body:
           "Klaster Azərbaycanın infrastrukturuna, formalaşmış texniki imkanlarına, həmçinin digər texnologiya klasterləri və provayderlərlə beynəlxalq tərəfdaşlıqlarına əsaslanır.",
         bullets: [
@@ -68,6 +72,7 @@ export const az: Content = {
       },
       {
         title: "Ekosistemi təmin etmək",
+        short: "Bazara “yumşaq eniş” — şirkətlər hər şeylə təkbaşına məşğul olmur.",
         body:
           "Klaster beynəlxalq şirkətlərə “yumşaq eniş” (soft-landing) platforması təqdim edir: şirkətlər hüquqi şəxsin qeydiyyatı, tərəfdaş axtarışı və tənzimləyici tələblərlə təkbaşına məşğul olmadan bazara sadələşdirilmiş şəkildə daxil olurlar.",
         bullets: [
@@ -77,6 +82,7 @@ export const az: Content = {
       },
       {
         title: "Cəlb etmək və lokallaşdırmaq",
+        short: "Aparıcı provayderləri cəlb etmək; xidmət, inteqrasiya və tətbiqi yerində qurmaq.",
         body:
           "Klaster aparıcı dayanıqlılıq texnologiyası provayderlərini cəlb edir və onların dəyər zəncirinin seçilmiş hissələrinin — xüsusilə xidmətlər, inteqrasiya və tətbiqin — Azərbaycanda lokallaşdırılmasını dəstəkləyir, eyni zamanda yerli imkanları və ekspertizanı inkişaf etdirir.",
         bullets: [
@@ -87,6 +93,7 @@ export const az: Content = {
       },
       {
         title: "İxrac modelini inkişaf etdirmək",
+        short: "Mərkəzi Asiya, Yaxın Şərq və Afrika üçün ixraca hazır həllər.",
         body:
           "Son məqsəd Azərbaycandan təqdim olunan inteqrasiya olunmuş, ixraca hazır həllər portfelidir; dəyər zəncirinin seçilmiş fəaliyyətləri xaricdəki müştərilərə xidmət göstərəcək. Prioritet bazarlara Mərkəzi Asiya, Yaxın Şərq, Afrika və qonşu regionlar daxildir.",
         bullets: [
@@ -101,8 +108,6 @@ export const az: Content = {
     title: "Mülki və ikili təyinatlı dayanıqlılıq texnologiyaları",
     lead:
       "Dayanıqlılıq Klasteri mülki və ikili təyinatlı dayanıqlılıq texnologiyalarına fokuslanır. Dörd əsas texnoloji istiqamət əhatə olunur.",
-    deckTitle:
-      "İki mənbə istiqamətləri fərqli təqdim edir: Word qaralamasında dörd əsas istiqamət, təqdimatda isə altı prioritet istiqamət var — eyni dörd əsas istiqamət, üstəgəl mülki avtonom və PUA sistemləri (ayrıca əhatə olunur) və data və süni intellekt (kəsişən dəstəkləyici imkan). Aşağıda hər iki çərçivə göstərilib.",
     statusLabels: {
       core: "Əsas istiqamət",
       separate: "Ayrıca əhatə olunur",
@@ -184,6 +189,7 @@ export const az: Content = {
       {
         icon: "landmark",
         title: "Dövlət tərəfindən dəstəklənən dayanıqlılıq gündəliyi",
+        short: "Dövlət dəstəkli yerli tələbə malik milli prioritet.",
         body:
           "Dayanıqlılıq texnologiyaları Azərbaycanda milli səviyyəli prioritetdir; dövlət infrastrukturu və xidmətləri üzrə milli prioritetlərlə dəstəklənən, dövlətin təmin etdiyi yerli tələb mövcuddur.",
         bullets: [
@@ -194,6 +200,7 @@ export const az: Content = {
       {
         icon: "bridge",
         title: "Siyasi bloklara bağlı olmayan etibarlı regional qapı",
+        short: "Avropa, Mərkəzi Asiya, Yaxın Şərq və Afrikaya vahid bazadan çıxış.",
         body:
           "Azərbaycanın strateji coğrafi mövqeyi Avropa, Mərkəzi Asiya, Yaxın Şərq, Afrika və digər regionları birləşdirir; bu da dayanıqlılıq bazarının böyük hissəsini vahid bazadan regional əlçatanlıq daxilində saxlayır. Ölkə bütün qonşuları və region ölkələri ilə balanslı, dostluq və siyasi cəhətdən müstəqil münasibətlər saxlayır.",
         bullets: [
@@ -204,6 +211,7 @@ export const az: Content = {
       {
         icon: "gavel",
         title: "Davam edən iqtisadi islahatlar gündəliyi",
+        short: "Biznes mühiti üzrə islahatlar davam edir, yeniləri planlaşdırılır.",
         body:
           "Azərbaycan biznes mühitini yaxşılaşdırmaq və investor inamını gücləndirmək məqsədilə daha geniş transformasiya gündəliyini irəli aparır. Biznes əməliyyatlarını sadələşdirmək, bazara daxilolma və böyümə qarşısındakı maneələri azaltmaq üçün əlavə tənzimləyici islahatlar planlaşdırılır.",
         bullets: [
@@ -212,6 +220,12 @@ export const az: Content = {
         ],
       },
     ],
+    gateway: {
+      title: "Regional qapı",
+      center: "Azərbaycan",
+      nodes: ["Avropa", "Mərkəzi Asiya", "Yaxın Şərq", "Afrika"],
+      caption: "Region ölkələri ilə balanslı, dostluq və siyasi cəhətdən müstəqil münasibətlər",
+    },
   },
   incentives: {
     kicker: "04 · Güzəştlər və üstünlüklər",
@@ -227,9 +241,11 @@ export const az: Content = {
       intro:
         "Azərbaycan ölkəni texnologiya biznesləri üçün rəqabətqabiliyyətli bazaya çevirmək məqsədilə geniş miqyaslı iqtisadi islahat həyata keçirir:",
       selectedExamples: "Seçilmiş nümunələr",
+      hint: "Ətraflı məlumat üçün karta klikləyin",
       groups: [
         {
           title: "Mənfəət və dividendlər",
+          headline: { value: "0%", label: "mənfəət və dividend vergisi" },
           body:
             "Süni intellekt, rəqəmsal və kibertəhlükəsizlik daxil olmaqla uyğun fəaliyyətlər üçün uzunmüddətli sıfır dərəcəli mənfəət vergisi və innovasiya sektorunda dividendlərə sıfır dərəcə.",
           addition:
@@ -242,6 +258,7 @@ export const az: Content = {
         },
         {
           title: "İnsan resursları",
+          headline: { value: "0%", label: "İKT mütəxəssisləri üçün gəlir vergisi · 20 il" },
           body:
             "İKT mütəxəssisləri — xarici ekspertlər, geri qayıdan rezidentlər və tədqiqat-inkişaf (R&D) əməkdaşları — üçün iyirmi il müddətinə sıfır dərəcəli gəlir vergisi.",
           rows: [
@@ -250,6 +267,7 @@ export const az: Content = {
         },
         {
           title: "İnvestisiya və R&D",
+          headline: { value: "250%", label: "R&D üzrə super güzəşt" },
           body:
             "Uyğun investisiyaların tam məbləğdə gəlirdən çıxılması və əmək haqqı, materiallar və sınaqları əhatə edən, uğursuz layihələr də daxil olmaqla, R&D xərcləri üçün artırılmış (super) güzəşt.",
           rows: [
@@ -260,6 +278,7 @@ export const az: Content = {
         },
         {
           title: "Əqli mülkiyyət",
+          headline: { value: "≈1%", label: "royalti gəliri üzrə effektiv dərəcə" },
           body:
             "Royalti gəlirləri böyük ölçüdə vergidən azaddır; bu da uyğun əqli mülkiyyət gəlirləri üzrə effektiv dərəcəni təxminən bir faizə endirir.",
           rows: [
@@ -268,6 +287,7 @@ export const az: Content = {
         },
         {
           title: "İdxal",
+          headline: { value: "0%", label: "texnologiya idxalına ƏDV və gömrük" },
           body:
             "Texnologiya idxalı və xidmətləri ƏDV-dən, avadanlıq idxalı isə gömrük rüsumundan azaddır.",
           rows: [
@@ -277,6 +297,7 @@ export const az: Content = {
         },
         {
           title: "Məsafədən qeydiyyat",
+          headline: { value: "Məsafədən", label: "şirkət, rəqəmsal ID və bank hesabı" },
           body:
             "Şirkətin qeydiyyatı, rəqəmsal identifikasiya və bank hesabının açılması tam məsafədən həyata keçirilir; beləliklə, şirkət Azərbaycana səfər etmədən təsis oluna və fəaliyyətə başlaya bilər.",
           rows: [
@@ -293,6 +314,7 @@ export const az: Content = {
         "Klaster üzvlərinin böyüməsini sürətləndirmək məqsədilə dörd istiqamət üzrə xüsusi ixraca dəstək proqramları hazırlanır:",
       deckIntro:
         "Klasterin hər bir üzvünün böyüməsini sürətləndirmək üçün xüsusi ixraca dəstək proqramları hazırlanır.",
+      builderHint: "Hər şirkət üçün illik limiti görmək üçün proqramları açıb-bağlayın",
       areas: [
         {
           title: "Hədəf bazara dəstək",
@@ -363,6 +385,14 @@ export const az: Content = {
     title: "Anchor şirkətlərin cəlb edilməsi",
     lead:
       "Klasterin “anchor” (aparıcı) şirkətləri kimi hansı şirkətlərin çıxış edə biləcəyi, onların necə prioritetləşdirildiyi və Azərbaycanda lokallaşdırmaya doğru iki yol barədə BCG iş materialı. Yalnız təqdimatda yer alır.",
+    explorer: {
+      title: "Namizəd şirkətləri araşdırın",
+      hint: "Loqoları filtrləmək üçün bara klikləyin",
+      byDomain: "İstiqamət üzrə · slayd 8",
+      byPool: "Prioritet qrup üzrə · slayd 9",
+      showing: "Göstərilir",
+      multiDomain: "Birdən çox istiqamətdə yer alır",
+    },
     criteria: {
       kicker: "Prioritetləşdirmə",
       title:
@@ -617,20 +647,11 @@ export const az: Content = {
     },
     candidates: {
       title: "İstiqamət üzrə namizəd anchor şirkətlər",
+      short: "namizəd anchor şirkət",
       subtitle: "Təqdimatın 8-ci slaydı · ilkin siyahı, Estoniya şirkətləri daxil olmaqla",
       unit: "şirkət",
       notMapped: "göstərilməyib",
       domainHeader: "İstiqamət",
-    },
-    zeroRates: {
-      title: "Sıfır dərəcəli maddələr",
-      items: [
-        { value: "0%", label: "Mənfəət vergisi (uzunmüddətli)" },
-        { value: "0%", label: "Dividend vergisi (innovasiya sektoru)" },
-        { value: "0%", label: "Gəlir vergisi, İKT mütəxəssisləri (20 il)" },
-        { value: "0%", label: "Texnologiya idxalı və xidmətlərinə ƏDV" },
-        { value: "0%", label: "Avadanlıq idxalına gömrük rüsumu" },
-      ],
     },
     deductions: {
       title: "Hər 100 vahid uyğun xərc üzrə gəlirdən çıxılan məbləğ",
@@ -671,6 +692,7 @@ export const az: Content = {
     lead:
       "Məzmun növbəti mərhələyə keçməzdən əvvəl BCG ilə dəqiqləşdirilməli olan uyğunsuzluqlar və boşluqlar. Aşkar orfoqrafik səhvlər səhifədə düzəldilib; mahiyyət etibarilə olan hər şey mənbədə olduğu kimi göstərilib və burada qeyd olunub.",
     severity: { high: "Dəqiqləşdir", medium: "Yoxla", low: "Düzəlt", done: "Həll olunub" },
+    filterLabel: "Statusa görə filtr",
     items: [
       {
         severity: "done",

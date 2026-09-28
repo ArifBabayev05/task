@@ -8,15 +8,15 @@ const subscribe = (onChange: () => void) => {
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-sources"] });
   return () => observer.disconnect();
 };
-const getSnapshot = () => document.documentElement.dataset.sources !== "off";
-const getServerSnapshot = () => true;
+const getSnapshot = () => document.documentElement.dataset.sources === "on";
+const getServerSnapshot = () => false;
 
 export function SourceToggle({ onLabel, offLabel }: { onLabel: string; offLabel: string }) {
   const visible = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const toggle = () => {
     const next = visible ? "off" : "on";
-    if (next === "off") document.documentElement.dataset.sources = "off";
+    if (next === "on") document.documentElement.dataset.sources = "on";
     else delete document.documentElement.dataset.sources;
     try {
       localStorage.setItem("sources", next);

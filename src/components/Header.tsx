@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Lock } from "lucide-react";
 import { locales, type Locale } from "@/content";
 import type { Content } from "@/content/types";
+import { ScrollSpy } from "./interactive";
 import { SourceToggle } from "./SourceToggle";
 
 export function Header({ c, lang }: { c: Content; lang: Locale }) {
@@ -42,12 +43,13 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
           </nav>
         </div>
       </div>
-      <nav aria-label="Sections" className="border-t border-white/10">
+      <nav aria-label="Sections" className="relative border-t border-white/10">
         <ul className="no-scrollbar mx-auto flex max-w-6xl gap-1 overflow-x-auto px-2 sm:px-4 lg:px-6">
           {c.ui.nav.map((item, i) => (
             <li key={item.id} className={`shrink-0 ${item.id === "strategy" ? "ml-2 border-l border-white/15 pl-2" : ""}`}>
               <a
                 href={`#${item.id}`}
+                data-nav={item.id}
                 className="block whitespace-nowrap px-2.5 py-2.5 text-[13px] font-medium text-white/75 transition hover:text-white"
               >
                 <span className="mr-1.5 tabular-nums text-white/40">{String(i + 1).padStart(2, "0")}</span>
@@ -56,6 +58,7 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
             </li>
           ))}
         </ul>
+        <ScrollSpy ids={c.ui.nav.map((n) => n.id)} />
       </nav>
     </header>
   );

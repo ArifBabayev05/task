@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
   };
 }
 
-// Applies the stored "source marks" preference before first paint.
-const sourcesScript = `try{if(localStorage.getItem("sources")==="off")document.documentElement.dataset.sources="off"}catch(e){}`;
+// Marks JS as available (enables reveal animations) and applies the stored "source marks" preference before first paint.
+const sourcesScript = `document.documentElement.classList.add("js");try{if(localStorage.getItem("sources")==="on")document.documentElement.dataset.sources="on"}catch(e){}`;
 
 export default async function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
   const { lang } = await params;

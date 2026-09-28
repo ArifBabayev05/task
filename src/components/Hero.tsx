@@ -20,7 +20,7 @@ export function Hero({ c }: { c: Content }) {
           <span aria-hidden className="size-1.5 rounded-full bg-accent" />
           {ui.internalNotice}
         </p>
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-end">
+        <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-end">
           <div>
             <p className="flex flex-wrap items-center gap-2 text-sm font-medium text-cyan">
               {hero.eyebrow} <SourceMark label={ui.deckOnly} tone="dark" />

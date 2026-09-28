@@ -1,17 +1,10 @@
 import Image from "next/image";
 import { ChevronDown, Lock, TriangleAlert } from "lucide-react";
-import { russiaExits } from "@/content/companies";
+import { candidatesByDomain, russiaExits } from "@/content/companies";
 import type { Content } from "@/content/types";
-import { ChartCard, HBarChart, Timeline } from "./charts";
+import { ChartCard, Timeline } from "./charts";
+import { CompanyExplorer } from "./CompanyExplorer";
 import { Bullets, Container, Logo, SectionHeader, SlideTitle, SourceMark, icons } from "./ui";
-
-const poolTones: Record<string, string> = {
-  navy: "bg-navy-800",
-  green: "bg-emerald-600",
-  blue: "bg-brand-600",
-  ink: "bg-navy-950",
-  gray: "bg-slate-500",
-};
 
 export function Strategy({ c }: { c: Content }) {
   const { strategy, ui } = c;
@@ -27,7 +20,7 @@ export function Strategy({ c }: { c: Content }) {
           <p className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy-950">
             <Lock aria-hidden className="size-3.5" /> {ui.sectionInternal}
           </p>
-          <div className="mt-6" id="strategy-title">
+          <div data-reveal className="mt-6" id="strategy-title">
             <SectionHeader
               kicker={strategy.kicker}
               title={strategy.title}
@@ -40,8 +33,7 @@ export function Strategy({ c }: { c: Content }) {
       </div>
 
       <Criteria c={c} />
-      <Candidates c={c} />
-      <Pools c={c} />
+      <Explorer c={c} />
       <Pathway1 c={c} />
       <Pathway2 c={c} />
     </section>
@@ -53,37 +45,50 @@ function Criteria({ c }: { c: Content }) {
   return (
     <div className="bg-white py-16 sm:py-20">
       <Container>
-        <SlideTitle kicker={criteria.kicker} title={criteria.title} />
-        <p className="mt-2 text-xs text-muted">{criteria.duplicateNote}</p>
-        <div className="mt-8 grid gap-5 lg:grid-cols-2">
-          {criteria.columns.map((col) => {
+        <div data-reveal>
+          <SlideTitle kicker={criteria.kicker} title={criteria.title} />
+          <p className="mt-2 text-xs text-muted">{criteria.duplicateNote}</p>
+        </div>
+        <div className="mt-8 grid grid-cols-1 items-start gap-5 lg:grid-cols-[1fr_auto_1fr]">
+          {criteria.columns.map((col, ci) => {
             const blue = col.tone === "blue";
             return (
-              <div
-                key={col.title}
-                className={`overflow-hidden rounded-xl border ${blue ? "border-brand/30" : "border-leaf/30"}`}
-              >
-                <h4
-                  className={`px-6 py-4 text-lg font-semibold ${
-                    blue ? "bg-white text-brand" : "bg-white text-leaf"
-                  } border-b ${blue ? "border-brand/20" : "border-leaf/20"}`}
-                >
-                  {col.title}
-                </h4>
-                <ul className={`divide-y ${blue ? "divide-white bg-sky-50" : "divide-white bg-leaf-50"}`}>
-                  {col.items.map((item) => {
-                    const Icon = icons[item.icon];
-                    return (
-                      <li key={item.title} className="flex gap-4 px-6 py-4">
-                        <Icon aria-hidden className={`mt-0.5 size-7 shrink-0 ${blue ? "text-brand-600" : "text-leaf"}`} />
-                        <div>
-                          <p className="font-semibold text-navy-900">{item.title}</p>
-                          <p className="mt-0.5 text-sm leading-relaxed text-ink/80">{item.body}</p>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
+              <div key={col.title} className="contents">
+                {ci === 1 && (
+                  <span
+                    aria-hidden
+                    className="mx-auto hidden size-10 items-center justify-center self-center rounded-full bg-navy-900 text-lg font-semibold text-white lg:flex"
+                  >
+                    ×
+                  </span>
+                )}
+                <div data-reveal className={`overflow-hidden rounded-xl border ${blue ? "border-brand/30" : "border-leaf/30"}`}>
+                  <h4
+                    className={`flex items-center justify-between border-b px-5 py-4 text-lg font-semibold ${
+                      blue ? "border-brand/20 text-brand" : "border-leaf/20 text-leaf"
+                    }`}
+                  >
+                    {col.title}
+                    <span className={`rounded-full px-2 py-0.5 text-xs ${blue ? "bg-sky-100" : "bg-leaf-100"}`}>{col.items.length}</span>
+                  </h4>
+                  <ul className={`divide-y ${blue ? "divide-white bg-sky-50" : "divide-white bg-leaf-50"}`}>
+                    {col.items.map((item) => {
+                      const Icon = icons[item.icon];
+                      return (
+                        <li key={item.title}>
+                          <details className="group">
+                            <summary className="flex cursor-pointer list-none items-center gap-3 px-5 py-3.5 transition hover:bg-white/60 [&::-webkit-details-marker]:hidden">
+                              <Icon aria-hidden className={`size-6 shrink-0 ${blue ? "text-brand-600" : "text-leaf"}`} />
+                              <span className="flex-1 font-semibold text-navy-900">{item.title}</span>
+                              <ChevronDown aria-hidden className="size-4 text-muted transition group-open:rotate-180" />
+                            </summary>
+                            <p className="px-5 pb-4 pl-14 text-sm leading-relaxed text-ink/80">{item.body}</p>
+                          </details>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
             );
           })}
@@ -93,83 +98,52 @@ function Criteria({ c }: { c: Content }) {
   );
 }
 
-function Candidates({ c }: { c: Content }) {
-  const { candidates } = c.strategy;
+function Explorer({ c }: { c: Content }) {
+  const { strategy, charts, ui } = c;
+  const { candidates, pools, explorer } = strategy;
   return (
     <div className="bg-sky-50 py-16 sm:py-20">
       <Container>
-        <SlideTitle kicker={candidates.kicker} title={candidates.title} />
-        <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {candidates.domains.map((d, i) => (
-            <li key={d.title} className="flex flex-col rounded-xl border border-line bg-white shadow-sm">
-              <div className="flex items-center gap-3 border-b border-line p-4">
-                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-600 text-sm font-semibold text-white">
-                  {i + 1}
-                </span>
-                <h4 className="font-semibold leading-snug text-brand">{d.title}</h4>
-              </div>
-              <ul className="grid grid-cols-2 items-center gap-x-4 gap-y-5 p-5">
-                {d.companies.map((co) => (
-                  <li key={co.name} className="flex min-h-9 items-center justify-center">
-                    <Logo company={co} area={2000} maxWidth={110} maxHeight={40} />
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-auto border-t border-line px-4 py-2.5 text-xs text-muted">
-                {d.companies.length} · {d.companies.map((co) => co.name).join(", ")}
-              </p>
-            </li>
-          ))}
-        </ol>
-        <div className="mt-5 space-y-1 text-xs text-muted">
-          {candidates.footnotes.map((f) => (
-            <p key={f}>{f}</p>
-          ))}
+        <div data-reveal>
+          <SlideTitle kicker={candidates.kicker} title={candidates.title} />
+          <p className="mt-3 text-[15px] text-muted">{pools.title}</p>
         </div>
-      </Container>
-    </div>
-  );
-}
+        <div data-reveal className="mt-8">
+          <CompanyExplorer
+            modes={[
+              {
+                id: "domain",
+                label: explorer.byDomain,
+                groups: candidates.domains.map((d, i) => ({ title: d.title, companies: candidatesByDomain[i] })),
+              },
+              {
+                id: "pool",
+                label: explorer.byPool,
+                groups: pools.pools.map((p) => ({ title: p.title, companies: p.companies })),
+              },
+            ]}
+            labels={{
+              all: ui.all,
+              showing: explorer.showing,
+              unit: charts.pools.unit,
+              hint: explorer.hint,
+              multiDomain: explorer.multiDomain,
+            }}
+          />
+        </div>
 
-function Pools({ c }: { c: Content }) {
-  const { pools } = c.strategy;
-  return (
-    <div className="bg-white py-16 sm:py-20">
-      <Container>
-        <SlideTitle kicker={pools.kicker} title={pools.title} />
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {pools.pools.map((p) => (
-            <li key={p.title} className="flex flex-col">
-              <div className="flex flex-1 flex-col overflow-hidden rounded-xl border border-line bg-white">
-                <h4
-                  className={`flex min-h-16 items-center justify-center px-3 py-3 text-center text-sm font-semibold leading-snug text-white ${
-                    poolTones[p.tone] ?? "bg-navy-800"
-                  }`}
-                >
-                  {p.title}
-                </h4>
-                <ul className="flex flex-1 flex-col items-center justify-center gap-5 p-5">
-                  {p.companies.map((co) => (
-                    <li key={co.name}>
-                      <Logo company={co} area={3400} maxWidth={150} maxHeight={52} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <ChevronDown aria-hidden className="mx-auto mt-2 hidden size-6 text-muted lg:block" />
-            </li>
-          ))}
-        </ul>
-        <p className="mt-6 rounded-xl bg-navy-800 px-5 py-4 text-center text-base font-semibold text-white sm:text-lg">
+        <p data-reveal className="mt-10 rounded-xl bg-navy-800 px-5 py-4 text-center text-base font-semibold text-white sm:text-lg">
           {pools.chainTitle}
         </p>
         <ol className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {pools.chain.map((step) => {
+          {pools.chain.map((step, i) => {
             const Icon = icons[step.icon];
             return (
               <li
                 key={step.label}
-                className="flex flex-col items-center gap-3 rounded-xl bg-sky-100 px-3 py-5 text-center"
+                data-reveal
+                style={{ ["--reveal-delay" as string]: `${i * 70}ms` }}
+                className="flex flex-col items-center gap-3 rounded-xl bg-sky-100 px-3 py-5 text-center transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
               >
                 <Icon aria-hidden className="size-7 text-brand-600" strokeWidth={1.5} />
                 <span className="text-sm font-semibold leading-snug text-brand">{step.label}</span>
@@ -177,21 +151,12 @@ function Pools({ c }: { c: Content }) {
             );
           })}
         </ol>
-        <p className="mt-4 text-xs text-muted">{pools.footnote}</p>
-        <ChartCard className="mt-8 lg:max-w-2xl" title={c.charts.pools.title}>
-          <HBarChart
-            rows={pools.pools.map((p) => ({
-              key: p.title,
-              label: p.title,
-              value: p.companies.length,
-              display: String(p.companies.length),
-            }))}
-            max={Math.max(...pools.pools.map((p) => p.companies.length))}
-            unit={c.charts.pools.unit}
-            tableLabel={c.charts.tableToggle}
-            headers={[pools.kicker, c.charts.pools.unit]}
-          />
-        </ChartCard>
+        <div className="mt-5 space-y-1 text-xs text-muted">
+          {candidates.footnotes.map((f) => (
+            <p key={f}>{f}</p>
+          ))}
+          <p>{pools.footnote}</p>
+        </div>
       </Container>
     </div>
   );
@@ -212,7 +177,7 @@ function ExitTimeline({ c }: { c: Content }) {
     };
   });
   return (
-    <ChartCard className="mt-8" title={exits.title} subtitle={exits.subtitle}>
+    <ChartCard title={exits.title} subtitle={exits.subtitle}>
       <Timeline
         items={items}
         from={2022}
@@ -226,67 +191,61 @@ function ExitTimeline({ c }: { c: Content }) {
   );
 }
 
+function RowLabel({ children }: { children: React.ReactNode }) {
+  return <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted">{children}</p>;
+}
+
 function Pathway1({ c }: { c: Content }) {
   const { pathway1: p } = c.strategy;
   const h = p.headers;
   return (
-    <div className="bg-sky-50 py-16 sm:py-20">
+    <div className="bg-white py-16 sm:py-20">
       <Container>
-        <SlideTitle kicker={p.kicker} title={p.title} />
-        <p className="mt-3 text-[15px] text-muted">{p.subtitle}</p>
-        <ExitTimeline c={c} />
-
-        <div
-          aria-hidden
-          className="mt-8 hidden grid-cols-[150px_150px_minmax(0,1.5fr)_minmax(0,1fr)_150px] gap-5 rounded-t-xl bg-navy-800 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-white lg:grid"
-        >
-          <span>{h.company}</span>
-          <span>{h.exit}</span>
-          <span>{h.fit}</span>
-          <span>{h.value}</span>
-          <span>{h.current}</span>
+        <div data-reveal>
+          <SlideTitle kicker={p.kicker} title={p.title} />
+          <p className="mt-3 text-[15px] text-muted">{p.subtitle}</p>
         </div>
-        <ul className="mt-8 space-y-4 lg:mt-0 lg:space-y-0 lg:divide-y lg:divide-line lg:overflow-hidden lg:rounded-b-xl lg:border lg:border-t-0 lg:border-line">
-          {p.rows.map((r) => (
-            <li
-              key={r.company.name}
-              className="grid gap-4 rounded-xl border border-line bg-white p-5 lg:grid-cols-[150px_150px_minmax(0,1.5fr)_minmax(0,1fr)_150px] lg:gap-5 lg:rounded-none lg:border-0"
-            >
-              <div>
-                <Logo company={r.company} area={3000} maxWidth={140} maxHeight={48} />
-                <p className="mt-2 text-xs font-medium text-brand">{r.domain}</p>
-              </div>
-              <div className="text-sm italic text-muted">
-                <p>
-                  <span className="font-semibold not-italic text-ink/70">{h.exit}: </span>
-                  {r.exit}
-                </p>
-                <p className="mt-1">
-                  <span className="font-semibold not-italic text-ink/70">{h.footprint}: </span>
-                  {r.footprint}
-                </p>
-              </div>
-              <div>
-                <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted lg:sr-only">{h.fit}</p>
-                <Bullets items={r.fit} className="text-sm text-ink/85" dotClass="bg-navy-700" />
-              </div>
-              <div>
-                <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted lg:sr-only">{h.value}</p>
-                <Bullets items={r.value} className="text-sm text-brand-600" />
-              </div>
-              <div>
-                <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted lg:sr-only">{h.current}</p>
-                <span
-                  className={`inline-block rounded-lg px-3 py-2 text-center text-[13px] font-medium leading-snug text-ink ${
-                    r.currentTone === "green" ? "bg-leaf-100" : "bg-sky-100"
-                  }`}
-                >
-                  {r.current}
-                </span>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-8 grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
+          <ExitTimeline c={c} />
+          <ul data-reveal className="space-y-2.5">
+            {p.rows.map((r) => (
+              <li key={r.company.name}>
+                <details className="group rounded-xl border border-line bg-white transition open:shadow-md">
+                  <summary className="flex cursor-pointer list-none flex-wrap items-center gap-x-4 gap-y-2 p-4 [&::-webkit-details-marker]:hidden">
+                    <span className="w-28 shrink-0">
+                      <Logo company={r.company} area={1800} maxWidth={110} maxHeight={36} />
+                    </span>
+                    <span className="min-w-0 flex-1 text-xs font-medium text-brand">{r.domain}</span>
+                    <span
+                      className={`rounded-md px-2.5 py-1 text-xs font-medium text-ink ${
+                        r.currentTone === "green" ? "bg-leaf-100" : "bg-sky-100"
+                      }`}
+                    >
+                      {r.current}
+                    </span>
+                    <ChevronDown aria-hidden className="size-4 text-muted transition group-open:rotate-180" />
+                  </summary>
+                  <div className="grid grid-cols-1 gap-4 border-t border-line p-4 sm:grid-cols-2">
+                    <div className="sm:col-span-2">
+                      <p className="text-sm text-ink/80">
+                        <span className="font-semibold text-navy-900">{h.exit}:</span> {r.exit} ·{" "}
+                        <span className="font-semibold text-navy-900">{h.footprint}:</span> <em>{r.footprint}</em>
+                      </p>
+                    </div>
+                    <div>
+                      <RowLabel>{h.fit}</RowLabel>
+                      <Bullets items={r.fit} className="text-sm text-ink/85" dotClass="bg-navy-700" />
+                    </div>
+                    <div>
+                      <RowLabel>{h.value}</RowLabel>
+                      <Bullets items={r.value} className="text-sm text-brand-600" />
+                    </div>
+                  </div>
+                </details>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
     </div>
   );
@@ -296,49 +255,46 @@ function Pathway2({ c }: { c: Content }) {
   const { pathway2: p } = c.strategy;
   const h = p.headers;
   return (
-    <div className="bg-white py-16 sm:py-20">
+    <div className="bg-sky-50 py-16 sm:py-20">
       <Container>
-        <SlideTitle kicker={p.kicker} title={p.title} />
-        <p className="mt-3 text-[15px] text-muted">{p.subtitle}</p>
-
-        <div
-          aria-hidden
-          className="mt-8 hidden grid-cols-[180px_minmax(0,1.3fr)_minmax(0,1fr)] gap-6 rounded-t-xl bg-navy-800 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-white lg:grid"
-        >
-          <span>{h.company}</span>
-          <span>{h.projects}</span>
-          <span>{h.fit}</span>
+        <div data-reveal>
+          <SlideTitle kicker={p.kicker} title={p.title} />
+          <p className="mt-3 text-[15px] text-muted">{p.subtitle}</p>
         </div>
-        <ul className="mt-8 space-y-4 lg:mt-0 lg:space-y-0 lg:divide-y lg:divide-line lg:overflow-hidden lg:rounded-b-xl lg:border lg:border-t-0 lg:border-line">
-          {p.rows.map((r) => (
-            <li
-              key={r.company.map((co) => co.name).join("+")}
-              className="grid gap-4 rounded-xl border border-line bg-white p-5 lg:grid-cols-[180px_minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-6 lg:rounded-none lg:border-0"
-            >
-              <div>
-                <div className="flex flex-wrap items-center gap-3">
-                  {r.company.map((co) => (
-                    <Logo key={co.name} company={co} area={2600} maxWidth={140} maxHeight={44} />
-                  ))}
+        <ul className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2">
+          {p.rows.map((r, i) => (
+            <li key={r.company.map((co) => co.name).join("+")} data-reveal style={{ ["--reveal-delay" as string]: `${(i % 2) * 80}ms` }}>
+              <details className="group h-full rounded-xl border border-line bg-white transition open:shadow-md">
+                <summary className="flex cursor-pointer list-none items-center gap-4 p-4 [&::-webkit-details-marker]:hidden">
+                  <span className="flex w-36 shrink-0 flex-wrap items-center gap-2">
+                    {r.company.map((co) => (
+                      <Logo key={co.name} company={co} area={1600} maxWidth={r.company.length > 1 ? 70 : 130} maxHeight={36} />
+                    ))}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-xs font-medium text-brand">{r.domain}</span>
+                    <span className="mt-0.5 line-clamp-1 text-[13px] text-muted">{r.projects[0]}</span>
+                  </span>
+                  {r.flag && <TriangleAlert aria-hidden className="size-4 shrink-0 text-alert" />}
+                  <ChevronDown aria-hidden className="size-4 shrink-0 text-muted transition group-open:rotate-180" />
+                </summary>
+                <div className="grid gap-4 border-t border-line p-4">
+                  <div>
+                    <RowLabel>{h.projects}</RowLabel>
+                    <Bullets items={r.projects} className="text-sm text-ink/85" dotClass="bg-navy-700" />
+                  </div>
+                  <div>
+                    <RowLabel>{h.fit}</RowLabel>
+                    <Bullets items={r.fit} className="text-sm text-brand-600" />
+                    {r.flag && (
+                      <p className="mt-3 flex gap-2 rounded-lg border border-alert/25 bg-alert-50 px-3 py-2 text-xs leading-snug text-alert">
+                        <TriangleAlert aria-hidden className="size-4 shrink-0" />
+                        <span>{r.flag}</span>
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <p className="mt-2 text-xs font-medium text-brand">{r.domain}</p>
-              </div>
-              <div>
-                <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted lg:sr-only">
-                  {h.projects}
-                </p>
-                <Bullets items={r.projects} className="text-sm text-ink/85" dotClass="bg-navy-700" />
-              </div>
-              <div>
-                <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted lg:sr-only">{h.fit}</p>
-                <Bullets items={r.fit} className="text-sm text-brand-600" />
-                {r.flag && (
-                  <p className="mt-3 flex gap-2 rounded-lg border border-alert/25 bg-alert-50 px-3 py-2 text-xs leading-snug text-alert">
-                    <TriangleAlert aria-hidden className="size-4 shrink-0" />
-                    <span>{r.flag}</span>
-                  </p>
-                )}
-              </div>
+              </details>
             </li>
           ))}
         </ul>

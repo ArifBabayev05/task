@@ -34,6 +34,9 @@ export type Content = {
     sectionPublic: string;
     sectionInternal: string;
     backToTop: string;
+    readMore: string;
+    showLess: string;
+    all: string;
   };
   hero: {
     eyebrow: string;
@@ -54,6 +57,8 @@ export type Content = {
     modelLead: string;
     commitments: {
       title: string;
+      /** One-line summary shown by default; `body` and `bullets` sit behind "Read more". */
+      short: string;
       body: string;
       bullets: string[];
     }[];
@@ -63,7 +68,6 @@ export type Content = {
     kicker: string;
     title: string;
     lead: string;
-    deckTitle: string;
     statusLabels: Record<DomainStatus, string>;
     items: {
       id: string;
@@ -84,9 +88,11 @@ export type Content = {
     reasons: {
       icon: "landmark" | "bridge" | "gavel";
       title: string;
+      short: string;
       body: string;
       bullets: string[];
     }[];
+    gateway: { title: string; center: string; nodes: string[]; caption: string };
   };
   incentives: {
     kicker: string;
@@ -98,8 +104,11 @@ export type Content = {
       subline: string;
       intro: string;
       selectedExamples: string;
+      hint: string;
       groups: {
         title: string;
+        /** Big figure shown on the tile. */
+        headline: { value: string; label: string };
         body: string;
         /** Sentence added to the Word copy from the deck (shown highlighted). */
         addition?: string;
@@ -110,6 +119,7 @@ export type Content = {
       title: string;
       intro: string;
       deckIntro: string;
+      builderHint: string;
       areas: {
         title: string;
         body: string;
@@ -121,6 +131,14 @@ export type Content = {
     kicker: string;
     title: string;
     lead: string;
+    explorer: {
+      title: string;
+      hint: string;
+      byDomain: string;
+      byPool: string;
+      showing: string;
+      multiDomain: string;
+    };
     criteria: {
       kicker: string;
       title: string;
@@ -192,8 +210,7 @@ export type Content = {
       coreLabel: string;
       extraLabel: string;
     };
-    candidates: { title: string; subtitle: string; unit: string; notMapped: string; domainHeader: string };
-    zeroRates: { title: string; items: { value: string; label: string }[] };
+    candidates: { title: string; short: string; subtitle: string; unit: string; notMapped: string; domainHeader: string };
     deductions: { title: string; subtitle: string; baseline: string; rows: { label: string; value: number }[] };
     royalty: { title: string; exempt: string; taxed: string; effective: string };
     exportFunding: { title: string; subtitle: string; research: string; sales: string; total: string };
@@ -213,6 +230,7 @@ export type Content = {
     title: string;
     lead: string;
     severity: { high: string; medium: string; low: string; done: string };
+    filterLabel: string;
     items: { severity: "high" | "medium" | "low" | "done"; title: string; body: string }[];
   };
   footer: {

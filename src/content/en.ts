@@ -30,12 +30,15 @@ export const en: Content = {
     sectionPublic: "Cluster narrative",
     sectionInternal: "Internal strategy",
     backToTop: "Back to top",
+    readMore: "Read more",
+    showLess: "Show less",
+    all: "All",
   },
   hero: {
     eyebrow: "Resilience cluster company landing",
     title: "Technology Resilience Cluster of Azerbaijan",
     lead:
-      "Azerbaijan is positioning the Resilience Cluster as a core platform to attract and localize technologies that strengthen the security and continuity of essential systems, while enabling these solutions to scale and compete in export markets.",
+      "A platform to attract, localize and scale the technologies that keep essential systems secure and running — and to export them from Azerbaijan.",
     ambitionLabel: "Clear national ambition",
     ambitionValue: "$1B",
     ambitionCaption: "ICT export",
@@ -59,6 +62,7 @@ export const en: Content = {
     commitments: [
       {
         title: "Build on existing strengths",
+        short: "Use Azerbaijan's infrastructure, skills and partnerships as the starting point.",
         body:
           "The cluster builds on Azerbaijan's infrastructure, its established technical capabilities, and its international partnerships with other technology clusters and providers.",
         bullets: [
@@ -67,6 +71,7 @@ export const en: Content = {
       },
       {
         title: "Enable the ecosystem",
+        short: "A soft-landing route into the market — no need to go it alone.",
         body:
           "The cluster provides international players with a soft-landing platform, offering a streamlined route into the market without requiring companies to navigate entity setup, partner identification, and regulatory requirements independently.",
         bullets: [
@@ -76,6 +81,7 @@ export const en: Content = {
       },
       {
         title: "Attract and localize",
+        short: "Bring in leading providers and localize services, integration and deployment.",
         body:
           "The cluster attracts leading resilience technology providers and supports the localization of selected parts of their value chain in Azerbaijan, particularly services, integration, and deployment, while building local capabilities and expertise.",
         bullets: [
@@ -86,6 +92,7 @@ export const en: Content = {
       },
       {
         title: "Develop the export model",
+        short: "Export-ready solutions for Central Asia, the Middle East and Africa.",
         body:
           "The end state is a portfolio of integrated, export-ready solutions delivered from Azerbaijan, with selected value-chain activities serving customers abroad. Priority markets include Central Asia, the Middle East, Africa, and adjacent regions.",
         bullets: [
@@ -100,8 +107,6 @@ export const en: Content = {
     title: "Civilian and dual-use resilience technologies",
     lead:
       "The Resilience Cluster focuses on civilian and dual-use resilience technologies. Four core technology domains are covered.",
-    deckTitle:
-      "The two sources frame the domains differently: the Word draft names four core domains, while the deck names six priority domains — the same four core domains plus civilian autonomous & UAV systems (covered separately) and data & AI (a cross-cutting enabler). Both framings are shown below.",
     statusLabels: {
       core: "Core domain",
       separate: "Covered separately",
@@ -170,6 +175,7 @@ export const en: Content = {
       {
         icon: "landmark",
         title: "A state-backed resilience agenda",
+        short: "A national priority with state-backed local demand.",
         body:
           "Resilience technology is a national-level priority in Azerbaijan, with local state-backed demand, supported by national priorities across public infrastructure and services.",
         bullets: [
@@ -180,6 +186,7 @@ export const en: Content = {
       {
         icon: "bridge",
         title: "A trusted regional gateway with no political affiliation",
+        short: "One base within reach of Europe, Central Asia, the Middle East and Africa.",
         body:
           "Azerbaijan's strategic geographic location connects Europe, Central Asia, the Middle East, Africa and beyond, which puts a large share of the addressable resilience market within regional reach of a single base. The country maintains balanced, friendly and politically independent relations with all its neighbors and with countries across the region.",
         bullets: [
@@ -190,6 +197,7 @@ export const en: Content = {
       {
         icon: "gavel",
         title: "An ongoing economic reform agenda",
+        short: "Business-environment reforms under way, with more planned.",
         body:
           "Azerbaijan is advancing a broader transformation agenda to improve the ease of doing business and strengthen investor confidence. Further regulatory reforms are planned to simplify business operations and reduce barriers to market entry and growth.",
         bullets: [
@@ -198,6 +206,12 @@ export const en: Content = {
         ],
       },
     ],
+    gateway: {
+      title: "A regional gateway",
+      center: "Azerbaijan",
+      nodes: ["Europe", "Central Asia", "Middle East", "Africa"],
+      caption: "Balanced, friendly and politically independent relations across the region",
+    },
   },
   incentives: {
     kicker: "04 · Incentives and benefits",
@@ -213,9 +227,11 @@ export const en: Content = {
       intro:
         "Azerbaijan is implementing a wide-ranging economic reform designed to make the country a competitive base for technology businesses:",
       selectedExamples: "Selected examples",
+      hint: "Select a card to see the details",
       groups: [
         {
           title: "Profits and dividends",
+          headline: { value: "0%", label: "profit & dividend tax" },
           body:
             "Long-term zero-rate profit tax for qualifying activities including AI, digital and cybersecurity, and a zero rate on dividends in the innovation sector.",
           addition:
@@ -228,6 +244,7 @@ export const en: Content = {
         },
         {
           title: "People",
+          headline: { value: "0%", label: "income tax for ICT specialists · 20 years" },
           body:
             "A twenty-year zero rate on personal income tax for ICT specialists, covering foreign experts, returning residents and R&D staff.",
           rows: [
@@ -236,6 +253,7 @@ export const en: Content = {
         },
         {
           title: "Investment and R&D",
+          headline: { value: "250%", label: "R&D super deduction" },
           body:
             "Full deductibility of qualifying investment, and a super deduction for R&D spending that covers salaries, materials and testing, including projects that do not succeed.",
           rows: [
@@ -246,6 +264,7 @@ export const en: Content = {
         },
         {
           title: "Intellectual property",
+          headline: { value: "≈1%", label: "effective rate on royalty income" },
           body:
             "Royalty income is largely exempt, bringing the effective rate on qualifying IP income close to one percent.",
           rows: [
@@ -254,6 +273,7 @@ export const en: Content = {
         },
         {
           title: "Imports",
+          headline: { value: "0%", label: "VAT & customs on tech imports" },
           body:
             "Technology imports and services are exempt from VAT, and equipment imports are exempt from customs duty.",
           rows: [
@@ -263,6 +283,7 @@ export const en: Content = {
         },
         {
           title: "Remote setup",
+          headline: { value: "Remote", label: "company, digital ID & bank account" },
           body:
             "Company registration, digital identity and bank account onboarding are all completed remotely, so a company can be established and operating in Azerbaijan without travelling to do it.",
           rows: [
@@ -279,6 +300,7 @@ export const en: Content = {
         "In order to accelerate the growth of cluster members, dedicated export support programs are being developed across four areas:",
       deckIntro:
         "In order to accelerate growth of each and every member of the Cluster, dedicated export support programs are being developed.",
+      builderHint: "Switch the programs on and off to see the annual ceiling per company",
       areas: [
         {
           title: "Target market support",
@@ -349,6 +371,14 @@ export const en: Content = {
     title: "Attracting anchor companies",
     lead:
       "BCG working material on which companies could anchor the cluster, how they are prioritized, and two pathways toward localization in Azerbaijan. Appears in the deck only.",
+    explorer: {
+      title: "Explore the candidate companies",
+      hint: "Click a bar to filter the logos",
+      byDomain: "By domain · slide 8",
+      byPool: "By priority pool · slide 9",
+      showing: "Showing",
+      multiDomain: "Appears in more than one domain",
+    },
     criteria: {
       kicker: "Prioritization",
       title:
@@ -603,20 +633,11 @@ export const en: Content = {
     },
     candidates: {
       title: "Candidate anchor companies per domain",
+      short: "candidate anchor companies",
       subtitle: "Deck slide 8 · preliminary list, including Estonian companies",
       unit: "companies",
       notMapped: "not mapped",
       domainHeader: "Domain",
-    },
-    zeroRates: {
-      title: "Zero-rate items",
-      items: [
-        { value: "0%", label: "Profit tax (long-term)" },
-        { value: "0%", label: "Dividend tax (innovation sector)" },
-        { value: "0%", label: "Personal income tax, ICT specialists (20 years)" },
-        { value: "0%", label: "VAT on tech imports & services" },
-        { value: "0%", label: "Customs on equipment imports" },
-      ],
     },
     deductions: {
       title: "Deduction per 100 of qualifying spend",
@@ -657,6 +678,7 @@ export const en: Content = {
     lead:
       "Inconsistencies and gaps to clarify with BCG before any content goes further. Obvious typos are corrected on the page; everything substantive is shown as in the source and flagged here.",
     severity: { high: "Clarify", medium: "Check", low: "Fix", done: "Addressed" },
+    filterLabel: "Filter by status",
     items: [
       {
         severity: "done",
