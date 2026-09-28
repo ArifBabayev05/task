@@ -48,7 +48,14 @@ export function ScrollSpy({ ids }: { ids: string[] }) {
         if (key === id) a.setAttribute("aria-current", "location");
         else a.removeAttribute("aria-current");
       });
-      if (id) links.get(id)?.scrollIntoView({ block: "nearest", inline: "nearest" });
+      // Keep the active link visible inside the horizontally scrollable nav strip.
+      // (Never use scrollIntoView here: the nav is sticky, so it would scroll the page back up.)
+      const link = id ? links.get(id) : null;
+      const strip = link?.closest("ul");
+      if (link && strip && strip.scrollWidth > strip.clientWidth) {
+        const left = link.offsetLeft - strip.clientWidth / 2 + link.offsetWidth / 2;
+        strip.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+      }
     };
 
     let frame = 0;
