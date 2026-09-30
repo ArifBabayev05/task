@@ -1,25 +1,29 @@
 import "server-only";
 import { az } from "@/content/az";
 import type { Application } from "./application";
+import { saveApplication, storeConfigured } from "./store";
 
 /**
- * Sends an application to the configured destination(s). Configure on Vercel
- * (Project → Settings → Environment Variables), then redeploy:
+ * Stores an application and sends optional notifications. Configure on Vercel
+ * (Project → Settings → Environment Variables / Storage), then redeploy:
  *
- *   Email via Resend (https://resend.com):
+ *   Storage (primary; viewed at /admin): Upstash Redis, see ./store.ts
+ *
+ *   Email notification via Resend (https://resend.com), optional:
  *     RESEND_API_KEY          API key
  *     APPLICATION_EMAIL_TO    recipient(s), comma-separated
  *     APPLICATION_EMAIL_FROM  sender on a verified domain, e.g. "Klaster <noreply@example.az>"
  *                             (defaults to Resend's test sender, which only delivers to the account owner)
  *
- *   Webhook (Google Apps Script / Sheets, Slack, Make, Zapier, …):
+ *   Webhook (Google Apps Script / Sheets, Slack, Make, Zapier, …), optional:
  *     APPLICATION_WEBHOOK_URL     receives the application as JSON (POST)
  *     APPLICATION_WEBHOOK_SECRET  optional, sent as the X-Webhook-Secret header
  *
- * Returns true when at least one destination accepted the application.
+ * Returns true when the application was stored or accepted by at least one destination.
  */
 export async function deliverApplication(app: Application): Promise<boolean> {
   const tasks: Promise<boolean>[] = [];
+  if (storeConfigured()) tasks.push(store(app));
   if (process.env.RESEND_API_KEY && process.env.APPLICATION_EMAIL_TO) tasks.push(sendEmail(app));
   if (process.env.APPLICATION_WEBHOOK_URL) tasks.push(sendWebhook(app));
 
@@ -28,12 +32,22 @@ export async function deliverApplication(app: Application): Promise<boolean> {
       console.info("[application] No destination configured; application received in development:", app);
       return true;
     }
-    console.error("[application] No destination configured (set RESEND_API_KEY + APPLICATION_EMAIL_TO or APPLICATION_WEBHOOK_URL).");
+    console.error("[application] No destination configured (connect Upstash Redis, or set RESEND_API_KEY + APPLICATION_EMAIL_TO or APPLICATION_WEBHOOK_URL).");
     return false;
   }
 
   const results = await Promise.all(tasks);
   return results.some(Boolean);
+}
+
+async function store(app: Application): Promise<boolean> {
+  try {
+    await saveApplication(app);
+    return true;
+  } catch (err) {
+    console.error("[application] Storing failed", err);
+    return false;
+  }
 }
 
 /** Human-readable summary using the Azerbaijani labels (the team's working language). */

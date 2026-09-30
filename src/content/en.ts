@@ -19,20 +19,23 @@ export const en: Content = {
       { id: "terefdaslar", label: "Anchor partners" },
       { id: "imkanlar", label: "Member benefits" },
       { id: "qosulma", label: "Joining" },
-      { id: "muraciet", label: "Apply" },
     ],
     backToTop: "Back to top",
+    applyCta: "Apply",
+    close: "Close",
   },
   hero: {
     title: "Technology Resilience Cluster of Azerbaijan",
     lead: "We bring together companies working on technologies that keep essential systems running safely and without interruption. The cluster supports developing local solutions, deploying them and exporting them to the region.",
-    primary: { label: "Join the cluster", href: "#qosulma" },
+    primary: { label: "Join the cluster" },
     secondary: { label: "See the focus areas", href: "#istiqametler" },
-    diagramLabel: "Cluster members connected around an anchor partner",
-    legend: { anchor: "Anchor partner", members: "Cluster members" },
+    facts: [
+      { value: "8", label: "focus areas" },
+      { value: "4", label: "stages, from task to export" },
+      { value: "Technopark", label: "residents use the incentives set by law" },
+    ],
   },
   about: {
-    kicker: "01 · About the cluster",
     title: "What the cluster is",
     lead: "The cluster brings Technopark residents, anchor partner companies and government bodies together around a shared goal: building solutions that protect critical infrastructure and taking them to foreign markets.",
     pillars: [
@@ -55,7 +58,6 @@ export const en: Content = {
     ],
   },
   domains: {
-    kicker: "02 · Focus areas",
     title: "Focus areas",
     lead: "The cluster covers civilian resilience technologies.",
     items: [
@@ -70,7 +72,6 @@ export const en: Content = {
     ],
   },
   partners: {
-    kicker: "03 · Anchor partners",
     title: "Anchor partners",
     lead: "The cluster works with large national companies and global technology companies as anchor partners.",
     roles: [
@@ -93,7 +94,6 @@ export const en: Content = {
     ],
   },
   benefits: {
-    kicker: "04 · Member benefits",
     title: "Opportunities for cluster members",
     lead: "The following opportunities are offered first to cluster members.",
     items: [
@@ -108,7 +108,6 @@ export const en: Content = {
     note: "Export support and participation in international events are delivered through IDDA programs. In addition, cluster members that are Technopark residents use the incentives set by law.",
   },
   join: {
-    kicker: "05 · Joining",
     title: "Who can join the cluster",
     criteria: [
       "Technopark residents whose work falls within one of the areas above",
@@ -118,11 +117,10 @@ export const en: Content = {
     box: {
       title: "Application",
       body: "Send an application to join the cluster or to cooperate as an anchor partner.",
-      button: { label: "Send an application", href: "#muraciet" },
+      button: { label: "Send an application" },
     },
   },
   form: {
-    kicker: "06 · Application",
     title: "Application form",
     lead: "Fill in the form. Once your application has been reviewed, we will contact you at the email you provide.",
     requiredNote: "Fields marked * are required.",

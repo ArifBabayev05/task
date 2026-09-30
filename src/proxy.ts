@@ -1,19 +1,31 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 /**
- * Optional HTTP Basic Auth gate for the whole site (pages and static assets).
+ * HTTP Basic Auth gates. Configure on Vercel (Project → Settings → Environment Variables), then redeploy.
  *
- * The site is public by default. To require a password, set on Vercel
- * (Project → Settings → Environment Variables) and redeploy:
- *   SITE_PASSWORD  (turns the gate on)
- *   SITE_USER      (optional, defaults to "team")
+ * Admin area (/admin, application list and CSV export), always protected:
+ *   ADMIN_PASSWORD  required; without it /admin returns 404
+ *   ADMIN_USER      optional, defaults to "admin"
+ *
+ * Whole site (pages and static assets), optional; the site is public unless set:
+ *   SITE_PASSWORD   turns the gate on
+ *   SITE_USER       optional, defaults to "team"
  */
 export function proxy(request: NextRequest) {
-  const password = process.env.SITE_PASSWORD;
-  const user = process.env.SITE_USER || "team";
+  const { pathname } = request.nextUrl;
 
-  if (!password) return NextResponse.next();
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+    const password = process.env.ADMIN_PASSWORD;
+    if (!password) return new NextResponse("Not found", { status: 404 });
+    return checkBasicAuth(request, process.env.ADMIN_USER || "admin", password, "Cluster applications");
+  }
 
+  const sitePassword = process.env.SITE_PASSWORD;
+  if (!sitePassword) return NextResponse.next();
+  return checkBasicAuth(request, process.env.SITE_USER || "team", sitePassword, "Resilience Cluster");
+}
+
+function checkBasicAuth(request: NextRequest, user: string, password: string, realm: string) {
   const header = request.headers.get("authorization") ?? "";
   if (header.startsWith("Basic ")) {
     let decoded = "";
@@ -29,10 +41,9 @@ export function proxy(request: NextRequest) {
       if (okUser && okPass) return NextResponse.next();
     }
   }
-
   return new NextResponse("Authentication required.", {
     status: 401,
-    headers: { "WWW-Authenticate": 'Basic realm="Resilience Cluster (internal)", charset="UTF-8"' },
+    headers: { "WWW-Authenticate": `Basic realm="${realm}", charset="UTF-8"`, "Cache-Control": "no-store" },
   });
 }
 

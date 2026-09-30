@@ -18,20 +18,23 @@ export const az: Content = {
       { id: "terefdaslar", label: "Aparıcı tərəfdaşlar" },
       { id: "imkanlar", label: "Üzvlərə imkanlar" },
       { id: "qosulma", label: "Qoşulma" },
-      { id: "muraciet", label: "Müraciət" },
     ],
     backToTop: "Yuxarı qayıt",
+    applyCta: "Müraciət et",
+    close: "Bağla",
   },
   hero: {
     title: "Azərbaycan Texnoloji Dayanıqlılıq Klasteri",
     lead: "Həyati sistemlərin təhlükəsiz və fasiləsiz işləməsini təmin edən texnologiyalar üzərində çalışan şirkətləri bir araya gətiririk. Klaster yerli həllərin hazırlanmasını, tətbiqini və regiona ixracını dəstəkləyir.",
-    primary: { label: "Klasterə qoşulun", href: "#qosulma" },
+    primary: { label: "Klasterə qoşulun" },
     secondary: { label: "İstiqamətlərə baxın", href: "#istiqametler" },
-    diagramLabel: "Aparıcı tərəfdaş ətrafında birləşən klaster üzvləri",
-    legend: { anchor: "Aparıcı tərəfdaş", members: "Klaster üzvləri" },
+    facts: [
+      { value: "8", label: "fəaliyyət istiqaməti" },
+      { value: "4", label: "mərhələ: tapşırıqdan ixraca qədər" },
+      { value: "Texnopark", label: "rezidentləri üçün qanunvericiliklə müəyyən edilmiş güzəştlər" },
+    ],
   },
   about: {
-    kicker: "01 · Klaster haqqında",
     title: "Klaster nədir",
     lead: "Klaster Texnopark rezidentlərini, aparıcı tərəfdaş şirkətləri və dövlət qurumlarını ümumi məqsəd ətrafında birləşdirir: kritik infrastrukturu qoruyan həllər yaratmaq və onları xarici bazarlara çıxarmaq.",
     pillars: [
@@ -54,7 +57,6 @@ export const az: Content = {
     ],
   },
   domains: {
-    kicker: "02 · İstiqamətlər",
     title: "Fəaliyyət istiqamətləri",
     lead: "Klaster mülki dayanıqlılıq texnologiyalarını əhatə edir.",
     items: [
@@ -69,7 +71,6 @@ export const az: Content = {
     ],
   },
   partners: {
-    kicker: "03 · Aparıcı tərəfdaşlar",
     title: "Aparıcı tərəfdaşlar",
     lead: "Klaster böyük milli şirkətlər və qlobal texnologiya şirkətləri ilə aparıcı (anchor) tərəfdaş kimi işləyir.",
     roles: [
@@ -92,7 +93,6 @@ export const az: Content = {
     ],
   },
   benefits: {
-    kicker: "04 · Üzvlərə imkanlar",
     title: "Klaster üzvlərinə imkanlar",
     lead: "Aşağıdakı imkanlar ilk növbədə klaster üzvlərinə təqdim olunur.",
     items: [
@@ -107,7 +107,6 @@ export const az: Content = {
     note: "İxraca dəstək və beynəlxalq tədbirlərdə iştirak İRİA-nın proqramları çərçivəsində həyata keçirilir. Bundan əlavə, Texnopark rezidentləri olan klaster üzvləri qanunvericiliklə müəyyən edilmiş güzəştlərdən istifadə edir.",
   },
   join: {
-    kicker: "05 · Qoşulma",
     title: "Klasterə kimlər qoşula bilər",
     criteria: [
       "Fəaliyyəti yuxarıdakı istiqamətlərdən birinə aid olan Texnopark rezidentləri",
@@ -117,11 +116,10 @@ export const az: Content = {
     box: {
       title: "Müraciət",
       body: "Klasterə qoşulmaq və ya aparıcı tərəfdaş kimi əməkdaşlıq etmək üçün müraciət göndərin.",
-      button: { label: "Müraciət göndərin", href: "#muraciet" },
+      button: { label: "Müraciət göndərin" },
     },
   },
   form: {
-    kicker: "06 · Müraciət",
     title: "Müraciət forması",
     lead: "Formu doldurun. Müraciətinizə baxıldıqdan sonra sizinlə göstərdiyiniz email vasitəsilə əlaqə saxlanılacaq.",
     requiredNote: "* ilə işarələnmiş sahələr mütləqdir.",

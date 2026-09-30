@@ -1,25 +1,26 @@
 @import "tailwindcss";
 @import "@fontsource-variable/inter";
 
-/* Palette: deep navy backgrounds, blue headings, cyan highlights, yellow accent. */
+/*
+ * Design tokens. Brand colours live here only, so the agency's brand palette can be
+ * dropped in without touching components.
+ */
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 
-  --color-navy-950: #03162c;
-  --color-navy-900: #062447;
-  --color-navy-800: #0a3263;
-  --color-navy-700: #0e4380;
-  --color-brand: #0f5a92;
-  --color-brand-600: #1570b5;
-  --color-cyan: #26a9e0;
-  --color-sky-50: #f1f6fb;
-  --color-sky-100: #e3edf7;
-  --color-line: #d9e3ee;
-  --color-ink: #17212e;
-  --color-muted: #566376;
-  --color-accent: #f0c232;
-  --color-series-1: #1570b5;
+  --color-brand-950: #071a33;
+  --color-brand-900: #0b2545;
+  --color-brand-800: #13315c;
+  --color-brand-700: #1d4e89;
+  --color-brand-100: #e6edf5;
+
+  --color-surface: #f4f6f9;
+  --color-line: #dde3ea;
+  --color-ink: #1a2230;
+  --color-muted: #5b6676;
   --color-danger: #b42318;
+
+  --radius-card: 4px;
 }
 
 :root {
@@ -27,7 +28,12 @@
 }
 
 html {
-  scroll-padding-top: 7.5rem;
+  scroll-padding-top: 5rem;
+}
+
+/* Keep the page from scrolling behind an open modal. */
+html:has(dialog[open]) {
+  overflow: hidden;
 }
 
 body {
@@ -36,6 +42,10 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+dialog::backdrop {
+  background: rgb(7 26 51 / 0.6);
 }
 
 .no-scrollbar {

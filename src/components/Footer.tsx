@@ -1,29 +1,41 @@
 import Image from "next/image";
-import { ArrowUp } from "lucide-react";
 import type { Content } from "@/content/types";
 import { Container } from "./ui";
 
 export function Footer({ c }: { c: Content }) {
   return (
-    <footer className="bg-navy-950 py-10 text-white/70">
-      <Container className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+    <footer className="bg-brand-950 text-white/70">
+      <Container className="grid grid-cols-1 gap-8 py-12 md:grid-cols-12">
+        <div className="md:col-span-5">
           <Image
             src="/images/ministry-logo-white.png"
             alt="Azərbaycan Respublikası Rəqəmsal İnkişaf və Nəqliyyat Nazirliyi"
             width={919}
             height={266}
-            className="h-10 w-auto self-start"
+            className="h-10 w-auto"
           />
-          <p className="max-w-xl text-sm">{c.footer.text}</p>
+          <p className="mt-5 max-w-sm text-sm leading-relaxed">{c.ui.org}</p>
         </div>
-        <a
-          href="#top"
-          className="inline-flex items-center gap-2 self-start rounded-md border border-white/20 px-3 py-2 text-sm text-white/85 hover:border-white/40 hover:text-white sm:self-auto"
-        >
-          <ArrowUp aria-hidden className="size-4" /> {c.ui.backToTop}
-        </a>
+        <nav aria-label={c.ui.sectionsLabel} className="md:col-span-7">
+          <ul className="grid grid-cols-1 gap-x-8 gap-y-2.5 text-sm sm:grid-cols-2">
+            {c.ui.nav.map((item) => (
+              <li key={item.id}>
+                <a href={`#${item.id}`} className="hover:text-white">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </Container>
+      <div className="border-t border-white/10">
+        <Container className="flex flex-col gap-3 py-5 text-xs sm:flex-row sm:items-center sm:justify-between">
+          <p>{c.footer.text}</p>
+          <a href="#top" className="hover:text-white">
+            {c.ui.backToTop}
+          </a>
+        </Container>
+      </div>
     </footer>
   );
 }

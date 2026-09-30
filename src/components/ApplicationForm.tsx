@@ -16,8 +16,8 @@ export function ApplicationForm(props: Props) {
 }
 
 const inputCls =
-  "w-full rounded-lg border bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-muted/60 focus:outline-none focus:ring-2";
-const okCls = "border-line focus:border-series-1 focus:ring-series-1/25";
+  "w-full rounded-[var(--radius-card)] border bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-muted/60 focus:outline-none focus:ring-2";
+const okCls = "border-line focus:border-brand-700 focus:ring-brand-700/20";
 const badCls = "border-danger focus:border-danger focus:ring-danger/20";
 
 function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => void }) {
@@ -38,16 +38,16 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border border-line bg-white p-8 text-center sm:p-10">
-        <CircleCheck aria-hidden className="mx-auto size-12 text-series-1" />
-        <h3 ref={successRef} tabIndex={-1} className="mt-4 text-2xl font-semibold text-navy-900 outline-none">
+      <div className="py-6 text-center">
+        <CircleCheck aria-hidden className="mx-auto size-12 text-brand-700" />
+        <h3 ref={successRef} tabIndex={-1} className="mt-4 text-2xl font-semibold text-brand-900 outline-none">
           {text.success.title}
         </h3>
         <p className="mx-auto mt-3 max-w-lg text-[15px] leading-relaxed text-ink/80">{text.success.body}</p>
         <button
           type="button"
           onClick={onReset}
-          className="mt-6 rounded-md border border-line px-4 py-2 text-sm font-semibold text-navy-900 hover:border-series-1"
+          className="mt-6 rounded-[var(--radius-card)] border border-line px-4 py-2 text-sm font-semibold text-brand-900 hover:border-brand-700"
         >
           {text.success.again}
         </button>
@@ -66,7 +66,7 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
       </p>
     ) : null;
   const label = (htmlFor: string, children: React.ReactNode, required?: boolean) => (
-    <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium text-navy-900">
+    <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium text-brand-900">
       {children}
       {required ? <span className="text-danger"> *</span> : <span className="font-normal text-muted"> ({text.optional})</span>}
     </label>
@@ -110,7 +110,7 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
   const hasErrors = state.status === "error";
 
   return (
-    <form action={action} noValidate className="rounded-2xl border border-line bg-white p-5 sm:p-8">
+    <form action={action} noValidate className="relative">
       {/* spam guards + locale */}
       <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label>
@@ -125,7 +125,7 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
           ref={alertRef}
           tabIndex={-1}
           role="alert"
-          className="mb-6 flex gap-3 rounded-lg border border-danger/30 bg-danger/5 p-4 text-sm text-danger outline-none"
+          className="mb-6 flex gap-3 rounded-[var(--radius-card)] border border-danger/30 bg-danger/5 p-4 text-sm text-danger outline-none"
         >
           <CircleAlert aria-hidden className="mt-0.5 size-5 shrink-0" />
           <span>{hasErrors ? text.errors.summary : text.errors.failed}</span>
@@ -136,23 +136,23 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
 
       {/* 1. Application type */}
       <fieldset aria-describedby={err("type") ? "type-error" : undefined}>
-        <legend className="mb-3 text-base font-semibold text-navy-900">
+        <legend className="mb-3 text-base font-semibold text-brand-900">
           {f.type.label} <span className="text-danger">*</span>
         </legend>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {f.type.options.map((o, i) => (
             <label
               key={o.value}
-              className="flex cursor-pointer items-center gap-3 rounded-lg border border-line p-4 has-[:checked]:border-series-1 has-[:checked]:bg-sky-50"
+              className="flex cursor-pointer items-center gap-3 rounded-[var(--radius-card)] border border-line p-4 has-[:checked]:border-brand-700 has-[:checked]:bg-brand-100/60"
             >
               <input
                 type="radio"
                 name="type"
                 value={o.value}
                 defaultChecked={val("type") ? val("type") === o.value : i === 0}
-                className="size-4 accent-[var(--color-series-1)]"
+                className="size-4 accent-[var(--color-brand-700)]"
               />
-              <span className="text-[15px] font-medium text-navy-900">{o.label}</span>
+              <span className="text-[15px] font-medium text-brand-900">{o.label}</span>
             </label>
           ))}
         </div>
@@ -161,7 +161,7 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
 
       {/* 2. Company */}
       <fieldset className="mt-8 border-t border-line pt-6">
-        <legend className="float-left mb-4 w-full text-base font-semibold text-navy-900">{text.groups.company}</legend>
+        <legend className="float-left mb-4 w-full text-base font-semibold text-brand-900">{text.groups.company}</legend>
         <div className="clear-both grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
             {textInput({ k: "company", required: true, autoComplete: "organization" })}
@@ -170,21 +170,21 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
           {textInput({ k: "website", type: "url", autoComplete: "url", hint: f.websiteHint })}
         </div>
         <fieldset className="mt-5" aria-describedby={err("resident") ? "resident-error" : undefined}>
-          <legend className="mb-2 text-sm font-medium text-navy-900">
+          <legend className="mb-2 text-sm font-medium text-brand-900">
             {f.resident.label} <span className="text-danger">*</span>
           </legend>
           <div className="flex flex-wrap gap-2">
             {f.resident.options.map((o) => (
               <label
                 key={o.value}
-                className="flex cursor-pointer items-center gap-2 rounded-full border border-line px-3.5 py-2 text-sm has-[:checked]:border-series-1 has-[:checked]:bg-sky-50"
+                className="flex cursor-pointer items-center gap-2 rounded-full border border-line px-3.5 py-2 text-sm has-[:checked]:border-brand-700 has-[:checked]:bg-brand-100/60"
               >
                 <input
                   type="radio"
                   name="resident"
                   value={o.value}
                   defaultChecked={val("resident") === o.value}
-                  className="size-4 accent-[var(--color-series-1)]"
+                  className="size-4 accent-[var(--color-brand-700)]"
                 />
                 {o.label}
               </label>
@@ -196,9 +196,9 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
 
       {/* 3. Activity */}
       <fieldset className="mt-8 border-t border-line pt-6">
-        <legend className="float-left mb-4 w-full text-base font-semibold text-navy-900">{text.groups.activity}</legend>
+        <legend className="float-left mb-4 w-full text-base font-semibold text-brand-900">{text.groups.activity}</legend>
         <fieldset className="clear-both" aria-describedby={["domains-hint", err("domains") ? "domains-error" : ""].filter(Boolean).join(" ")}>
-          <legend className="mb-1 text-sm font-medium text-navy-900">
+          <legend className="mb-1 text-sm font-medium text-brand-900">
             {f.domains} <span className="text-danger">*</span>
           </legend>
           <p id="domains-hint" className="mb-2 text-xs text-muted">
@@ -208,14 +208,14 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
             {domains.map((d) => (
               <label
                 key={d.id}
-                className="flex cursor-pointer items-center gap-2.5 rounded-lg border border-line px-3 py-2.5 text-sm text-ink has-[:checked]:border-series-1 has-[:checked]:bg-sky-50"
+                className="flex cursor-pointer items-center gap-2.5 rounded-[var(--radius-card)] border border-line px-3 py-2.5 text-sm text-ink has-[:checked]:border-brand-700 has-[:checked]:bg-brand-100/60"
               >
                 <input
                   type="checkbox"
                   name="domains"
                   value={d.id}
                   defaultChecked={selectedDomains.includes(d.id)}
-                  className="size-4 accent-[var(--color-series-1)]"
+                  className="size-4 accent-[var(--color-brand-700)]"
                 />
                 {d.title}
               </label>
@@ -264,7 +264,7 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
 
       {/* 4. Contact */}
       <fieldset className="mt-8 border-t border-line pt-6">
-        <legend className="float-left mb-4 w-full text-base font-semibold text-navy-900">{text.groups.contact}</legend>
+        <legend className="float-left mb-4 w-full text-base font-semibold text-brand-900">{text.groups.contact}</legend>
         <div className="clear-both grid grid-cols-1 gap-4 sm:grid-cols-2">
           {textInput({ k: "name", required: true, autoComplete: "name" })}
           {textInput({ k: "role", autoComplete: "organization-title" })}
@@ -295,7 +295,7 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
             defaultChecked={val("consent") === "on"}
             aria-invalid={err("consent") ? true : undefined}
             aria-describedby={err("consent") ? "consent-error" : undefined}
-            className="mt-0.5 size-4 shrink-0 accent-[var(--color-series-1)]"
+            className="mt-0.5 size-4 shrink-0 accent-[var(--color-brand-700)]"
           />
           <span>
             {f.consent} <span className="text-danger">*</span>
@@ -307,7 +307,7 @@ function FormBody({ text, domains, locale, onReset }: Props & { onReset: () => v
       <button
         type="submit"
         disabled={pending}
-        className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-[15px] font-semibold text-navy-950 hover:bg-[#f6cf57] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-series-1 disabled:cursor-wait disabled:opacity-70"
+        className="mt-6 inline-flex items-center gap-2 rounded-[var(--radius-card)] bg-brand-900 px-6 py-3 text-[15px] font-semibold text-white hover:bg-brand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700 disabled:cursor-wait disabled:opacity-70"
       >
         <Send aria-hidden className="size-4" />
         {pending ? text.submitting : text.submit}
