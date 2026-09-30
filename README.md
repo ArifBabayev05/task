@@ -109,6 +109,7 @@ Lokalda heç bir env dəyişəni tələb olunmur:
 │   └── ministry-emblem.png       # Favicon
 ├── docs/
 │   ├── PROPOSAL.md               # Menecer üçün ilkin struktur və müddət təklifi, uyğunsuzluqlar siyahısı
+│   ├── PROMPT.md                 # AI köməkçisi üçün hazır promptlar (davam etdirmək, sıfırdan qurmaq)
 │   └── SOURCE.md                 # Bütün mənbə kodu bir faylda (arxiv/bərpa üçün)
 ├── .env.example                  # Env şablonu
 ├── next.config.ts                # "/" → "/az" yönləndirmə, təhlükəsizlik başlıqları, noindex
@@ -264,6 +265,8 @@ Başqa hostinqdə (öz serveriniz, Docker): `npm run build && npm start` (port 3
 5. **Dizayn yenilənməsi:** "süni intellekt" təəssüratı verən elementlər (qradiyent hero, parıltılı şəbəkə diaqramı, rəngli ikon kartları, "01 ·" nişanları) çıxarıldı. Onların yerinə sakit, institusional dizayn quruldu. Rənglər tokenlərdədir, İRİA brendi gələndə asan dəyişilir.
 
 Əvvəlki versiyalara baxmaq üçün: `git log --oneline`, `git show <commit>`.
+
+AI köməkçisi (Claude Code, Cursor və s.) ilə davam etmək üçün hazır promptlar: [`docs/PROMPT.md`](docs/PROMPT.md).
 
 ---
 
