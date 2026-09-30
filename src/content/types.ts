@@ -56,5 +56,47 @@ export type Content = {
       button: { label: string; href?: string };
     };
   };
+  form: ApplicationFormText;
   footer: { text: string };
+};
+
+export type ApplicationFormText = {
+  kicker: string;
+  title: string;
+  lead: string;
+  requiredNote: string;
+  groups: { type: string; company: string; activity: string; contact: string };
+  fields: {
+    type: { label: string; options: { value: "member" | "anchor"; label: string }[] };
+    company: string;
+    taxId: string;
+    website: string;
+    websiteHint: string;
+    resident: { label: string; options: { value: "yes" | "no" | "applying"; label: string }[] };
+    domains: string;
+    domainsHint: string;
+    product: string;
+    productHint: string;
+    teamSize: { label: string; placeholder: string; options: string[] };
+    name: string;
+    role: string;
+    email: string;
+    phone: string;
+    message: string;
+    consent: string;
+  };
+  optional: string;
+  submit: string;
+  submitting: string;
+  errors: {
+    summary: string;
+    required: string;
+    email: string;
+    domains: string;
+    url: string;
+    tooLong: string;
+    consent: string;
+    failed: string;
+  };
+  success: { title: string; body: string; again: string };
 };

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { About, Benefits, Domains, Join, Partners } from "@/components/Sections";
+import { About, Apply, Benefits, Domains, Join, Partners } from "@/components/Sections";
 import { getContent, hasLocale } from "@/content";
 
 export default async function Page({ params }: PageProps<"/[lang]">) {
@@ -26,6 +26,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Partners c={c} />
         <Benefits c={c} />
         <Join c={c} />
+        <Apply c={c} />
       </main>
       <Footer c={c} />
     </>

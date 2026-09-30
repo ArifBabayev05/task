@@ -24,6 +24,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { Content } from "@/content/types";
+import { ApplicationForm } from "./ApplicationForm";
 import { ButtonLink, Container, SectionHeader } from "./ui";
 
 const pillarIcons: LucideIcon[] = [Blocks, Network, Lightbulb, Globe];
@@ -216,6 +217,32 @@ export function Join({ c }: { c: Content }) {
             </div>
           )}
         </div>
+      </Container>
+    </section>
+  );
+}
+
+export function Apply({ c }: { c: Content }) {
+  const { form, join } = c;
+  return (
+    <section id="muraciet" className="bg-sky-50 py-16 sm:py-24">
+      <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-14">
+        <div>
+          <SectionHeader kicker={form.kicker} title={form.title} lead={form.lead} />
+          <ul className="mt-8 space-y-3 border-t border-line pt-6">
+            {join.criteria.map((item) => (
+              <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink/80">
+                <CircleCheck aria-hidden className="mt-0.5 size-4 shrink-0 text-series-1" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <ApplicationForm
+          text={form}
+          locale={c.meta.locale}
+          domains={c.domains.items.map((d) => ({ id: d.id, title: d.title }))}
+        />
       </Container>
     </section>
   );
