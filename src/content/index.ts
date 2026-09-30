@@ -2,9 +2,9 @@ import { az } from "./az";
 import { en } from "./en";
 import type { Content } from "./types";
 
-export const locales = ["en", "az"] as const;
+export const locales = ["az", "en"] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "en";
+export const defaultLocale: Locale = "az";
 
 const content: Record<Locale, Content> = { en, az };
 

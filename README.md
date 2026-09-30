@@ -1,13 +1,8 @@
-# Technology Resilience Cluster — internal site
+# Technology Resilience Cluster of Azerbaijan
 
-A one-page internal briefing site for the Technology Resilience Cluster of Azerbaijan, built from BCG materials (September 2026):
+One-page site for the Technology Resilience Cluster of Azerbaijan (Innovation and Digital Development Agency, Ministry of Digital Development and Transport). Azerbaijani is the source copy and the default language (`/az`); `/en` is a translation.
 
-- **Word:** *Resilience Cluster — website content draft*, the cluster narrative
-- **Deck:** *Technology resilience cluster v4*, which adds figures, six domains, the tax table and the anchor-company strategy
-
-Every piece of content from both sources is on the page. Anything that appears in only one source is tagged **Deck only** (hidden by default, toggle in the header). Inconsistencies between the sources are listed in [`docs/PROPOSAL.md`](docs/PROPOSAL.md), section 8.
-
-The structure and timeline proposal for management (in Azerbaijani) is in [`docs/PROPOSAL.md`](docs/PROPOSAL.md).
+Sections: About the cluster, Focus areas, Anchor partners, Member benefits, Joining.
 
 ## Stack
 
@@ -19,19 +14,17 @@ The structure and timeline proposal for management (in Azerbaijani) is in [`docs
 ```
 src/
   app/[lang]/        layout + page (en, az)
-  components/        page sections (Hero, About, Domains, Why, Incentives, Strategy, Footer)
+  components/        page sections (Header, Hero, Sections, Footer)
   content/
     types.ts         content schema
-    en.ts, az.ts     all copy (AZ is a draft translation)
-    companies.ts     company list, logo sizes, deck groupings
+    az.ts, en.ts     all copy (az is the source, en the translation)
   proxy.ts           optional Basic Auth gate
 public/
-  logos/             company logos extracted from the deck
-  images/            photos and ministry logo from the deck
-docs/PROPOSAL.md     structure + timeline proposal (AZ)
+  images/            photos and ministry logo
+docs/PROPOSAL.md     original structure + timeline proposal (AZ)
 ```
 
-To change copy, edit `src/content/en.ts` or `src/content/az.ts`. Both files must keep the same shape; TypeScript enforces this through `Content`.
+To change copy, edit `src/content/az.ts` or `src/content/en.ts`. The application button in the Joining section appears once `join.box.button.href` is set. Both files must keep the same shape; TypeScript enforces this through `Content`.
 
 ## Run locally
 

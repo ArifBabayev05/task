@@ -21,18 +21,12 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
   };
 }
 
-// Applies the stored "source marks" preference before first paint.
-const sourcesScript = `try{if(localStorage.getItem("sources")==="on")document.documentElement.dataset.sources="on"}catch(e){}`;
-
 export default async function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
 
   return (
-    <html lang={lang} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: sourcesScript }} />
-      </head>
+    <html lang={lang}>
       <body className="min-h-dvh">{children}</body>
     </html>
   );

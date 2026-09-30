@@ -1,664 +1,126 @@
-import { C, candidatesByDomain, pools } from "./companies";
 import type { Content } from "./types";
 
+// Translation of az.ts (the source copy).
 export const en: Content = {
   meta: {
     locale: "en",
     title: "Technology Resilience Cluster of Azerbaijan",
     description:
-      "Technology Resilience Cluster of Azerbaijan: model, focus domains, incentives and anchor company strategy, based on BCG materials (September 2026).",
+      "A cluster that brings together companies working on technologies that keep essential systems running safely and without interruption.",
   },
   ui: {
     skipToContent: "Skip to content",
-    sourcesOn: "Source marks: on",
-    sourcesOff: "Source marks: off",
-    deckOnly: "Deck only",
-    wordOnly: "Word only",
     languageLabel: "Language",
+    sectionsLabel: "Sections",
+    org: "Innovation and Digital Development Agency",
     nav: [
-      { id: "about", label: "About" },
-      { id: "domains", label: "Focus domains" },
-      { id: "why-azerbaijan", label: "Why Azerbaijan" },
-      { id: "incentives", label: "Incentives" },
-      { id: "strategy", label: "Anchor strategy" },
+      { id: "haqqinda", label: "About the cluster" },
+      { id: "istiqametler", label: "Focus areas" },
+      { id: "terefdaslar", label: "Anchor partners" },
+      { id: "imkanlar", label: "Member benefits" },
+      { id: "qosulma", label: "Joining" },
     ],
     backToTop: "Back to top",
-    readMore: "Read more",
-    showLess: "Show less",
-    all: "All",
   },
   hero: {
-    eyebrow: "Resilience cluster company landing",
     title: "Technology Resilience Cluster of Azerbaijan",
-    lead:
-      "The cluster brings in technologies that keep essential systems secure and running, localizes them in Azerbaijan and exports them to the region.",
-    ambitionLabel: "Target",
-    ambitionValue: "$1B",
-    ambitionCaption: "ICT exports",
-    tagline: "Azerbaijan aims to attract, scale and export solutions",
-    stats: [
-      { value: "4", label: "connected commitments" },
-      { value: "4 + 2", label: "core domains + enabling domains", source: "deck" },
-      { value: "0%", label: "long-term profit tax for qualifying tech activities" },
-      { value: "$20K / $50K", label: "annual export research grant / sales hire support" },
-    ],
-    date: "BCG materials · September 2026",
+    lead: "We bring together companies working on technologies that keep essential systems running safely and without interruption. The cluster supports developing local solutions, deploying them and exporting them to the region.",
+    primary: { label: "Join the cluster", href: "#qosulma" },
+    secondary: { label: "See the focus areas", href: "#istiqametler" },
+    diagramLabel: "Cluster members connected around an anchor partner",
+    legend: { anchor: "Anchor partner", members: "Cluster members" },
   },
   about: {
     kicker: "01 · About the cluster",
     title: "What the cluster is",
-    lead:
-      "Azerbaijan is positioning the Resilience Cluster as a core platform to attract and localize technologies that strengthen the security and continuity of essential systems, while enabling these solutions to scale and compete in export markets.",
-    modelTitle: "How the model works",
-    modelLead: "The cluster runs on four connected commitments.",
-    deckBulletsLabel: "From the deck",
-    commitments: [
+    lead: "The cluster brings Technopark residents, anchor partner companies and government bodies together around a shared goal: building solutions that protect critical infrastructure and taking them to foreign markets.",
+    pillars: [
       {
-        title: "Build on existing strengths",
-        short: "Use Azerbaijan's infrastructure, skills and partnerships as the starting point.",
-        body:
-          "The cluster builds on Azerbaijan's infrastructure, its established technical capabilities, and its international partnerships with other technology clusters and providers.",
-        bullets: [
-          "Leverage Azerbaijan's infrastructure, capabilities and international partnerships with other ecosystems/tech providers",
-        ],
+        title: "Build on existing capabilities",
+        body: "Azerbaijan's infrastructure, technical skills and international partnerships are the starting point.",
       },
       {
-        title: "Enable the ecosystem",
-        short: "A soft-landing route into the market. Companies do not handle setup, partners and regulation alone.",
-        body:
-          "The cluster provides international players with a soft-landing platform, offering a streamlined route into the market without requiring companies to navigate entity setup, partner identification, and regulatory requirements independently.",
-        bullets: [
-          "Provide a soft-landing platform for international players",
-          "Foster collaboration between local and global companies",
-        ],
+        title: "Build an ecosystem",
+        body: "Cooperation between local and international companies, and simpler market access for foreign companies.",
       },
       {
-        title: "Attract and localize",
-        short: "Bring in leading providers and localize services, integration and deployment.",
-        body:
-          "The cluster attracts leading resilience technology providers and supports the localization of selected parts of their value chain in Azerbaijan, particularly services, integration, and deployment, while building local capabilities and expertise.",
-        bullets: [
-          "Attract leading resilience technology providers",
-          "Localize selected parts of their value chain (services, integration, deployment)",
-          "Build local capabilities and expertise",
-        ],
+        title: "Build knowledge and experience locally",
+        body: "Set up the service, integration and deployment work of leading technology companies in Azerbaijan and develop local expertise.",
       },
       {
-        title: "Develop the export model",
-        short: "Export-ready solutions for Central Asia, the Middle East and Africa.",
-        body:
-          "The end state is a portfolio of integrated, export-ready solutions delivered from Azerbaijan, with selected value-chain activities serving customers abroad. Priority markets include Central Asia, the Middle East, Africa, and adjacent regions.",
-        bullets: [
-          "Create integrated, export-ready solutions performing selected parts of the value chain",
-          "Priority focus on Central Asia, Middle East & Africa and adjacent markets",
-        ],
+        title: "Export-ready solutions",
+        body: "Integrated solutions delivered from Azerbaijan for markets in Central Asia, the Middle East and Africa.",
       },
     ],
   },
   domains: {
-    kicker: "02 · Focus domains",
-    title: "Civilian and dual-use resilience technologies",
-    lead:
-      "The Resilience Cluster focuses on civilian and dual-use resilience technologies. Four core technology domains are covered.",
-    statusLabels: {
-      core: "Core domain",
-      separate: "Covered separately",
-      crossCutting: "Cross-cutting enabler",
-    },
+    kicker: "02 · Focus areas",
+    title: "Focus areas",
+    lead: "The cluster covers civilian resilience technologies.",
     items: [
+      { id: "cyber", title: "Cybersecurity and digital trust", body: "Threat detection, identification, data protection, electronic signature" },
+      { id: "comms", title: "Secure communications", body: "Mission-critical communications, network resilience, encryption" },
+      { id: "data", title: "Data and information", body: "Data platforms, analytics, decision support" },
+      { id: "ai", title: "Artificial intelligence", body: "AI-based analytics, automation and forecasting" },
+      { id: "cloud", title: "Cloud technologies", body: "Resilient cloud infrastructure and digital services" },
+      { id: "resilience", title: "Resilience solutions", body: "Real-time monitoring, early warning, service continuity" },
+      { id: "space", title: "Space technologies", body: "Satellite communications, Earth observation, data services" },
+      { id: "uav", title: "Unmanned aerial vehicles", body: "Civilian uses: inspection, monitoring, logistics" },
+    ],
+  },
+  partners: {
+    kicker: "03 · Anchor partners",
+    title: "Anchor partners",
+    lead: "The cluster works with large national companies and global technology companies as anchor partners.",
+    roles: [
       {
-        id: "cyber",
-        title: "Cybersecurity and digital trust",
-        description: "Protecting the networks, systems and data that critical services depend on",
-        bullets: ["Threat detection and response", "Identity and access management", "Data protection"],
-        status: "core",
+        title: "National companies",
+        sectors: "Telecommunications, space, energy and transport",
+        body: "Provide real tasks and pilot projects.",
       },
       {
-        id: "comms",
-        title: "Secure communications",
-        description:
-          "Keeping communication available and protected when primary infrastructure is degraded or contested",
-        bullets: ["Mission-critical communications", "Network resilience", "Encryption and secure data exchange"],
-        status: "core",
-      },
-      {
-        id: "awareness",
-        title: "Situation awareness and monitoring",
-        description:
-          "Giving civilian operators an accurate, current picture of what is happening across assets, infrastructure and territory",
-        bullets: ["Real-time monitoring systems", "Command and control, civilian", "Remote sensing and alerting"],
-        status: "core",
-      },
-      {
-        id: "space",
-        title: "Space-enabled solutions",
-        description: "Using space infrastructure to deliver connectivity, observation and data services on the ground",
-        bullets: ["Satellite communications", "Earth observation", "Data and connectivity services"],
-        status: "core",
-      },
-      {
-        id: "uav",
-        title: "Autonomous and UAV systems (civilian)",
-        bullets: ["Inspection and monitoring", "Logistics and infrastructure support"],
-        status: "separate",
-        note: "Covered separately",
-        source: "deck",
-      },
-      {
-        id: "data-ai",
-        title: "Data and AI-enabled resilience",
-        bullets: ["Data platforms", "AI-driven analytics", "Decision support systems"],
-        status: "crossCutting",
-        note: "Cross-cutting enabling capabilities rather than a distinct end-use domain",
-        source: "deck",
+        title: "Global technology companies",
+        body: "Bring technology, standards and certification.",
       },
     ],
-    listNote: "Lists are indicative. Each domain ends with “…” in the deck.",
-    exclusion: {
-      title: "Out of scope",
-      body:
-        "The cluster won't include military-grade solutions, e.g. weapons systems, kinetic military platforms, offensive cyber capabilities.",
-    },
-  },
-  why: {
-    kicker: "03 · Why Azerbaijan",
-    title: "Why base resilience solutions in Azerbaijan",
-    lead: "The BCG materials give three reasons.",
-    reasons: [
-      {
-        icon: "landmark",
-        title: "State-backed demand",
-        short: "A national priority with state-backed local demand.",
-        body:
-          "Resilience technology is a national-level priority in Azerbaijan, with local state-backed demand, supported by national priorities across public infrastructure and services.",
-        bullets: [
-          "Resilience technology cluster is a national-level priority with local state-backed demand",
-          "Long-term plans to build an export-oriented technology ecosystem with significant state backing",
-        ],
-      },
-      {
-        icon: "bridge",
-        title: "Regional access and neutral relations",
-        short: "One base within reach of Europe, Central Asia, the Middle East and Africa.",
-        body:
-          "Azerbaijan's strategic geographic location connects Europe, Central Asia, the Middle East, Africa and beyond, which puts a large share of the addressable resilience market within regional reach of a single base. The country maintains balanced, friendly and politically independent relations with all its neighbors and with countries across the region.",
-        bullets: [
-          "Strategic geographic location connecting Europe, Central Asia, Middle East, Africa and beyond",
-          "Balanced, friendly, politically independent relations with all neighbors and countries in the region",
-        ],
-      },
-      {
-        icon: "gavel",
-        title: "Economic reforms",
-        short: "Business-environment reforms under way, with more planned.",
-        body:
-          "Azerbaijan is advancing a broader transformation agenda to improve the ease of doing business and strengthen investor confidence. Further regulatory reforms are planned to simplify business operations and reduce barriers to market entry and growth.",
-        bullets: [
-          "Ongoing transformation agenda focused on improving ease of doing business and boosting investor confidence",
-          "Regulatory changes on the way aimed at improving the transparency of the market",
-        ],
-      },
+    stepsTitle: "How cooperation works",
+    steps: [
+      { title: "Task", body: "The anchor partner defines a specific task that needs a solution." },
+      { title: "Team", body: "A group of cluster members suited to the task is formed." },
+      { title: "Pilot", body: "The solution is tested as a pilot project in a real environment." },
+      { title: "Export", body: "The finished solution, now with a reference, goes to foreign markets." },
     ],
-    gateway: {
-      title: "Regional reach",
-      center: "Azerbaijan",
-      nodes: ["Europe", "Central Asia", "Middle East", "Africa"],
-      caption: "Balanced, friendly and politically independent relations across the region",
-    },
   },
-  incentives: {
-    kicker: "04 · Incentives and benefits",
-    title: "What cluster members receive",
-    lead:
-      "Membership in the Resilience Cluster provides access to a defined support package, including fiscal incentives, export development programs, and assistance with market entry and establishing operations in Azerbaijan.",
-    tax: {
-      title: "4.1 Tax and regulatory framework",
-      headline: "Azerbaijan is carrying out a broad tax and regulatory reform to support the cluster.",
-      subline:
-        "The BCG deck calls it the most comprehensive economic reform in the post-Soviet space. It combines elements of Estonia's governance model, the UAE's zero-tax approach and Singapore's IP rules in one legislative cycle, with the aim of putting Azerbaijan ahead of regional peers on tax and regulation.",
-      intro: "The reform aims to make Azerbaijan a competitive base for technology companies. Selected measures:",
-      selectedExamples: "Selected examples",
-      hint: "Select a card to see the details",
-      groups: [
-        {
-          title: "Profits and dividends",
-          headline: { value: "0%", label: "profit & dividend tax" },
-          body:
-            "Long-term zero-rate profit tax for qualifying activities including AI, digital and cybersecurity, and a zero rate on dividends in the innovation sector.",
-          addition:
-            "Export condition: to qualify for the zero rate, income must be received into bank accounts in Azerbaijan (bank inflow condition).",
-          rows: [
-            { category: "Corporate & digital taxation", label: "Profit tax", value: "0% (long-term)", note: "Applies to AI, digital, cybersecurity activities" },
-            { category: "Corporate & digital taxation", label: "Export condition", value: "Bank inflow condition", note: "Income must enter AZ accounts", source: "deck" },
-            { category: "Dividends", label: "Dividend tax", value: "0%", note: "Applies to innovation sector" },
-          ],
-        },
-        {
-          title: "People",
-          headline: { value: "0%", label: "income tax for ICT specialists · 20 years" },
-          body:
-            "A twenty-year zero rate on personal income tax for ICT specialists, covering foreign experts, returning residents and R&D staff.",
-          rows: [
-            { category: "Personal income tax", label: "ICT specialists", value: "0% (20 years)", note: "Applies to foreign experts, returning residents, R&D staff" },
-          ],
-        },
-        {
-          title: "Investment and R&D",
-          headline: { value: "250%", label: "R&D super deduction" },
-          body:
-            "Full deductibility of qualifying investment, and a super deduction for R&D spending that covers salaries, materials and testing, including projects that do not succeed.",
-          rows: [
-            { category: "Investment deductions", label: "Investment deduction", value: "100% (<50%)", note: "Deductible from income/profit", source: "deck" },
-            { category: "R&D incentives", label: "Deduction", value: "250% (super deduction)", note: "Including salaries, materials, testing", source: "deck" },
-            { category: "R&D incentives", label: "Failed R&D", value: "Deductible", note: "Includes unsuccessful projects" },
-          ],
-        },
-        {
-          title: "Intellectual property",
-          headline: { value: "≈1%", label: "effective rate on royalty income" },
-          body:
-            "Royalty income is largely exempt, bringing the effective rate on qualifying IP income close to one percent.",
-          rows: [
-            { category: "IP / technology income", label: "Royalty income", value: "95% exempt", note: "Only 5% is taxed, about 1% effective" },
-          ],
-        },
-        {
-          title: "Imports",
-          headline: { value: "0%", label: "VAT & customs on tech imports" },
-          body:
-            "Technology imports and services are exempt from VAT, and equipment imports are exempt from customs duty.",
-          rows: [
-            { category: "VAT / customs", label: "VAT", value: "0%", note: "Tech imports & services exempt" },
-            { category: "VAT / customs", label: "Customs", value: "0%", note: "Equipment imports exempt" },
-          ],
-        },
-        {
-          title: "Remote setup",
-          headline: { value: "Remote", label: "company, digital ID & bank account" },
-          body:
-            "Company registration, digital identity and bank account onboarding are all completed remotely, so a company can be established and operating in Azerbaijan without travelling to do it.",
-          rows: [
-            { category: "Soft landing", label: "Digital ID (virtual FIN)", value: "Remote" },
-            { category: "Soft landing", label: "Company registration", value: "Remote" },
-            { category: "Soft landing", label: "Bank account", value: "Digital onboarding" },
-          ],
-        },
-      ],
-    },
-    exportSupport: {
-      title: "4.2 Export support programs",
-      intro:
-        "In order to accelerate the growth of cluster members, dedicated export support programs are being developed across four areas:",
-      builderHint: "Switch the programs on and off to see the annual ceiling per company",
-      areas: [
-        {
-          title: "Target market support",
-          body:
-            "Members can access a grant of up to $20,000 per company annually for compiling target market research, used to evaluate the export potential of a specific market before committing to it. Once a market is chosen, financial support of up to $50,000 annually goes toward hiring a dedicated salesperson for that market, together with training for the sales personnel.",
-          programs: [
-            {
-              name: "Target market research",
-              amount: "≤ $20,000 / year",
-              detail:
-                "Target market research max $20,000 per one company annually. Grant is allocated for compiling a target market research to evaluate the potential export market for the company.",
-            },
-            {
-              name: "Target market sales support",
-              amount: "≤ $50,000 / year",
-              detail:
-                "Financial support in hiring a dedicated target market salesperson up to $50,000 annually and training the sales personnel.",
-            },
-          ],
-        },
-        {
-          title: "International networking",
-          body:
-            "Azerbaijan maintains a national booth at major regional conferences and global industry events, enabling members to exhibit without bearing the full cost of a standalone presence. In addition, travel and participation costs for selected industry-leading conferences are reimbursed, helping members build relationships, develop commercial opportunities, and convert them into contracts.",
-          programs: [
-            { name: "International fairs", detail: "Azerbaijan booth in major regional conferences and global industry events." },
-            {
-              name: "Participation in conferences",
-              detail:
-                "Compensating trips and tickets to industry-leading conferences to support networking and export contract signing.",
-            },
-          ],
-        },
-        {
-          title: "Marketing and promotion",
-          body:
-            "Azerbaijani embassies support member companies as active market-development partners, facilitating relevant introductions and meetings in priority markets. In parallel, IDDA and the Ministry work to strengthen the visibility of both Azerbaijan and cluster companies across target geographies.",
-          programs: [
-            {
-              name: "Embassy networking",
-              detail:
-                "Embassies will act as sales contacts for member companies and arrange meetings in target countries.",
-            },
-            {
-              name: "Targeted media outreach",
-              detail:
-                "The cluster will support, through IDDA and the Ministry, the visibility of Azerbaijan and cluster companies in target markets.",
-            },
-          ],
-        },
-        {
-          title: "Government sales",
-          body:
-            "Members benefit from both inbound and outbound government-led networking, including engagement with foreign delegations visiting Azerbaijan and participation in selected international missions led by IDDA and the Minister.",
-          programs: [
-            {
-              name: "Government road-trips",
-              detail:
-                "Cluster members will be invited to inbound and outbound government networking (meeting delegations visiting Azerbaijan and joining foreign trips of IDDA and the Minister).",
-            },
-          ],
-        },
-      ],
-    },
-  },
-  strategy: {
-    kicker: "05 · Anchor company strategy",
-    title: "Attracting anchor companies",
-    lead:
-      "BCG working material on which companies could anchor the cluster, how they are prioritized, and two pathways toward localization in Azerbaijan. Appears in the deck only.",
-    explorer: {
-      title: "Explore the candidate companies",
-      hint: "Click a bar to filter the logos",
-      byDomain: "By domain · slide 8",
-      byPool: "By priority pool · slide 9",
-      showing: "Showing",
-      multiDomain: "Appears in more than one domain",
-    },
-    criteria: {
-      kicker: "Prioritization",
-      title:
-        "Anchor companies should be prioritized where strategic value to Azerbaijan intersects with a credible path to localization",
-      duplicateNote: "Shown on deck slides 7 and 10 (identical content).",
-      columns: [
-        {
-          title: "Strategic attractiveness to Azerbaijan",
-          tone: "blue",
-          items: [
-            { icon: "cog", title: "Domain fit", body: "Fit with resilience technology domains (cyber, communications, monitoring, UAV, space, data/AI)" },
-            { icon: "chart", title: "Sector relevance", body: "Relevance to priority deployment sectors (e.g. transport & logistics, digital & connectivity)" },
-            { icon: "network", title: "Anchor / ecosystem effect", body: "Potential to attract suppliers, talent, innovation and additional investment" },
-            { icon: "globe", title: "Regional export potential", body: "Ability to serve markets beyond Azerbaijan (Central Asia, Middle East, Africa)" },
-            { icon: "cloud", title: "Scale and credibility", body: "Global player with proven technology, financial strength and long-term commitment" },
-          ],
-        },
-        {
-          title: "Localization feasibility",
-          tone: "green",
-          items: [
-            { icon: "pin", title: "Localization depth", body: "Scope to localize substantial activities (engineering, integration, deployment, assembly, R&D)" },
-            { icon: "hub", title: "New regional hub rationale", body: "Strategic logic to establish a new regional hub in Azerbaijan (e.g., post-Russia, coverage of new markets)" },
-            { icon: "handshake", title: "Ongoing talks", body: "Already established relationship/operations with local companies" },
-            { icon: "shield", title: "Geopolitical feasibility", body: "Acceptable geopolitical and regulatory conditions (export controls, approvals, alignment)" },
-          ],
-        },
-      ],
-    },
-    candidates: {
-      kicker: "Strategic fit",
-      title:
-        "A preliminary list of candidate companies¹ was identified across each key domain with the potential to anchor in the Azerbaijan technology resilience cluster",
-      domains: [
-        { title: "Cybersecurity & digital trust", companies: candidatesByDomain[0] },
-        { title: "Secure communications", companies: candidatesByDomain[1] },
-        { title: "Situation awareness & monitoring", companies: candidatesByDomain[2] },
-        { title: "Space-enabled solutions", companies: candidatesByDomain[3] },
-      ],
-      footnotes: [
-        "1. Preliminary universe includes companies based on global scale, category leadership and proven mission-critical deployments",
-        "2. Estonian companies included separately based on strategic partnership considerations",
-      ],
-    },
-    pools: {
-      kicker: "Strategic fit",
-      title:
-        "Potential anchor companies can be sourced from five priority pools, including global players and companies already engaged with Azerbaijan",
-      pools: [
-        { title: "Global industrial-tech leaders", tone: "navy", companies: pools[0] },
-        { title: "Israeli defense-tech players", tone: "green", companies: pools[1] },
-        { title: "Potential Chinese players", tone: "blue", companies: pools[2] },
-        { title: "Players engaged in AZ negotiations/tenders", tone: "ink", companies: pools[3] },
-        { title: "Cyber-players", tone: "gray", companies: pools[4] },
-      ],
-      chainTitle:
-        "Potential anchors are attracted from priority company pools and localized across selected parts of the value chain",
-      chain: [
-        { icon: "blueprint", label: "Local engineering & integration" },
-        { icon: "monitor", label: "Services / SOC / monitoring" },
-        { icon: "wrench", label: "Deployment & maintenance" },
-        { icon: "certificate", label: "Training & certification" },
-        { icon: "tools", label: "Selected assembly / testing" },
-        { icon: "ship", label: "Regional export hub" },
-      ],
-      footnote: "* Schneider Electric operates a Turkey & Central Asia cluster headed from Istanbul",
-    },
-    pathway1: {
-      kicker: "Pathway 1 localization",
-      title:
-        "Companies with a regional-footprint gap represent an opportunity for Azerbaijan to position itself as a new operating hub",
-      subtitle: "These companies may now have an unmet regional operating need that Azerbaijan could address",
-      headers: {
-        company: "Company",
-        domain: "Domain",
-        exit: "Russia exit",
-        footprint: "Regional footprint",
-        fit: "Resilience cluster fit",
-        value: "Value proposition for landing in AZE",
-        current: "Current footprint in AZE",
+  benefits: {
+    kicker: "04 · Member benefits",
+    title: "Opportunities for cluster members",
+    lead: "The following opportunities are offered first to cluster members.",
+    items: [
+      { title: "Start on projects right away", body: "Direct access to anchor partners' tasks and pilot projects." },
+      { title: "Export support", body: "Target market research, and support for sales and market entry." },
+      {
+        title: "International events",
+        body: "Taking part in international conferences and the Azerbaijan national pavilion, and joining visits of government delegations.",
       },
-      rows: [
-        {
-          company: C.honeywell,
-          domain: "Cybersecurity & digital trust",
-          exit: "Jun-22",
-          footprint: "Regional hub in KZ proposed by gov., no updates",
-          fit: [
-            "OT asset discovery & inventory",
-            "Industrial network / intrusion monitoring",
-            "24/7 OT SOC & incident response",
-            "Vulnerability management, segmentation & compliance",
-          ],
-          value: ["Existing SOCAR reference base", "Potential to localize OT SOC / security services"],
-          current: "Local office + engineering/service",
-          currentTone: "green",
-        },
-        {
-          company: C.emerson,
-          domain: "Situation awareness & monitoring",
-          exit: "Mar-23",
-          footprint: "No clear hub in region",
-          fit: [
-            "Process control & SCADA (DeltaV / Ovation)",
-            "Machinery & asset-health monitoring",
-            "Predictive condition monitoring / early-warning analytics",
-            "Remote monitoring of power, water and industrial assets",
-          ],
-          value: ["Active AZE project base (e.g. Shah Deniz project)", "Anchors engineering scale-up"],
-          current: "Local office + project delivery",
-          currentTone: "green",
-        },
-        {
-          company: C.abb,
-          domain: "Situation awareness & monitoring",
-          exit: "Jul-22",
-          footprint: "Istanbul HQ covering Central Asia",
-          fit: [
-            "Asset-performance management (ABB Ability Genix APM)",
-            "Real-time equipment condition monitoring",
-            "Predictive maintenance & failure detection",
-            "Fleet / infrastructure health dashboards and alerts",
-          ],
-          value: ["Office & installed base", "Base for automation hub", "Active electrification anchor"],
-          current: "Local office + lifecycle services",
-          currentTone: "green",
-        },
-        {
-          company: C.siemens,
-          domain: "Data, cloud & AI",
-          exit: "2022",
-          footprint: "No post-Russia hub, strong pre-existing KZ base",
-          fit: [
-            "OT asset discovery & intrusion detection",
-            "Industrial automation / control-system monitoring",
-            "Rail and infrastructure condition monitoring",
-            "Predictive maintenance & operational analytics",
-          ],
-          value: [
-            "Proven CII reference base",
-            "Path to deeper engineering",
-            "Cross-sector resilience pipeline (power, metro, smart infra.)",
-          ],
-          current: "Representative / channel-led",
-          currentTone: "blue",
-        },
-        {
-          company: C.nokia,
-          domain: "Secure communication",
-          exit: "2023",
-          footprint: "No clear hub in region",
-          fit: [
-            "Mission-critical private 4G/5G networks",
-            "Secure voice, video & data communications / MCX",
-            "Resilient connectivity for utilities, rail and public safety",
-            "Command-center, field-device & industrial-OT connectivity",
-          ],
-          value: ["Existing anchor customer & deployment", "Expansion into critical enterprise connectivity"],
-          current: "Local office + network deployment",
-          currentTone: "green",
-        },
-      ],
-    },
-    pathway2: {
-      kicker: "Pathway 2 localization",
-      title:
-        "For companies already active in Azerbaijan, existing projects can provide a lower-friction pathway toward deeper localization",
-      subtitle: "These companies already possess relationship and reference base, leading to lower perceived entry risk",
-      headers: {
-        company: "Company",
-        domain: "Domain",
-        projects: "Projects / tenders involved",
-        fit: "Resilience cluster fit",
-      },
-      rows: [
-        {
-          company: [C.radware],
-          domain: "Cybersecurity & digital trust",
-          projects: [
-            "Radware deployed in AzInTelecom data center",
-            "Multiple SOFAZ tenders for extension of existing security licenses",
-          ],
-          fit: ["DDoS and application protection", "Resilience of GovCloud / public digital services"],
-        },
-        {
-          company: [C.crowdstrike],
-          domain: "Cybersecurity & digital trust",
-          projects: [
-            "Involvement in National Cybersecurity Forum, roundtables with government officials, and other events",
-          ],
-          fit: ["Threat detection & response", "Identity & access management"],
-          flag:
-            "Corrected: the deck repeated the IAI row here (Earth observation / satellites). Replaced with the matching cybersecurity capabilities from deck slide 3. To be confirmed by BCG.",
-        },
-        {
-          company: [C.google, C.mandiant],
-          domain: "Data, cloud & AI",
-          projects: [
-            "2025 MDDT–Google discussions on cloud, innovation labs and skills",
-            "No Mandiant-specific AZE project publicly identified",
-          ],
-          fit: ["Cyber incident response & threat intelligence", "Critical-infrastructure cyber readiness"],
-        },
-        {
-          company: [C.microsoft],
-          domain: "Data, cloud & AI",
-          projects: [
-            "Government software licensing via AzInTelecom",
-            "Supported PKI / e-signature infrastructure and IoT lab cooperation",
-          ],
-          fit: ["Digital identity & trusted e-government", "Government / critical-infrastructure cyber protection"],
-        },
-        {
-          company: [C.iai],
-          domain: "Space-enabled solutions",
-          projects: ["Azersky-2 program with Azercosmos", "Technology transfer; second satellite planned for local build"],
-          fit: ["Sovereign EO & monitoring capability", "Local satellite engineering, assembly and skills transfer"],
-        },
-        {
-          company: [C.spacex],
-          domain: "Space-enabled solutions",
-          projects: [
-            "2023 Azercosmos–SpaceX agreement for Starlink resale",
-            "Starlink tested for government, transport, maritime and remote-site use",
-          ],
-          fit: ["Resilient satellite connectivity", "Backup communications for critical infrastructure"],
-        },
-        {
-          company: [C.thales],
-          domain: "Situation awareness & monitoring",
-          projects: [
-            "Baku Metro: Purple Line control center, signaling & telecom systems",
-            "SCADA, CBTC & TETRA deployment; staff training",
-          ],
-          fit: [
-            "Real-time infrastructure monitoring & control",
-            "Mission-critical communications",
-            "Transport operational resilience",
-          ],
-        },
-      ],
-    },
+      { title: "Networking and partnerships", body: "Contacts with investors, foreign partners and other cluster members." },
+    ],
+    note: "Export support and participation in international events are delivered through IDDA programs. In addition, cluster members that are Technopark residents use the incentives set by law.",
   },
-  charts: {
-    framing: {
-      title: "Two framings of the focus domains",
-      word: { label: "Word draft", value: "4", caption: "core technology domains" },
-      deck: { label: "Deck, slide 3", value: "6", caption: "priority domains (4 core + 2 additional)" },
-      coreLabel: "Core domain",
-      extraLabel: "Additional in the deck",
-    },
-    candidates: {
-      title: "Candidate anchor companies per domain",
-      short: "candidate anchor companies",
-      subtitle: "Deck slide 8 · preliminary list, including Estonian companies",
-      unit: "companies",
-      notMapped: "not mapped",
-    },
-    deductions: {
-      title: "Deduction per 100 of qualifying spend",
-      subtitle: "Deck slide 5",
-      baseline: "100 = full deductibility",
-      rows: [
-        { label: "Investment deduction (<50%)", value: 100 },
-        { label: "R&D super deduction", value: 250 },
-      ],
-    },
-    royalty: {
-      title: "Royalty income",
-      exempt: "Exempt",
-      taxed: "Taxed",
-      effective: "About 1% effective tax rate",
-    },
-    exportFunding: {
-      title: "Target market support per company, per year",
-      subtitle: "Maximum amounts, deck slide 6",
-      research: "Market research grant",
-      sales: "Sales hire & training",
-      total: "up to $70,000 if both programs are used (sum of the two ceilings)",
-    },
-    pools: { title: "Companies per priority pool", unit: "companies" },
-    exits: {
-      title: "Pathway 1: Russia exit timeline",
-      subtitle: "Deck slide 11 · companies that left Russia and have no clear regional hub",
-      exact: "Month given",
-      yearOnly: "Year only",
+  join: {
+    kicker: "05 · Joining",
+    title: "Who can join the cluster",
+    criteria: [
+      "Technopark residents whose work falls within one of the areas above",
+      "Companies with their own product or technology are preferred",
+      "An established technical team and readiness to take part in joint projects",
+    ],
+    box: {
+      title: "Application",
+      body: "Send an application to join the cluster or to cooperate as an anchor partner.",
+      button: { label: "Send an application" },
     },
   },
   footer: {
-    prepared: "Prepared from BCG materials (September 2026).",
-    sources:
-      "Sources: “Resilience Cluster website content draft” (Word) and “Technology resilience cluster v4” (BCG presentation).",
+    text: "Innovation and Digital Development Agency, Ministry of Digital Development and Transport, 2026",
   },
 };

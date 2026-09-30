@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   // (the image optimizer's internal fetch would otherwise be rejected by it).
   images: { unoptimized: true },
   async redirects() {
-    return [{ source: "/", destination: "/en", permanent: false }];
+    return [{ source: "/", destination: "/az", permanent: false }];
   },
   async headers() {
     return [

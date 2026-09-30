@@ -2,7 +2,7 @@
 
 **Kimə:** Rəhbərlik
 **Mövzu:** BCG-nin göndərdiyi materiallar (təqdimat və sayt mətni) əsasında 1 səhifəlik daxili sayt
-**Status:** İşlək prototip hazırdır (EN + AZ, şifrə ilə qorunur)
+**Status:** İlkin təklif. Qeyd: 30.09.2026 tarixində sayt İRİA-nın yeni HTML strukturuna keçirilib (Klaster haqqında, İstiqamətlər, Aparıcı tərəfdaşlar, Üzvlərə imkanlar, Qoşulma).
 
 ---
 

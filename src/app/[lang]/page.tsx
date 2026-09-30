@@ -1,12 +1,8 @@
 import { notFound } from "next/navigation";
-import { About } from "@/components/About";
-import { Domains } from "@/components/Domains";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Incentives } from "@/components/Incentives";
-import { Footer } from "@/components/Footer";
-import { Strategy } from "@/components/Strategy";
-import { Why } from "@/components/Why";
+import { About, Benefits, Domains, Join, Partners } from "@/components/Sections";
 import { getContent, hasLocale } from "@/content";
 
 export default async function Page({ params }: PageProps<"/[lang]">) {
@@ -27,9 +23,9 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Hero c={c} />
         <About c={c} />
         <Domains c={c} />
-        <Why c={c} />
-        <Incentives c={c} />
-        <Strategy c={c} />
+        <Partners c={c} />
+        <Benefits c={c} />
+        <Join c={c} />
       </main>
       <Footer c={c} />
     </>
