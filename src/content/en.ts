@@ -110,7 +110,7 @@ export const en: Content = {
   join: {
     title: "Who can join the cluster",
     criteria: [
-      "Technopark residents whose work falls within one of the areas above",
+      "Companies whose work falls within one of the areas above",
       "Companies with their own product or technology are preferred",
       "An established technical team and readiness to take part in joint projects",
     ],

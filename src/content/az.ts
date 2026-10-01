@@ -109,7 +109,7 @@ export const az: Content = {
   join: {
     title: "Klasterə kimlər qoşula bilər",
     criteria: [
-      "Fəaliyyəti yuxarıdakı istiqamətlərdən birinə aid olan Texnopark rezidentləri",
+      "Fəaliyyəti yuxarıdakı istiqamətlərdən birinə aid olan şirkətlər",
       "Öz məhsulu və ya texnologiyası olan şirkətlərə üstünlük verilir",
       "Formalaşmış texniki komanda və birgə layihələrdə iştirak etməyə hazırlıq",
     ],
