@@ -143,3 +143,31 @@ export async function deleteApplication(id: string): Promise<void> {
     await updateFileStore((apps) => apps.filter((a) => a.id !== id));
   }
 }
+
+// --- Sign-in throttling --------------------------------------------------------
+
+const memoryFailures = new Map<string, { count: number; until: number }>();
+
+/** Failed admin sign-ins for this key within the window (Redis when available, else this process). */
+export async function loginFailures(key: string): Promise<number> {
+  if (storeBackend() === "redis") return Number((await command<string | null>(["GET", `cluster:login-fail:${key}`])) ?? 0);
+  const hit = memoryFailures.get(key);
+  return hit && hit.until > Date.now() ? hit.count : 0;
+}
+
+export async function recordLoginFailure(key: string, windowSeconds: number): Promise<void> {
+  if (storeBackend() === "redis") {
+    const redisKey = `cluster:login-fail:${key}`;
+    const count = await command<number>(["INCR", redisKey]);
+    if (count === 1) await command<number>(["EXPIRE", redisKey, windowSeconds]);
+    return;
+  }
+  const hit = memoryFailures.get(key);
+  const live = hit && hit.until > Date.now();
+  memoryFailures.set(key, { count: live ? hit.count + 1 : 1, until: live ? hit.until : Date.now() + windowSeconds * 1000 });
+}
+
+export async function clearLoginFailures(key: string): Promise<void> {
+  if (storeBackend() === "redis") await command<number>(["DEL", `cluster:login-fail:${key}`]);
+  else memoryFailures.delete(key);
+}

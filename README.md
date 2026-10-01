@@ -183,7 +183,7 @@ Tailwind-də bu tokenlər sinif kimi işləyir: `bg-brand-900`, `text-muted`, `b
 - **Şrift:** Inter (`@fontsource-variable/inter`, lokal paketdir, internet tələb etmir). Dəyişmək üçün başqa `@fontsource` paketi quraşdırıb `globals.css`-də `@import` və `--font-sans`-ı yeniləyin.
 - **İkonlar:** `lucide-react`, nazik xətli (`strokeWidth={1.5}`), brend rəngində.
 - **Şəkillər:** `public/images/`. Hero fotosunu dəyişmək üçün faylı əvəz edin və ya `Hero.tsx`-də yolu dəyişin.
-- **Loqo:** header və footer-də `ministry-logo-white.png`. İRİA loqosu əlavə olunacaqsa, faylı `public/images/`-ə qoyub `Header.tsx` və `Footer.tsx`-də istifadə edin.
+- **Loqo:** header və footer-də loqo və qurum adları yoxdur, yalnız klasterin adı göstərilir. İRİA loqosu əlavə olunacaqsa, faylı `public/images/`-ə qoyub `Header.tsx` və `Footer.tsx`-də istifadə edin.
 - **Layout:** maksimum en `max-w-7xl`. Bölmələrdə başlıq solda (4/12), məzmun sağda (8/12). Mobil üçün tam uyğunlaşdırılıb (390px-də yoxlanılıb).
 
 ---
@@ -223,9 +223,11 @@ Redis qoşulubsa, harada işləməsindən asılı olmayaraq həmişə Redis isti
 ### Admin paneli: `/admin`
 
 **Necə daxil olmaq:**
-1. Şifrə `ADMIN_PASSWORD` dəyişənindədir. Lokalda bu dəyişən `.env.local` faylındadır (istifadəçi adı `admin`), Vercel-də isə **Settings → Environment Variables** bölməsində təyin edilir.
-2. http://localhost:3000/admin (və ya `https://<domen>/admin`) açın. Brauzer istifadəçi adı və şifrə soruşacaq.
-3. `ADMIN_PASSWORD` təyin edilməyibsə, `/admin` **404** qaytarır. Şifrəni dəyişdikdən sonra serveri yenidən başladın (Vercel-də **Redeploy**).
+1. `/admin` açın (lokalda http://localhost:3000/admin, canlıda https://task-qwdc.vercel.app/admin). Giriş səhifəsi açılacaq.
+2. İstifadəçi adı `ADMIN_USER` (default `admin`), şifrə `ADMIN_PASSWORD`. Lokalda bunlar `.env.local`-dadır, Vercel-də **Settings → Environment Variables** bölməsində.
+3. Giriş 8 saat yadda qalır. Sağ yuxarıdakı **Çıxış** düyməsi sessiyanı bağlayır. Şifrəni dəyişmək bütün açıq sessiyaları bağlayır.
+4. 15 dəqiqə ərzində 8 uğursuz cəhddən sonra həmin IP üçün giriş müvəqqəti bağlanır.
+5. `ADMIN_PASSWORD` təyin edilməyibsə, `/admin` **404** qaytarır. Dəyişdikdən sonra serveri yenidən başladın (Vercel-də **Redeploy**).
 
 **Paneldə nə var:**
 - bütün müraciətlər (ən yenisi birinci, tarix Bakı vaxtı ilə), hər birinin detalları açılan sətirdə;
@@ -234,7 +236,7 @@ Redis qoşulubsa, harada işləməsindən asılı olmayaraq həmişə Redis isti
 - **Email yaz** (poçt proqramını açır) və **Sil** (təsdiq soruşur, geri qaytarılmır);
 - **CSV yüklə (Excel)**: status daxil olmaqla bütün sahələr. Fayl UTF-8 BOM və `;` ayırıcısı ilə hazırlanır, formul inyeksiyasından qorunur.
 
-Admin əməliyyatları (status, silmə) proxy-dən əlavə serverdə də şifrəni yoxlayır, çünki Server Action-ları istənilən URL-dən çağırmaq mümkündür.
+Admin əməliyyatları (status, silmə) proxy-dən əlavə serverdə də sessiyanı yoxlayır, çünki Server Action-ları istənilən URL-dən çağırmaq mümkündür. Sessiya cookie-si `httpOnly`, `SameSite=Strict`, yalnız `/admin` yolu üçündür və HMAC ilə imzalanır (`ADMIN_SESSION_SECRET`, yoxdursa `ADMIN_PASSWORD`).
 
 ---
 
@@ -248,6 +250,7 @@ Hamısı `.env.example`-də var. Lokalda `.env.local`, Vercel-də **Settings →
 | `APPLICATIONS_FILE` | Xeyr | Redis olmadıqda müraciətlərin yazıldığı JSON faylı (default `data/applications.json`) |
 | `ADMIN_PASSWORD` | `/admin` üçün | Admin səhifəsinin şifrəsi |
 | `ADMIN_USER` | Xeyr | Admin istifadəçi adı (default `admin`) |
+| `ADMIN_SESSION_SECRET` | Xeyr | Sessiya cookie-sini imzalamaq üçün açar (default: `ADMIN_PASSWORD`) |
 | `RESEND_API_KEY`, `APPLICATION_EMAIL_TO`, `APPLICATION_EMAIL_FROM` | Xeyr | Hər müraciət üçün email bildirişi ([Resend](https://resend.com)) |
 | `APPLICATION_WEBHOOK_URL`, `APPLICATION_WEBHOOK_SECRET` | Xeyr | Hər müraciəti JSON olaraq POST edir (secret `X-Webhook-Secret` başlığında) |
 | `SITE_PASSWORD`, `SITE_USER` | Xeyr | Bütün saytı şifrə ilə bağlamaq (default olaraq sayt açıqdır) |

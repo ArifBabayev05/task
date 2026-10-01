@@ -176,6 +176,6 @@ export const az: Content = {
     },
   },
   footer: {
-    text: "İnnovasiya və Rəqəmsal İnkişaf Agentliyi, Rəqəmsal İnkişaf və Nəqliyyat Nazirliyi, 2026",
+    text: "Azərbaycan Texnoloji Dayanıqlılıq Klasteri, 2026",
   },
 };

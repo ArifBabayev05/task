@@ -177,6 +177,6 @@ export const en: Content = {
     },
   },
   footer: {
-    text: "Innovation and Digital Development Agency, Ministry of Digital Development and Transport, 2026",
+    text: "Technology Resilience Cluster of Azerbaijan, 2026",
   },
 };
