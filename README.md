@@ -51,7 +51,7 @@ npm run dev
 Brauzerdə **http://localhost:3000** açın. Sayt avtomatik olaraq `/az`-a yönləndirir.
 
 Lokalda heç bir env dəyişəni tələb olunmur:
-- müraciət formu işləyir və göndərilən müraciətlər terminalda (server konsolunda) çap olunur;
+- müraciət formu işləyir və müraciətlər `data/applications.json` faylına yazılır;
 - `/admin` səhifəsi yalnız `ADMIN_PASSWORD` təyin edildikdə açılır (bax: [6-cı bölmə](#6-müraciət-formu-baza-və-admin)).
 
 ### Əmrlər
@@ -84,7 +84,7 @@ Lokalda heç bir env dəyişəni tələb olunmur:
 │   │   │       └── route.ts      # CSV (Excel) yükləmə
 │   │   └── globals.css           # Tailwind + dizayn tokenləri (rənglər, radius, şrift)
 │   ├── components/
-│   │   ├── Header.tsx            # Brend zolağı, loqo, dil açarı, "Müraciət et", naviqasiya
+│   │   ├── Header.tsx            # Klasterin adı, dil açarı, "Müraciət et", naviqasiya (loqo yoxdur)
 │   │   ├── Hero.tsx              # Başlıq, qısa mətn, düymələr, foto, faktlar sətri
 │   │   ├── Sections.tsx          # About, Domains, Partners, Benefits, Join bölmələri
 │   │   ├── Footer.tsx            # Footer
@@ -165,17 +165,18 @@ Bütün rənglər `src/app/globals.css` faylındakı `@theme` blokundadır. Bren
 
 | Token | Dəyər | İstifadə |
 |---|---|---|
-| `--color-brand-950` | `#071a33` | Footer fonu |
-| `--color-brand-900` | `#0b2545` | Üst zolaq, əsas düymələr, başlıqlar, qoşulma bölməsi |
-| `--color-brand-800` | `#13315c` | Düymə hover |
-| `--color-brand-700` | `#1d4e89` | Linklər, nömrələr, ikonlar, fokus |
-| `--color-brand-100` | `#e6edf5` | Yüngül fon vurğuları |
-| `--color-surface` | `#f4f6f9` | Alternativ bölmə fonu |
-| `--color-line` | `#dde3ea` | Xətlər və çərçivələr |
-| `--color-ink` | `#1a2230` | Əsas mətn |
-| `--color-muted` | `#5b6676` | İkinci dərəcəli mətn |
+| `--color-brand-950` | `#060f26` | Footer fonu |
+| `--color-brand-900` | `#152f5b` | Üst zolaq, əsas düymələr, başlıqlar, qoşulma bölməsi |
+| `--color-brand-800` | `#1e3f78` | Düymə hover |
+| `--color-brand-700` | `#0052eb` | Linklər, nömrələr, ikonlar, fokus |
+| `--color-brand-100` | `#e8eeff` | Yüngül fon vurğuları |
+| `--color-accent` | `#7000e3` | İRİA bənövşəyi vurğusu (hero nöqtəsi, qoşulma bölməsindəki diaqonal zolaqlar) |
+| `--color-surface` | `#f0f3fa` | Alternativ bölmə fonu |
+| `--color-line` | `#d9e1f0` | Xətlər və çərçivələr |
+| `--color-ink` | `#0f1a2e` | Əsas mətn |
+| `--color-muted` | `#55617a` | İkinci dərəcəli mətn |
 | `--color-danger` | `#b42318` | Form xətaları |
-| `--radius-card` | `4px` | Künc radiusu |
+| `--radius-card` | `12px` | Künc radiusu |
 
 Tailwind-də bu tokenlər sinif kimi işləyir: `bg-brand-900`, `text-muted`, `border-line` və s.
 
@@ -197,31 +198,43 @@ Tailwind-də bu tokenlər sinif kimi işləyir: `bg-brand-900`, `text-muted`, `b
 4. Uğurlu müraciət `src/lib/deliver.ts` vasitəsilə:
    - **Upstash Redis bazasına** yazılır (əsas yol);
    - istəyə bağlı olaraq **email** (Resend) və/və ya **webhook** (Google Sheets, Slack və s.) ilə bildiriş göndərilir.
-5. Production-da heç bir yer konfiqurasiya olunmayıbsa, form xəta göstərir, müraciət səssizcə itmir. Lokal (dev) rejimdə isə müraciət terminala çap olunur.
+5. Vercel-də Redis qoşulmayıbsa və başqa yer (email, webhook) konfiqurasiya olunmayıbsa, form xəta göstərir, müraciət səssizcə itmir.
 
 ### Form sahələri
 
 Müraciət növü (klaster üzvü / aparıcı tərəfdaş)\*, şirkətin adı\*, VÖEN, vebsayt, Texnopark rezidentliyi\*, fəaliyyət istiqamətləri\* (ən azı 1), məhsul və ya texnologiya\*, texniki komandanın ölçüsü, ad və soyad\*, vəzifə, email\*, telefon, əlavə qeyd, razılıq\*. Ulduzlu (\*) sahələr mütləqdir.
 
-### Baza: Upstash Redis
+### Saxlama (baza)
 
-Müraciətlər `cluster:applications` açarı altında JSON siyahısı kimi saxlanılır (ən yenisi birinci). Kod SDK istifadə etmir, Upstash REST API ilə birbaşa işləyir (`src/lib/store.ts`).
+Müraciətlər avtomatik seçilən iki yerdən birində saxlanılır (`src/lib/store.ts`):
 
-**Vercel-də qoşmaq (təxminən 2 dəqiqə):**
+| Harada işləyir | Saxlama | Nə etmək lazımdır |
+|---|---|---|
+| Lokal kompüter və öz serveriniz (`npm start`) | `data/applications.json` faylı | Heç nə. Fayl ilk müraciətdə yaranır. Yolu `APPLICATIONS_FILE` ilə dəyişmək olar. `data/` git-ə düşmür |
+| Vercel | Upstash Redis | Vercel-in fayl sistemi yalnız oxunur, ona görə Redis qoşulmalıdır (aşağıya bax) |
+
+Redis qoşulubsa, harada işləməsindən asılı olmayaraq həmişə Redis istifadə olunur. Redis-də müraciətlər `cluster:applications` siyahısında, statuslar isə `cluster:application-status` hash-ında saxlanılır.
+
+**Vercel-də Redis qoşmaq (təxminən 2 dəqiqə):**
 1. Vercel → layihə → **Storage** → **Create Database** → **Upstash for Redis** → plan **Free**, region **Frankfurt (fra1)**.
 2. **Connect** ilə layihəyə bağlayın. `KV_REST_API_URL` və `KV_REST_API_TOKEN` avtomatik əlavə olunur.
 3. **Redeploy** edin.
 
-**Lokalda bazanı sınamaq:** [console.upstash.com](https://console.upstash.com)-da pulsuz Redis bazası yaradın. "REST API" bölməsindən URL və token-i `.env.local`-a `KV_REST_API_URL` və `KV_REST_API_TOKEN` kimi yazın, `npm run dev`-i yenidən başladın. Vercel-dəki bazanın açarlarını da istifadə edə bilərsiniz (Storage → baza → `.env.local` tabı).
+### Admin paneli: `/admin`
 
-### Admin səhifəsi: `/admin`
+**Necə daxil olmaq:**
+1. Şifrə `ADMIN_PASSWORD` dəyişənindədir. Lokalda bu dəyişən `.env.local` faylındadır (istifadəçi adı `admin`), Vercel-də isə **Settings → Environment Variables** bölməsində təyin edilir.
+2. http://localhost:3000/admin (və ya `https://<domen>/admin`) açın. Brauzer istifadəçi adı və şifrə soruşacaq.
+3. `ADMIN_PASSWORD` təyin edilməyibsə, `/admin` **404** qaytarır. Şifrəni dəyişdikdən sonra serveri yenidən başladın (Vercel-də **Redeploy**).
 
-- `ADMIN_PASSWORD` təyin edilməyibsə, `/admin` **404** qaytarır.
-- Təyin edilibsə, brauzer istifadəçi adı (default `admin`, `ADMIN_USER` ilə dəyişilir) və şifrə soruşur.
-- Səhifədə bütün müraciətlər (tarix Bakı vaxtı ilə, şirkət, əlaqə şəxsi, növ) və hər birinin detalları var.
-- **"CSV yüklə (Excel)"** düyməsi `/admin/export.csv` faylını endirir. Fayl UTF-8 BOM ilə və `;` ayırıcısı ilə hazırlanır, Excel-də Azərbaycan hərfləri düzgün görünür. Formul inyeksiyasından qorunur.
+**Paneldə nə var:**
+- bütün müraciətlər (ən yenisi birinci, tarix Bakı vaxtı ilə), hər birinin detalları açılan sətirdə;
+- **status**: Yeni, Baxılır, Qəbul edildi, Rədd edildi (seçən kimi yadda saxlanılır), status üzrə filtr və saylar;
+- **axtarış** (şirkət, ad, email, VÖEN, telefon) və müraciət növünə görə filtr;
+- **Email yaz** (poçt proqramını açır) və **Sil** (təsdiq soruşur, geri qaytarılmır);
+- **CSV yüklə (Excel)**: status daxil olmaqla bütün sahələr. Fayl UTF-8 BOM və `;` ayırıcısı ilə hazırlanır, formul inyeksiyasından qorunur.
 
-Lokalda sınamaq: `.env.local`-a `ADMIN_PASSWORD=istənilən-şifrə` yazın, serveri yenidən başladın, http://localhost:3000/admin açın.
+Admin əməliyyatları (status, silmə) proxy-dən əlavə serverdə də şifrəni yoxlayır, çünki Server Action-ları istənilən URL-dən çağırmaq mümkündür.
 
 ---
 
@@ -231,7 +244,8 @@ Hamısı `.env.example`-də var. Lokalda `.env.local`, Vercel-də **Settings →
 
 | Dəyişən | Məcburi? | Təyinat |
 |---|---|---|
-| `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Production-da tövsiyə olunur | Upstash Redis (müraciətlərin saxlanması). `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` adları da qəbul olunur |
+| `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Vercel-də məcburi | Upstash Redis (müraciətlərin saxlanması). `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` adları da qəbul olunur |
+| `APPLICATIONS_FILE` | Xeyr | Redis olmadıqda müraciətlərin yazıldığı JSON faylı (default `data/applications.json`) |
 | `ADMIN_PASSWORD` | `/admin` üçün | Admin səhifəsinin şifrəsi |
 | `ADMIN_USER` | Xeyr | Admin istifadəçi adı (default `admin`) |
 | `RESEND_API_KEY`, `APPLICATION_EMAIL_TO`, `APPLICATION_EMAIL_FROM` | Xeyr | Hər müraciət üçün email bildirişi ([Resend](https://resend.com)) |
@@ -272,7 +286,7 @@ AI köməkçisi (Claude Code, Cursor və s.) ilə davam etmək üçün hazır pr
 
 ## 10. Açıq qalan işlər
 
-- [ ] **İRİA brendi:** loqo, rəng palitrası və şrift hələ tətbiq olunmayıb, çünki idda.az əvvəlki mühitdən əlçatan deyildi. Etmək üçün: İRİA loqosunu `public/images/`-ə qoyun, `globals.css`-dəki `--color-brand-*` dəyərlərini brendbuka uyğun dəyişin, lazım olsa şrifti yeniləyin, `Header.tsx` və `Footer.tsx`-də loqonu əlavə edin.
+- [x] **İRİA brendi (rənglər):** idda.az palitrası tokenlərə tətbiq olunub (tünd göy, rəqəmsal mavi, bənövşəyi vurğu, yumru künclər). İRİA loqosu hələ əlavə olunmayıb: faylı `public/images/`-ə qoyub `Header.tsx` və `Footer.tsx`-də istifadə edin.
 - [ ] **Upstash Redis + `ADMIN_PASSWORD`:** Vercel-də qoşulmalıdır ([6-cı bölmə](#6-müraciət-formu-baza-və-admin)). Qoşulmayana qədər production-da form göndərişdə xəta verir.
 - [ ] **İngilis tərcüməsi:** `en.ts` tərcüməsi yoxlanılmalıdır.
 - [ ] **Sayt publik olacaqsa:** `noindex`-i çıxarın (`src/app/[lang]/layout.tsx` və `next.config.ts`). Lazım olarsa, məxfilik siyasəti linki əlavə edin.
@@ -291,4 +305,4 @@ AI köməkçisi (Claude Code, Cursor və s.) ilə davam etmək üçün hazır pr
 | `/admin` "Verilənlər bazası qoşulmayıb" yazır | `KV_REST_API_URL` / `KV_REST_API_TOKEN` yoxdur |
 | CSV Excel-də qarışıq simvollarla açılır | Faylı birbaşa iki kliklə açın (UTF-8 BOM var). "Data → From Text" ilə açırsınızsa, kodlaşdırmanı UTF-8, ayırıcını `;` seçin |
 | Dəyişiklik saytda görünmür | Vercel-də deploy statusunu yoxlayın və səhifəni tam yeniləyin (Ctrl+Shift+R / Cmd+Shift+R) |
-| Lokalda müraciət bazaya getmir | `.env.local`-da Upstash dəyişənləri olmadan müraciət yalnız terminala çap olunur, bu normaldır |
+| Lokalda müraciət Redis-ə getmir | Upstash dəyişənləri olmadan müraciətlər `data/applications.json` faylına yazılır, bu normaldır |

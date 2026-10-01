@@ -27,6 +27,17 @@ const domainIcons: Record<string, LucideIcon> = {
 
 const num = (i: number) => String(i + 1).padStart(2, "0");
 
+/** Static diagonal rounded bars, the İRİA brand motif. Decorative only. */
+function BrandStripes() {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+      <span className="absolute -right-24 -top-16 h-28 w-[28rem] -rotate-[35deg] rounded-full bg-accent/35" />
+      <span className="absolute -right-10 top-32 h-20 w-[22rem] -rotate-[35deg] rounded-full bg-brand-700/30" />
+      <span className="absolute -bottom-20 -left-32 h-24 w-[26rem] -rotate-[35deg] rounded-full bg-accent/20" />
+    </div>
+  );
+}
+
 /** Title and lead in the left column, content in the right (desktop). */
 function Split({ title, lead, children }: { title: string; lead?: string; children: React.ReactNode }) {
   return (
@@ -143,7 +154,8 @@ export function Benefits({ c }: { c: Content }) {
 export function Join({ c }: { c: Content }) {
   const { join } = c;
   return (
-    <section id="qosulma" className="bg-brand-900 py-16 text-white sm:py-24">
+    <section id="qosulma" className="relative isolate overflow-hidden bg-brand-900 py-16 text-white sm:py-24">
+      <BrandStripes />
       <Container className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-7">
           <Heading title={join.title} inverse />

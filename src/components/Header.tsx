@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { locales, type Locale } from "@/content";
 import type { Content } from "@/content/types";
@@ -9,17 +8,12 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
     <header className="sticky top-0 z-40">
       <div className="bg-brand-900 text-white">
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
-          <a href="#top" className="flex min-w-0 items-center gap-4" aria-label={c.meta.title}>
-            <Image
-              src="/images/ministry-logo-white.png"
-              alt="Azərbaycan Respublikası Rəqəmsal İnkişaf və Nəqliyyat Nazirliyi"
-              width={919}
-              height={266}
-              priority
-              className="h-9 w-auto shrink-0"
-            />
-            <span aria-hidden className="hidden h-8 w-px bg-white/25 md:block" />
-            <span className="hidden max-w-[16rem] text-[13px] font-medium leading-snug text-white/85 md:block">{c.ui.org}</span>
+          <a
+            href="#top"
+            className="flex min-w-0 items-center gap-2.5 text-sm font-semibold sm:text-[15px] leading-tight tracking-tight text-white"
+          >
+            <span aria-hidden className="size-2 shrink-0 rounded-full bg-accent-300" />
+            <span className="line-clamp-2">{c.meta.title}</span>
           </a>
           <div className="ml-auto flex items-center gap-3">
             <nav aria-label={c.ui.languageLabel} className="flex text-xs font-semibold">

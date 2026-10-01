@@ -28,7 +28,7 @@ export function ApplyButton({
       type="button"
       aria-haspopup="dialog"
       onClick={() => window.dispatchEvent(new Event(OPEN_EVENT))}
-      className={`inline-flex items-center justify-center gap-2 rounded-[var(--radius-card)] font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700 ${styles} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-card)] font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700 ${styles} ${className}`}
     >
       {children}
     </button>

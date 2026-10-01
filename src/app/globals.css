@@ -2,25 +2,29 @@
 @import "@fontsource-variable/inter";
 
 /*
- * Design tokens. Brand colours live here only, so the agency's brand palette can be
- * dropped in without touching components.
+ * Design tokens, aligned with the İRİA (idda.az) brand: deep navy, digital blue,
+ * a violet accent, cool blue-grey surfaces and rounded corners.
+ * Brand colours live here only, so components never hard-code them.
  */
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 
-  --color-brand-950: #071a33;
-  --color-brand-900: #0b2545;
-  --color-brand-800: #13315c;
-  --color-brand-700: #1d4e89;
-  --color-brand-100: #e6edf5;
+  --color-brand-950: #060f26;
+  --color-brand-900: #152f5b;
+  --color-brand-800: #1e3f78;
+  --color-brand-700: #0052eb;
+  --color-brand-100: #e8eeff;
+  --color-accent: #7000e3;
+  --color-accent-300: #aa72ff;
 
-  --color-surface: #f4f6f9;
-  --color-line: #dde3ea;
-  --color-ink: #1a2230;
-  --color-muted: #5b6676;
+  --color-surface: #f0f3fa;
+  --color-line: #d9e1f0;
+  --color-ink: #0f1a2e;
+  --color-muted: #55617a;
   --color-danger: #b42318;
+  --color-success: #067647;
 
-  --radius-card: 4px;
+  --radius-card: 12px;
 }
 
 :root {
@@ -46,6 +50,10 @@ body {
 
 dialog::backdrop {
   background: rgb(7 26 51 / 0.6);
+}
+
+:focus-visible {
+  outline-color: var(--color-brand-700);
 }
 
 .no-scrollbar {

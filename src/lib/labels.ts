@@ -17,3 +17,12 @@ export const formatDate = (iso: string) => {
   const b = new Date(d.getTime() + 4 * 3600_000);
   return `${pad(b.getUTCDate())}.${pad(b.getUTCMonth() + 1)}.${b.getUTCFullYear()} ${pad(b.getUTCHours())}:${pad(b.getUTCMinutes())}`;
 };
+
+export const statusLabels = {
+  new: "Yeni",
+  review: "Baxılır",
+  accepted: "Qəbul edildi",
+  rejected: "Rədd edildi",
+} as const;
+
+export const statusLabel = (v: string) => statusLabels[v as keyof typeof statusLabels] ?? v;

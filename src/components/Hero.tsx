@@ -10,7 +10,10 @@ export function Hero({ c }: { c: Content }) {
     <section id="top" className="bg-white">
       <Container className="grid grid-cols-1 items-center gap-10 py-14 sm:py-20 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-7">
-          <p className="text-sm font-medium text-brand-700">{c.ui.org}</p>
+          <p className="flex items-center gap-2 text-sm font-medium text-brand-700">
+            <span aria-hidden className="size-2 shrink-0 rounded-full bg-accent" />
+            {c.ui.org}
+          </p>
           <h1 className="mt-4 text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-brand-900 sm:text-5xl">
             {hero.title}
           </h1>

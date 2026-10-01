@@ -1,6 +1,6 @@
 import { connection } from "next/server";
 import { az } from "@/content/az";
-import { domainLabels, formatDate, residentLabel, typeLabel } from "@/lib/labels";
+import { domainLabels, formatDate, residentLabel, statusLabel, typeLabel } from "@/lib/labels";
 import { listApplications, storeConfigured } from "@/lib/store";
 
 /** CSV export of all applications (UTF-8 with BOM and ";" separator so Excel opens it directly). */
@@ -12,6 +12,7 @@ export async function GET() {
   const apps = await listApplications();
   const header = [
     "Tarix",
+    "Status",
     f.type.label,
     f.company,
     f.taxId,
@@ -30,6 +31,7 @@ export async function GET() {
   ];
   const rows = apps.map((a) => [
     formatDate(a.submittedAt),
+    statusLabel(a.status),
     typeLabel(a.type),
     a.company,
     a.taxId,
